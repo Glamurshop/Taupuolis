@@ -2,263 +2,377 @@
 <html lang="lt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Taupuolis.lt – Nuolaidos, kuponai ir pasiūlymai</title>
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
   <!-- VIP TOP BAR -->
   <div class="bg-black text-white text-sm text-center py-2 px-4">
-    Nori išskirtinių pasiūlymų?
-    <a href="#" class="underline font-semibold">Tapk VIP nariu</a> ✨
+    Nori išskirtinių pasiūlymų kaip „€5 už 2 pirkimus“? <a href="#" class="underline font-semibold">Tapk VIP nariu</a> ✨
   </div>
+
+
 
   <!-- NAVIGATION -->
   <header class="bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <a href="#" class="text-2xl font-bold text-yellow-500">Taupuolis.lt</a>
       <div class="flex items-center gap-4 text-sm">
-        <a href="pardavejai.html" class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">
-          Pardavėjai
-        </a>
+        <a href="pardavejai.html"
+     class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">
+    Pardavėjai
+  </a>
         <a href="#" class="hover:underline">Prisijungti</a>
         <a href="#" class="hover:underline">Registruotis</a>
       </div>
     </div>
   </header>
-  <!-- HERO SLIDER -->
-  <section class="bg-white py-8">
-    <div class="max-w-7xl mx-auto px-4">
+  
+  <!-- HERO -->
+<section class="bg-white py-8">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="relative">
+      <!-- Slankiojanti juosta -->
       <div id="slider" class="overflow-hidden relative rounded-xl">
         <div class="flex transition-transform duration-500" style="width: 500%;">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0864/5161/8058/files/color_wow-8.webp?v=1752663395"
-            alt="Baneris 1"
-            class="w-full h-[600px] object-cover rounded-lg"
-          />
-          <img
-            src="images/arabiski_lt.webp"
-            alt="Baneris 2"
-            class="w-full h-[600px] object-cover rounded-lg"
-          />
-          <img
-            src="images/arabiski_lt.webp"
-            alt="Baneris 3"
-            class="w-full h-[600px] object-cover rounded-lg"
-          />
-          <img
-            src="images/arabiski_lt.webp"
-            alt="Baneris 4"
-            class="w-full h-[600px] object-cover rounded-lg"
-          />
-          <img
-            src="images/arabiski_lt.webp"
-            alt="Baneris 5"
-            class="w-full h-[600px] object-cover rounded-lg"
-          />
-        </div>
-        <div class="flex justify-center mt-4 gap-2">
-          <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(0)"></button>
-          <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(1)"></button>
-          <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(2)"></button>
-          <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(3)"></button>
-          <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(4)"></button>
-        </div>
+          <!-- Vienas baneris -->
+          <img src="https://cdn.shopify.com/s/files/1/0864/5161/8058/files/color_wow-8.webp?v=1752663395" class="w-full h-[600px] object-cover rounded-lg" />
+          <img src="file:///C:/Users/kvaiv/Downloads/arabiski_lt.webp" class="w-full h-[600px] object-cover rounded-lg" />
+          <img src="file:///C:/Users/kvaiv/Downloads/arabiski_lt.webp" class="w-full h-[600px] object-cover rounded-lg" />
+          <img src="file:///C:/Users/kvaiv/Downloads/arabiski_lt.webp" class="w-full h-[600px] object-cover rounded-lg" />
+          <img src="file:///C:/Users/kvaiv/Downloads/arabiski_lt.webp" class="w-full h-[600px] object-cover rounded-lg" />
+      </div>
+      <!-- Taškeliai -->
+      <div class="flex justify-center mt-4 gap-2">
+        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(0)"></button>
+        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(1)"></button>
+        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(2)"></button>
+        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(3)"></button>
+        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(4)"></button>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ARGUMENTAI SEKCIJA -->
-  <section class="bg-yellow-200 py-8">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-6">
-      <!-- Argumentas 1 -->
-      <div class="flex items-center gap-4">
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/1250/1250615.png"
-          alt="patikrintas"
-          class="w-12 h-12 bg-white rounded-full p-2"
-        />
-        <div>
-          <p class="font-bold text-black text-base">Kiekvienas kodas patikrintas</p>
-          <p class="text-sm text-gray-800">Tik tikri žmonės</p>
-        </div>
-      </div>
-      <!-- Argumentas 2 -->
-      <div class="flex items-center gap-4">
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/9758/9758686.png"
-          alt="dovana"
-          class="w-12 h-12 bg-white rounded-full p-2"
-        />
-        <div>
-          <p class="font-bold text-black text-base">5 € dovanų už 2 pirkimus</p>
-          <p class="text-sm text-gray-800">VIP naudotojams</p>
-        </div>
-      </div>
-      <!-- Argumentas 3 -->
-      <div class="flex items-center gap-4">
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/929/929426.png"
-          alt="santaupyta"
-          class="w-12 h-12 bg-white rounded-full p-2"
-        />
-        <div>
-          <p class="font-bold text-black text-base">Sutaupyta 60 mln. €</p>
-          <p class="text-sm text-gray-800">Tik 2024 metais</p>
-        </div>
+  <!-- JS -->
+  <script>
+    const slider = document.querySelector('#slider > div');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+
+    function goToSlide(index) {
+      currentSlide = index;
+      slider.style.transform = `translateX(-${index * 100}%)`;
+      updateDots();
+    }
+
+    function updateDots() {
+      dots.forEach((dot, i) => {
+        dot.classList.remove('bg-black');
+        dot.classList.add('bg-gray-300');
+        if (i === currentSlide) {
+          dot.classList.remove('bg-gray-300');
+          dot.classList.add('bg-black');
+        }
+      });
+    }
+    // Pirmas taškas aktyvus iškart
+    updateDots();
+  </script>
+</section>
+
+<!-- VENDOR LIST -->
+<section id="vendor-section" class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div id="vendor-list"
+         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    </div>
+  </div>
+</section>
+
+<section class="bg-yellow-200 py-8">
+  <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-6">
+    <!-- Argumentas 1 -->
+    <div class="flex items-center gap-4">
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/1250/1250615.png"
+        alt="patikrintas"
+        class="w-12 h-12 bg-white rounded-full p-2"
+      />
+      <div>
+        <p class="font-bold text-black text-base">Kiekvienas kodas patikrintas</p>
+        <p class="text-sm text-gray-800">Tik tikri žmonės</p>
       </div>
     </div>
-  </section>
 
-  <!-- TODAY'S TOP OFFERS -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-3xl font-bold text-gray-900">Today's Top Offers</h2>
-        <a href="#" class="text-sm font-medium text-gray-600 hover:underline">
-          View All Top Offers
+    <!-- Argumentas 2 -->
+    <div class="flex items-center gap-4">
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/9758/9758686.png"
+        alt="dovana"
+        class="w-12 h-12 bg-white rounded-full p-2"
+      />
+      <div>
+        <p class="font-bold text-black text-base">5 € dovanų už 2 pirkimus</p>
+        <p class="text-sm text-gray-800">VIP naudotojams</p>
+      </div>
+    </div>
+
+    <!-- Argumentas 3 -->
+    <div class="flex items-center gap-4">
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/929/929426.png"
+        alt="santaupyta"
+        class="w-12 h-12 bg-white rounded-full p-2"
+      />
+      <div>
+        <p class="font-bold text-black text-base">Sutaupyta 60 mln. €</p>
+        <p class="text-sm text-gray-800">Tik 2024 metais</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-3xl font-bold text-gray-900">Today's Top Offers</h2>
+      <a href="#" class="text-sm font-medium text-gray-600 hover:underline">
+        View All Top Offers
+      </a>
+    </div>
+    <!-- Single Offer Preview -->
+    <div class="bg-white rounded-lg shadow flex flex-col md:flex-row overflow-hidden">
+      <!-- Offer Image (left) -->
+      <div class="md:w-1/2">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0864/5161/8058/files/color_wow-8.webp?v=1752663395"
+          alt="Top Offer"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <!-- Offer Content (right) -->
+      <div class="md:w-1/2 p-6 flex flex-col justify-center">
+        <h3 class="text-2xl font-semibold mb-2">Special Summer Sale</h3>
+        <p class="text-gray-700 mb-4">
+          Enjoy up to 50% off on selected items. Hurry, offer valid only until stocks last!
+        </p>
+        <a
+          href="#"
+          class="self-start bg-orange-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-orange-600"
+        >
+          Show Offer
         </a>
       </div>
-      <div class="bg-white rounded-lg shadow flex flex-col md:flex-row overflow-hidden">
-        <div class="md:w-1/2">
-          <img
-            src="https://cdn.shopify.com/s/files/1/0864/5161/8058/files/color_wow-8.webp?v=1752663395"
-            alt="Top Offer"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="md:w-1/2 p-6 flex flex-col justify-center">
-          <h3 class="text-2xl font-semibold mb-2">Special Summer Sale</h3>
-          <p class="text-gray-700 mb-4">
-            Enjoy up to 50% off on selected items. Hurry, offer valid only until stocks last!
-          </p>
-          <a
-            href="#"
-            class="self-start bg-orange-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-orange-600"
-          >
-            Show Offer
-          </a>
-        </div>
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- POPULIARIAUSI PASIŪLYMAI -->
-  <section class="py-12 populiariausi bg-white">
+
+   <!-- POPULIARŪS PASIŪLYMAI -->
+  <section class="py-12 populiariausi">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-2xl font-bold mb-6">Populiariausi pasiūlymai</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <!-- Kartoti pasiūlymus -->
+        <!-- Vienas pasiūlymas -->
         <div class="bg-white rounded-xl shadow p-4">
-          <img
-            src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210"
-            alt="Glamūr"
-            class="rounded-md mb-3"
-          />
+          <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pasiūlymo vaizdas" class="rounded-md mb-3">
           <h3 class="text-lg font-semibold mb-1">10% nuolaida viskam</h3>
           <p class="text-sm text-gray-500 mb-2">Galioja iki 2025-08-01</p>
-          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">
-            Rodyti kuponą
-          </a>
+          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">Rodyti kuponą</a>
         </div>
-        <!-- Daugiau kopijų čia… -->
+        <!-- Kopijuok daugiau čia -->
+         <div class="bg-white rounded-xl shadow p-4">
+          <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pasiūlymo vaizdas" class="rounded-md mb-3">
+          <h3 class="text-lg font-semibold mb-1">10% nuolaida viskam</h3>
+          <p class="text-sm text-gray-500 mb-2">Galioja iki 2025-08-01</p>
+          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">Rodyti kuponą</a>
+        </div>
+        <div class="bg-white rounded-xl shadow p-4">
+          <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pasiūlymo vaizdas" class="rounded-md mb-3">
+          <h3 class="text-lg font-semibold mb-1">10% nuolaida viskam</h3>
+          <p class="text-sm text-gray-500 mb-2">Galioja iki 2025-08-01</p>
+          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">Rodyti kuponą</a>
+        </div>
+        <div class="bg-white rounded-xl shadow p-4">
+          <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pasiūlymo vaizdas" class="rounded-md mb-3">
+          <h3 class="text-lg font-semibold mb-1">10% nuolaida viskam</h3>
+          <p class="text-sm text-gray-500 mb-2">Galioja iki 2025-08-01</p>
+          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">Rodyti kuponą</a>
+        </div>
+        <div class="bg-white rounded-xl shadow p-4">
+          <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pasiūlymo vaizdas" class="rounded-md mb-3">
+          <h3 class="text-lg font-semibold mb-1">10% nuolaida viskam</h3>
+          <p class="text-sm text-gray-500 mb-2">Galioja iki 2025-08-01</p>
+          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">Rodyti kuponą</a>
+        </div>
+        <div class="bg-white rounded-xl shadow p-4">
+          <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pasiūlymo vaizdas" class="rounded-md mb-3">
+          <h3 class="text-lg font-semibold mb-1">10% nuolaida viskam</h3>
+          <p class="text-sm text-gray-500 mb-2">Galioja iki 2025-08-01</p>
+          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">Rodyti kuponą</a>
+        </div>
+        <div class="bg-white rounded-xl shadow p-4">
+          <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pasiūlymo vaizdas" class="rounded-md mb-3">
+          <h3 class="text-lg font-semibold mb-1">10% nuolaida viskam</h3>
+          <p class="text-sm text-gray-500 mb-2">Galioja iki 2025-08-01</p>
+          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">Rodyti kuponą</a>
+        </div>
+        <div class="bg-white rounded-xl shadow p-4">
+          <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pasiūlymo vaizdas" class="rounded-md mb-3">
+          <h3 class="text-lg font-semibold mb-1">10% nuolaida viskam</h3>
+          <p class="text-sm text-gray-500 mb-2">Galioja iki 2025-08-01</p>
+          <a href="#" class="inline-block bg-orange-500 text-white px-4 py-2 rounded">Rodyti kuponą</a>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- KATEGORIJŲ SLIDERIS -->
+  <!-- Dar vieni baneriai -->
   <section class="bg-purple-200 py-8">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="relative overflow-hidden rounded-2xl h-[300px]">
-        <div id="categorySlider" class="flex transition-transform duration-500 ease-in-out" style="width: 400%;">
-          <!-- Slide 1 -->
-          <div class="w-full flex-shrink-0 flex items-center justify-between h-full px-6">
-            <img src="https://via.placeholder.com/200x200?text=Illu1" alt="" class="h-40" />
-            <div class="text-center">
-              <p class="text-lg text-gray-800 mb-2">Discover the best</p>
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Supermarket Savings</h2>
-              <a href="#" class="inline-block bg-black text-white px-5 py-2 rounded-lg">
-                See Discounts →
-              </a>
-            </div>
-            <div class="flex flex-col space-y-2">
-              <img src="https://via.placeholder.com/100x40?text=Sainsbury's" alt="Sainsbury's" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Ocado" alt="Ocado" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Co-op" alt="Co-op" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Morrisons" alt="Morrisons" class="bg-white p-1 rounded" />
-            </div>
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Slider wrapper -->
+    <div class="relative overflow-hidden rounded-2xl h-[300px]">
+      <div
+        id="categorySlider"
+        class="flex transition-transform duration-500 ease-in-out"
+        style="width: 400%;"
+      >
+        <!-- Slide 1 -->
+        <div class="w-full flex-shrink-0 flex items-center justify-between h-full px-6">
+          <!-- Left illustration -->
+          <img
+            src="https://via.placeholder.com/200x200?text=Illu1"
+            alt=""
+            class="h-40"
+          />
+          <!-- Center text & button -->
+          <div class="text-center">
+            <p class="text-lg text-gray-800 mb-2">Discover the best</p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Supermarket Savings</h2>
+            <a
+              href="#"
+              class="inline-block bg-black text-white px-5 py-2 rounded-lg"
+            >
+              See Discounts &rarr;
+            </a>
           </div>
-          <!-- Slide 2 -->
-          <div class="w-full flex-shrink-0 flex items-center justify-between h-full px-6">
-            <img src="https://via.placeholder.com/200x200?text=Illu2" alt="" class="h-40" />
-            <div class="text-center">
-              <p class="text-lg text-gray-800 mb-2">Hot Electronics</p>
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Up to 30% Off</h2>
-              <a href="#" class="inline-block bg-black text-white px-5 py-2 rounded-lg">
-                Shop Now →
-              </a>
-            </div>
-            <div class="flex flex-col space-y-2">
-              <img src="https://via.placeholder.com/100x40?text=MediaMarkt" alt="MediaMarkt" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Currys" alt="Currys" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Argos" alt="Argos" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=BestBuy" alt="BestBuy" class="bg-white p-1 rounded" />
-            </div>
-          </div>
-          <!-- Slide 3 -->
-          <div class="w-full flex-shrink-0 flex items-center justify-between h-full px-6">
-            <img src="https://via.placeholder.com/200x200?text=Illu3" alt="" class="h-40" />
-            <div class="text-center">
-              <p class="text-lg text-gray-800 mb-2">Fashion Deals</p>
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Summer Collection</h2>
-              <a href="#" class="inline-block bg-black text-white px-5 py-2 rounded-lg">
-                Browse Styles →
-              </a>
-            </div>
-            <div class="flex flex-col space-y-2">
-              <img src="https://via.placeholder.com/100x40?text=Zara" alt="Zara" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=H&M" alt="H&M" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=ASOS" alt="ASOS" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Uniqlo" alt="Uniqlo" class="bg-white p-1 rounded" />
-            </div>
-          </div>
-          <!-- Slide 4 -->
-          <div class="w-full flex-shrink-0 flex items-center justify-between h-full px-6">
-            <img src="https://via.placeholder.com/200x200?text=Illu4" alt="" class="h-40" />
-            <div class="text-center">
-              <p class="text-lg text-gray-800 mb-2">Travel Offers</p>
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Escape Now</h2>
-              <a href="#" class="inline-block bg-black text-white px-5 py-2 rounded-lg">
-                Book Deals →
-              </a>
-            </div>
-            <div class="flex flex-col space-y-2">
-              <img src="https://via.placeholder.com/100x40?text=Expedia" alt="Expedia" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Booking" alt="Booking" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Airbnb" alt="Airbnb" class="bg-white p-1 rounded" />
-              <img src="https://via.placeholder.com/100x40?text=Skyscanner" alt="Skyscanner" class="bg-white p-1 rounded" />
-            </div>
+          <!-- Right logos -->
+          <div class="flex flex-col space-y-2">
+            <img src="https://via.placeholder.com/100x40?text=Sainsbury's" alt="Sainsbury's" class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Ocado"       alt="Ocado"       class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Co-op"        alt="Co‑op"       class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Morrisons"   alt="Morrisons"   class="bg-white p-1 rounded" />
           </div>
         </div>
-        <div class="flex justify-center mt-4 gap-2">
-          <button class="w-3 h-3 rounded-full bg-gray-300" onclick="goCatSlide(0)"></button>
-          <button class="w-3 h-3 rounded-full bg-gray-300" onclick="goCatSlide(1)"></button>
-          <button class="w-3 h-3 rounded-full bg-gray-300" onclick="goCatSlide(2)"></button>
-          <button class="w-3 h-3 rounded-full bg-gray-300" onclick="goCatSlide(3)"></button>
+        <!-- Slide 2 -->
+        <div class="w-full flex-shrink-0 flex items-center justify-between h-full px-6">
+          <img src="https://via.placeholder.com/200x200?text=Illu2" alt="" class="h-40" />
+          <div class="text-center">
+            <p class="text-lg text-gray-800 mb-2">Hot Electronics</p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Up to 30% Off</h2>
+            <a href="#" class="inline-block bg-black text-white px-5 py-2 rounded-lg">
+              Shop Now &rarr;
+            </a>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <img src="https://via.placeholder.com/100x40?text=MediaMarkt" alt="MediaMarkt" class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Currys"     alt="Currys"     class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Argos"      alt="Argos"      class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=BestBuy"    alt="BestBuy"    class="bg-white p-1 rounded" />
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="w-full flex-shrink-0 flex items-center justify-between h-full px-6">
+          <img src="https://via.placeholder.com/200x200?text=Illu3" alt="" class="h-40" />
+          <div class="text-center">
+            <p class="text-lg text-gray-800 mb-2">Fashion Deals</p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Summer Collection</h2>
+            <a href="#" class="inline-block bg-black text-white px-5 py-2 rounded-lg">
+              Browse Styles &rarr;
+            </a>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <img src="https://via.placeholder.com/100x40?text=Zara"       alt="Zara"       class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=H&M"         alt="H&M"         class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=ASOS"        alt="ASOS"        class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Uniqlo"      alt="Uniqlo"      class="bg-white p-1 rounded" />
+          </div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="w-full flex-shrink-0 flex items-center justify-between h-full px-6">
+          <img src="https://via.placeholder.com/200x200?text=Illu4" alt="" class="h-40" />
+          <div class="text-center">
+            <p class="text-lg text-gray-800 mb-2">Travel Offers</p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Escape Now</h2>
+            <a href="#" class="inline-block bg-black text-white px-5 py-2 rounded-lg">
+              Book Deals &rarr;
+            </a>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <img src="https://via.placeholder.com/100x40?text=Expedia"  alt="Expedia"  class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Booking"  alt="Booking"  class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Airbnb"   alt="Airbnb"   class="bg-white p-1 rounded" />
+            <img src="https://via.placeholder.com/100x40?text=Skyscanner" alt="Skyscanner" class="bg-white p-1 rounded" />
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- MŪSŲ PARTNERIAI -->
+    <!-- Dots Navigation -->
+    <div class="flex justify-center mt-4 gap-2">
+      <button class="w-3 h-3 rounded-full bg-gray-300" onclick="goCatSlide(0)"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" onclick="goCatSlide(1)"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" onclick="goCatSlide(2)"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" onclick="goCatSlide(3)"></button>
+    </div>
+  </div>
+
+  <!-- Slider Script -->
+  <script>
+    const catSlider = document.querySelector('#categorySlider');
+    const catDots   = document.querySelectorAll('#categorySlider ~ div button');
+    let catIndex    = 0;
+
+    function goCatSlide(i) {
+      catIndex = i;
+      catSlider.style.transform = `translateX(-${i * 25}%)`;
+      updateCatDots();
+    }
+    function updateCatDots() {
+      catDots.forEach((dot, idx) => {
+        dot.classList.toggle('bg-black', idx === catIndex);
+        dot.classList.toggle('bg-gray-300', idx !== catIndex);
+      });
+    }
+    // Auto-rotate every 6s
+    setInterval(() => {
+      catIndex = (catIndex + 1) % 4;
+      goCatSlide(catIndex);
+    }, 6000);
+    updateCatDots();
+  </script>
+</section>
+
+
+  <!-- PARDAVĖJAI -->
   <section class="bg-white py-12 border-t">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-2xl font-bold mb-6">Mūsų partneriai</h2>
       <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 items-center">
-        <!-- Kartoti logotipus -->
-        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto" />
-        <!-- … -->
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Pardavėjas" class="mx-auto">
       </div>
     </div>
   </section>
@@ -287,6 +401,50 @@
       </div>
     </div>
   </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const input      = document.getElementById('vendorSearch');
+  const container  = document.getElementById('vendor-list');
+  let   allVendors = [];
+
+  // 1) Pakeisti kelią, jeigu reikia
+  fetch('/vendors.json')
+    .then(res => {
+      if (!res.ok) throw new Error(`JSON load error ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      allVendors = data;
+      render(allVendors);
+    })
+    .catch(err => console.error(err));
+
+  // 2) Eventas
+  input.addEventListener('input', () => {
+    const term = input.value.trim().toLowerCase();
+    render(
+      allVendors.filter(v => v.name.toLowerCase().includes(term))
+    );
+  });
+
+  // 3) Piešiam korteles
+  function render(list) {
+    container.innerHTML = '';
+    list.forEach(v => {
+      const a = document.createElement('a');
+      a.href      = v.url;
+      a.className = 'block bg-white p-6 rounded-lg shadow hover:shadow-lg transition';
+      a.innerHTML = `
+        <img src="${v.logo}" alt="${v.name}"
+             class="mx-auto h-16 mb-4 object-contain">
+        <h2 class="text-lg font-semibold text-center">${v.name}</h2>
+      `;
+      container.appendChild(a);
+    });
+  }
+});
+</script>
 
 </body>
 </html>
