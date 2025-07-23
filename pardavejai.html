@@ -31,6 +31,18 @@
     </div>
   </section>
 
+<!-- SEARCH -->
+<section class="py-6 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <input
+      id="vendorSearch"
+      type="text"
+      placeholder="Ieškoti pardavėjo…"
+      class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+    />
+  </div>
+</section>
+
   <!-- VENDOR GRID -->
   <section class="py-12">
     <div class="max-w-7xl mx-auto px-4">
@@ -72,6 +84,19 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  const searchInput = document.getElementById('vendorSearch');
+  const cards = document.querySelectorAll('section.py-12 .grid a');
+
+  searchInput.addEventListener('input', () => {
+    const term = searchInput.value.trim().toLowerCase();
+    cards.forEach(card => {
+      const name = card.querySelector('h2').textContent.toLowerCase();
+      card.style.display = name.includes(term) ? 'block' : 'none';
+    });
+  });
+</script>
 
 </body>
 </html>
