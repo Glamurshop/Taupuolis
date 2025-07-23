@@ -29,8 +29,8 @@
       </div>
     </div>
   </header>
-  <!-- paieska -->
-  <section class="py-6 bg-white">
+  <!-- VENDOR SEARCH -->
+<section class="py-6 bg-white">
   <div class="max-w-7xl mx-auto px-4">
     <input
       id="vendorSearch"
@@ -41,6 +41,16 @@
              px-4 py-2 rounded-lg
              focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
     />
+  </div>
+</section>
+
+<!-- VENDOR LIST -->
+<section class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div id="vendor-list"
+         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- čia JS renderins korteles -->
+    </div>
   </div>
 </section>
   <!-- HERO -->
@@ -421,28 +431,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const container  = document.getElementById('vendor-list');
   let   allVendors = [];
 
-  // 1) Pakeisti kelią, jeigu reikia
+  // 1) Pakrauname JSON (kelias turi veikti per HTTP, ne file://)
   fetch('/vendors.json')
     .then(res => {
-      if (!res.ok) throw new Error(`JSON load error ${res.status}`);
+      if (!res.ok) throw new Error(`Failed to load JSON: ${res.status}`);
       return res.json();
     })
     .then(data => {
       allVendors = data;
-      render(allVendors);
+      renderVendors(allVendors);
     })
     .catch(err => console.error(err));
 
-  // 2) Eventas
+  // 2) Filtravimas pagal įvestį
   input.addEventListener('input', () => {
     const term = input.value.trim().toLowerCase();
-    render(
+    renderVendors(
       allVendors.filter(v => v.name.toLowerCase().includes(term))
     );
   });
 
-  // 3) Piešiam korteles
-  function render(list) {
+  // 3) Funkcija, kuri išveda korteles
+  function renderVendors(list) {
     container.innerHTML = '';
     list.forEach(v => {
       const a = document.createElement('a');
