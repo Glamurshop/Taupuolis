@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Taupuolis.lt</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- HERO -->
+  <section class="relative bg-white pt-16 pb-8 overflow-hidden">
+    <img src="https://via.placeholder.com/150x150?text=IlluLeft" 
+         alt="" 
+         class="absolute left-0 top-0 w-36 md:w-48 opacity-80">
+    <img src="https://via.placeholder.com/150x150?text=IlluRight" 
+         alt="" 
+         class="absolute right-0 top-0 w-36 md:w-48 opacity-80">
+    <div class="max-w-2xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-2">How can we help?</h1>
+      <div class="w-24 h-1 bg-yellow-400 mx-auto mb-8"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-4 md:px-8 mb-12">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 md:p-10">
+      <h2 class="text-xl font-semibold mb-6 text-center">Our most frequently asked questions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- FAQ item -->
+        <div class="flex items-start gap-4">
+          <img src="https://via.placeholder.com/32?text=✔" alt="" class="w-8 h-8 flex-shrink-0">
+          <div>
+            <p class="font-medium">How do I claim the Code Guarantee?</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="https://via.placeholder.com/32?text=✔" alt="" class="w-8 h-8 flex-shrink-0">
+          <div>
+            <p class="font-medium">How do I use a Reward Offer?</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="https://via.placeholder.com/32?text=✔" alt="" class="w-8 h-8 flex-shrink-0">
+          <div>
+            <p class="font-medium">Where is my Voucher?</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="https://via.placeholder.com/32?text=✔" alt="" class="w-8 h-8 flex-shrink-0">
+          <div>
+            <p class="font-medium">How do I find the latest update on my reward?</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="https://via.placeholder.com/32?text=✔" alt="" class="w-8 h-8 flex-shrink-0">
+          <div>
+            <p class="font-medium">How do I update my email preferences?</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <img src="https://via.placeholder.com/32?text=✔" alt="" class="w-8 h-8 flex-shrink-0">
+          <div>
+            <p class="font-medium">How do I update my account settings?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="px-4 md:px-8 mb-12">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="md:flex">
+        <!-- Form -->
+        <form action="https://formspree.io/f/your-form-id" method="POST"
+              class="w-full md:w-1/2 p-6 space-y-6">
+          <h3 class="text-lg font-semibold">Didn't find what you needed? Let's chat!</h3>
+          <p class="text-sm text-gray-600">
+            Please describe your question, mentioning retailer or offer code if relevant.
+          </p>
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name*</label>
+            <input type="text" id="name" name="name" required
+                   class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-yellow-400" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address*</label>
+            <input type="email" id="email" name="_replyto" required
+                   class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-yellow-400" />
+          </div>
+          <div>
+            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject*</label>
+            <select id="subject" name="subject" required
+                    class="w-full border border-gray-300 rounded px-4 py-2 bg-white focus:ring-2 focus:ring-yellow-400">
+              <option value="">Please select</option>
+              <option>General question</option>
+              <option>Technical support</option>
+              <option>Partnership enquiry</option>
+            </select>
+          </div>
+          <div class="md:hidden">
+            <label for="message-sm" class="block text-sm font-medium text-gray-700 mb-1">Message*</label>
+            <textarea id="message-sm" name="message" rows="4" required
+                      class="w-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-yellow-400"></textarea>
+          </div>
+          <button type="submit"
+                  class="w-full bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600">
+            Submit your message
+          </button>
+        </form>
+        <!-- Message box (desktop) -->
+        <div class="hidden md:block w-1/2 p-6">
+          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message*</label>
+          <textarea id="message" name="message" rows="10" required
+                    class="w-full h-full border border-gray-300 rounded px-4 py-2 focus:ring-2 focus:ring-yellow-400"></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL & TRUSTPILOT -->
+  <section class="px-4 md:px-8 mb-16">
+    <div class="max-w-4xl mx-auto space-y-8 text-center">
+      <div>
+        <p class="text-sm text-gray-600">Check out our FAQs page or</p>
+        <p class="text-sm font-medium">Other ways to connect</p>
+      </div>
+      <div class="flex justify-center items-center gap-8 text-gray-700">
+        <a href="#" aria-label="Instagram" class="hover:text-yellow-500">
+          <img src="https://via.placeholder.com/24?text=IG" alt="Instagram"/>
+        </a>
+        <a href="#" aria-label="Facebook" class="hover:text-yellow-500">
+          <img src="https://via.placeholder.com/24?text=FB" alt="Facebook"/>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="hover:text-yellow-500">
+          <img src="https://via.placeholder.com/24?text=IN" alt="LinkedIn"/>
+        </a>
+        <a href="#" aria-label="TikTok" class="hover:text-yellow-500">
+          <img src="https://via.placeholder.com/24?text=TT" alt="TikTok"/>
+        </a>
+      </div>
+      <div>
+        <!-- Trustpilot widget placeholder -->
+        <p class="text-sm text-gray-600 mb-4">Based on 22,000+ reviews</p>
+        <div class="bg-white rounded-lg shadow p-6">
+          <!-- You can embed Trustpilot script here -->
+          <p class="text-center font-semibold">★★★★★</p>
+          <p class="text-center text-gray-700">Amazing offers and service!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-white py-6">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center text-sm gap-4">
+      <p>&copy; 2025 Taupuolis.lt</p>
+      <div class="space-x-4">
+        <a href="kontaktai.html" class="hover:underline">Kontaktai</a>
+        <a href="apie.html" class="hover:underline">Apie mus</a>
+        <a href="pardavejams.html" class="hover:underline">Pardavėjams</a>
+        <a href="terms.html" class="hover:underline">Taisyklės</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
