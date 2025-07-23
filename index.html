@@ -13,18 +13,7 @@
     Nori išskirtinių pasiūlymų kaip „€5 už 2 pirkimus“? <a href="#" class="underline font-semibold">Tapk VIP nariu</a> ✨
   </div>
 
-  <!-- SEARCH (po NAV) -->
-<section class="py-6 bg-white">
-   <div class="max-w-7xl mx-auto px-4">
-     <input
-      id="globalSearch"
-      type="text"
-       placeholder="Ieškoti kupono ar pardavėjo…"
-       class="w-full sm:w-1/2 mx-auto block
-              bg-white border border-gray-300 shadow-sm
-              px-4 py-2 rounded-lg placeholder-gray-500
-              focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
-               />
+
 
   <!-- NAVIGATION -->
   <header class="bg-white shadow-sm">
@@ -39,7 +28,22 @@
         <a href="#" class="hover:underline">Registruotis</a>
       </div>
     </div>
+<!-- GLOBAL SEARCH -->
+<section class="py-6 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <input
+      id="globalSearch"
+      type="text"
+      placeholder="Ieškoti"
+      class="w-full sm:w-1/2 mx-auto block
+             bg-white border border-gray-300
+             px-4 py-2 rounded-lg placeholder-gray-500
+             focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+    />
+  </div>
+</section>
   </header>
+</section>
  </section>
   <!-- HERO -->
 <section class="bg-white py-8">
@@ -91,6 +95,16 @@
     // Pirmas taškas aktyvus iškart
     updateDots();
   </script>
+</section>
+
+<!-- VENDOR LIST -->
+<section id="vendor-section" class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div
+      id="vendor-list"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+    ></div>
+  </div>
 </section>
 
 <section class="bg-yellow-200 py-8">
@@ -173,8 +187,8 @@
 </section>
 
 
-  <!-- POPULIARŪS PASIŪLYMAI -->
-  <section class="py-12">
+   <!-- POPULIARŪS PASIŪLYMAI -->
+  <section class="py-12 populiariausi">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-2xl font-bold mb-6">Populiariausi pasiūlymai</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -405,26 +419,44 @@
   </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('globalSearch');
-  const offerCards  = document.querySelectorAll('.populiariausi .grid > div');
-  const vendorCards = document.querySelectorAll('section.border-t .grid a');
+  const listContainer = document.getElementById('vendor-list');
+  let allVendors = [];
 
+  // 1. Pakrauname JSON
+  fetch('vendors.json')
+    .then(res => res.json())
+    .then(data => {
+      allVendors = data;
+      renderVendors(allVendors);
+    })
+    .catch(console.error);
+
+  // 2. Filtravimas
   searchInput.addEventListener('input', () => {
     const term = searchInput.value.trim().toLowerCase();
-
-    offerCards.forEach(card => {
-      const title = card.querySelector('h3').textContent.toLowerCase();
-      card.style.display = title.includes(term) ? 'block' : 'none';
-    });
-
-    vendorCards.forEach(card => {
-      const nameEl = card.querySelector('h2');
-      const name = nameEl
-        ? nameEl.textContent.toLowerCase()
-        : card.textContent.toLowerCase();
-      card.style.display = name.includes(term) ? 'block' : 'none';
-    });
+    renderVendors(
+      allVendors.filter(v => v.name.toLowerCase().includes(term))
+    );
   });
+
+  // 3. Kortelių generavimas
+  function renderVendors(vendors) {
+    listContainer.innerHTML = '';
+    vendors.forEach(v => {
+      const a = document.createElement('a');
+      a.href = v.url;
+      a.className =
+        'block bg-white p-6 rounded-lg shadow hover:shadow-lg transition';
+      a.innerHTML = `
+        <img src="${v.logo}" alt="${v.name}" class="mx-auto h-16 mb-4 object-contain">
+        <h2 class="text-lg font-semibold text-center">${v.name}</h2>
+      `;
+      listContainer.appendChild(a);
+    });
+  }
+});
 </script>
 
 </body>
