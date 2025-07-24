@@ -65,26 +65,28 @@
   <!-- HERO -->
 <section class="bg-white py-8">
   <div class="max-w-7xl mx-auto px-4">
-    <div class="relative">
-      <!-- Slankiojanti juosta -->
-      <div id="slider" class="overflow-hidden relative rounded-xl">
-        <div class="flex transition-transform duration-500" style="width: 500%;">
-          <!-- Vienas baneris -->
-          <img src="https://cdn.shopify.com/s/files/1/0864/5161/8058/files/color_wow-8.webp?v=1752663395" class="w-full h-[600px] object-cover rounded-lg" />
-          <img src="file:///C:/Users/kvaiv/Downloads/arabiski_lt.webp" class="w-full h-[600px] object-cover rounded-lg" />
-          <img src="file:///C:/Users/kvaiv/Downloads/arabiski_lt.webp" class="w-full h-[600px] object-cover rounded-lg" />
-          <img src="file:///C:/Users/kvaiv/Downloads/arabiski_lt.webp" class="w-full h-[600px] object-cover rounded-lg" />
-          <img src="file:///C:/Users/kvaiv/Downloads/arabiski_lt.webp" class="w-full h-[600px] object-cover rounded-lg" />
-      </div>
-      <!-- Taškeliai -->
-      <div class="flex justify-center mt-4 gap-2">
-        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(0)"></button>
-        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(1)"></button>
-        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(2)"></button>
-        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(3)"></button>
-        <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(4)"></button>
-      </div>
+    <div class="relative w-full overflow-hidden">
+  <!-- Slankiojanti juosta -->
+  <div id="slider" class="relative">
+    <div id="slider-track" class="flex transition-transform duration-500 ease-in-out" style="width: 500%;">
+      <!-- Vienas baneris -->
+      <img src="https://cdn.shopify.com/s/files/1/0864/5161/8058/files/color_wow-8.webp?v=1752663395" class="w-full h-[60vh] object-cover flex-shrink-0" />
+      <img src="https://via.placeholder.com/1500x600" class="w-full h-[60vh] object-cover flex-shrink-0" />
+      <img src="https://via.placeholder.com/1500x600" class="w-full h-[60vh] object-cover flex-shrink-0" />
+      <img src="https://via.placeholder.com/1500x600" class="w-full h-[60vh] object-cover flex-shrink-0" />
+      <img src="https://via.placeholder.com/1500x600" class="w-full h-[60vh] object-cover flex-shrink-0" />
     </div>
+  </div>
+
+  <!-- Taškeliai -->
+  <div class="flex justify-center mt-4 gap-2">
+    <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(0)"></button>
+    <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(1)"></button>
+    <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(2)"></button>
+    <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(3)"></button>
+    <button class="dot w-3 h-3 rounded-full bg-gray-300" onclick="goToSlide(4)"></button>
+  </div>
+</div>
   </div>
 
   <!-- JS -->
