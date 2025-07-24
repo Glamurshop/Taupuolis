@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pardavėjai</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <header class="bg-white shadow p-4">
+    <h1 class="text-2xl font-bold">Pardavėjai</h1>
+  </header>
+
+  <main class="max-w-5xl mx-auto p-4">
+    <!-- Paieškos laukas -->
+    <input
+      id="search-vendors"
+      type="text"
+      placeholder="Ieškoti pardavėjų…"
+      class="w-full p-2 border rounded mb-6"
+    />
+
+    <!-- Kortelių konteineris -->
+    <div id="vendors-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div
+        class="vendor-card bg-white rounded-lg shadow p-6 text-center"
+        data-vendor="glamur"
+      >
+        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Glamur" class="mx-auto h-16 mb-4"/>
+        <h2 class="text-lg font-semibold">Glamur</h2>
+        <a href="pardavėjai/glamur.html" class="text-blue-600 hover:underline mt-2 block">
+          Peržiūrėti pasiūlymus
+        </a>
+      </div>
+      
+      <div
+        class="vendor-card bg-white rounded-lg shadow p-6 text-center"
+        data-vendor="perfumer"
+      >
+        <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Perfumer" class="mx-auto h-16 mb-4"/>
+        <h2 class="text-lg font-semibold">Perfumer</h2>
+        <a href="pardavėjai/perfumer.html" class="text-blue-600 hover:underline mt-2 block">
+          Peržiūrėti pasiūlymus
+        </a>
+      </div>
+      
+      <div
+        class="vendor-card bg-white rounded-lg shadow p-6 text-center"
+        data-vendor="douglas"
+      >
+        <img src="https://www.savascentras.lt/wp-content/uploads/2018/06/Douglas-logo.jpg" alt="Douglas" class="mx-auto h-16 mb-4"/>
+        <h2 class="text-lg font-semibold">Douglas</h2>
+        <a href="pardavėjai/douglas.html" class="text-blue-600 hover:underline mt-2 block">
+          Peržiūrėti pasiūlymus
+        </a>
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- Paieškos filtravimo skriptas -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const input = document.getElementById('search-vendors');
+      const cards = Array.from(document.querySelectorAll('.vendor-card'));
+      input.addEventListener('input', () => {
+        const term = input.value.trim().toLowerCase();
+        cards.forEach(card => {
+          const name = card.dataset.vendor;
+          card.style.display = name.includes(term) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
