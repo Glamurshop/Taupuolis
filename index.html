@@ -17,6 +17,38 @@
 
   <!-- NAVIGATION -->
   <header class="bg-white shadow-sm">
+    <nav class="relative bg-white shadow">
+  <!-- čia klijuok mano mega‐menu kodą -->
+  <div class="group relative">
+    <button class="px-4 py-2 font-medium hover:bg-gray-100">
+      Kategorijos
+    </button>
+    <div
+      class="absolute top-full left-0 w-screen bg-white shadow-lg
+             opacity-0 invisible group-hover:opacity-100 group-hover:visible
+             transition-opacity"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-4 gap-6">
+        {% set per_column = (categories|length / 4)|round(0, 'ceil') %}
+        {% for col in categories|batch(per_column) %}
+          <ul class="space-y-2">
+            {% for cat in col %}
+              <li>
+                <a
+                  href="/offers/{{ cat|lower|replace(' ', '-') }}.html"
+                  class="block hover:text-blue-600 transition"
+                >
+                  {{ cat }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</nav>
+
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <a href="#" class="text-2xl font-bold text-yellow-500">Taupuolis.lt</a>
       <div class="flex items-center gap-4 text-sm">
