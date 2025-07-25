@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
   <title>Perfumer – Taupuolis.lt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-900">
-  <div class="max-w-4xl mx-auto p-6">
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-white border-b p-4 flex items-center justify-between">
+    <a href="/index.html" class="text-xl font-bold text-yellow-600">Taupuolis.lt</a>
+    <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Perfumer logo" class="h-10 w-10 rounded-full border" />
+  </header>
+  <main class="flex-1 flex flex-col items-center py-8">
+    <div class="bg-white rounded shadow p-8 max-w-2xl w-full mb-8">
+      <h1 class="text-3xl font-bold mb-2">Perfumer</h1>
+      <div class="text-gray-700 mb-4">Perfumer – unikalūs kvapai	</div>
+      <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Perfumer logo" class="h-20 w-20 rounded-full border mx-auto mb-4" />
+    </div>
+    <div class="max-w-4xl w-full">
+      <h2 class="text-xl font-semibold mb-4">Visi Perfumer pasiūlymai</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+                <a href="/pasiulymai/lancome-idole-10eur.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-4.png" alt="lancome Idole –10€" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">lancome Idole –10€</div>
+                  <div class="text-sm text-gray-600">Kvepalai</div>
+                </a>
+            
 
-    <!-- Header with logo & info -->
-    <div class="flex items-center gap-4 mb-8">
-      <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Perfumer" class="h-20">
-      <div>
-        <h1 class="text-3xl font-bold">Perfumer</h1>
-        <p class="text-gray-700">Perfumer – unikalūs kvapai	</p>
+                <a href="/pasiulymai/gucci-bloom-25.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-5.png" alt="gucci Bloom –25%" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">gucci Bloom –25%</div>
+                  <div class="text-sm text-gray-600">Kvepalai</div>
+                </a>
+            
+
+                <a href="/pasiulymai/testeriai-tik-3eur.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-6.png" alt="Testeriai – tik 3€" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Testeriai – tik 3€</div>
+                  <div class="text-sm text-gray-600">Drabužiai</div>
+                </a>
+            
+
+                <a href="/pasiulymai/nemokamas-privezimas.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-7.png" alt="Nemokamas privežimas" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Nemokamas privežimas</div>
+                  <div class="text-sm text-gray-600">Paslaugos</div>
+                </a>
+            
+
+                <a href="/pasiulymai/mini-kvepalai-5eur.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-8.png" alt="Mini kvepalai 5€" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Mini kvepalai 5€</div>
+                  <div class="text-sm text-gray-600">Automobiliai</div>
+                </a>
+            
       </div>
     </div>
-
-    <!-- Offers list -->
-    <h2 class="text-2xl font-semibold mb-4">Pasiūlymai</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      
-      <a href="/pasiulymai/lancome-idole-10.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="lancome Idole –10€" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">lancome Idole –10€</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-07-31</p>
-      </a>
-      
-      <a href="/pasiulymai/gucci-bloom-25.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="gucci Bloom –25%" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">gucci Bloom –25%</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-08-05</p>
-      </a>
-      
-      <a href="/pasiulymai/testeriai-tik-3.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Testeriai – tik 3€" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">Testeriai – tik 3€</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-08-15</p>
-      </a>
-      
-      <a href="/pasiulymai/nemokamas-privezimas.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Nemokamas privežimas" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">Nemokamas privežimas</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-07-26</p>
-      </a>
-      
-      <a href="/pasiulymai/mini-kvepalai-5.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Mini kvepalai 5€" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">Mini kvepalai 5€</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-08-01</p>
-      </a>
-      
-    </div>
-
-  </div>
+    <a href="/index.html" class="mt-8 text-gray-600 hover:underline">Grįžti į pradžią</a>
+  </main>
+  <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
+    © 2025 Taupuolis.lt – Visos teisės saugomos.
+  </footer>
 </body>
 </html>

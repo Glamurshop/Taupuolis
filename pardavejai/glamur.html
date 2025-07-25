@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
   <title>Glamur – Taupuolis.lt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-900">
-  <div class="max-w-4xl mx-auto p-6">
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-white border-b p-4 flex items-center justify-between">
+    <a href="/index.html" class="text-xl font-bold text-yellow-600">Taupuolis.lt</a>
+    <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Glamur logo" class="h-10 w-10 rounded-full border" />
+  </header>
+  <main class="flex-1 flex flex-col items-center py-8">
+    <div class="bg-white rounded shadow p-8 max-w-2xl w-full mb-8">
+      <h1 class="text-3xl font-bold mb-2">Glamur</h1>
+      <div class="text-gray-700 mb-4">Glamur– aukščiausios klasės parfumerija</div>
+      <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Glamur logo" class="h-20 w-20 rounded-full border mx-auto mb-4" />
+    </div>
+    <div class="max-w-4xl w-full">
+      <h2 class="text-xl font-semibold mb-4">Visi Glamur pasiūlymai</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+                <a href="/pasiulymai/paco-rabanne-15.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/TRECIAS/KARL-9.png" alt="Paco Rabanne –15%" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Paco Rabanne –15%</div>
+                  <div class="text-sm text-gray-600">Kvepalai</div>
+                </a>
+            
 
-    <!-- Header with logo & info -->
-    <div class="flex items-center gap-4 mb-8">
-      <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Glamur" class="h-20">
-      <div>
-        <h1 class="text-3xl font-bold">Glamur</h1>
-        <p class="text-gray-700">Glamur– aukščiausios klasės parfumerija</p>
+                <a href="/pasiulymai/makiazo-pagrindas-40.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/TRECIAS/KARL-10.png" alt="Makiažo pagrindas –40%" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Makiažo pagrindas –40%</div>
+                  <div class="text-sm text-gray-600">Aksesuarai</div>
+                </a>
+            
+
+                <a href="/pasiulymai/veido-serumas-2-1.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/TRECIAS/KARL-11.png" alt="Veido serumas 2+1" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Veido serumas 2+1</div>
+                  <div class="text-sm text-gray-600">Kosmetika</div>
+                </a>
+            
+
+                <a href="/pasiulymai/vitaminu-kompleksas-20.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/TRECIAS/KARL-12.png" alt="Vitaminų kompleksas –20%" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Vitaminų kompleksas –20%</div>
+                  <div class="text-sm text-gray-600">Paslaugos</div>
+                </a>
+            
+
+                <a href="/pasiulymai/veido-kauke-3-uz-2.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/TRECIAS/KARL-13.png" alt="Veido kaukė 3 už 2" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Veido kaukė 3 už 2</div>
+                  <div class="text-sm text-gray-600">Automobiliai</div>
+                </a>
+            
       </div>
     </div>
-
-    <!-- Offers list -->
-    <h2 class="text-2xl font-semibold mb-4">Pasiūlymai</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      
-      <a href="/pasiulymai/paco-rabanne-15.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Paco Rabanne –15%" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">Paco Rabanne –15%</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-08-02</p>
-      </a>
-      
-      <a href="/pasiulymai/makiazo-pagrindas-40.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Makiažo pagrindas –40%" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">Makiažo pagrindas –40%</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-07-25</p>
-      </a>
-      
-      <a href="/pasiulymai/veido-serumas-2-1.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Veido serumas 2+1" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">Veido serumas 2+1</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-08-15</p>
-      </a>
-      
-      <a href="/pasiulymai/vitaminu-kompleksas-20.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Vitaminų kompleksas –20%" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">Vitaminų kompleksas –20%</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-08-01</p>
-      </a>
-      
-      <a href="/pasiulymai/veido-kauke-3-uz-2.html" class="block bg-white p-4 rounded-lg shadow hover:shadow-lg transition">
-        <img src="https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210" alt="Veido kaukė 3 už 2" class="w-full h-32 object-cover rounded mb-2">
-        <h3 class="font-semibold">Veido kaukė 3 už 2</h3>
-        <p class="text-gray-500 text-sm">Galioja: 2025-08-10</p>
-      </a>
-      
-    </div>
-
-  </div>
+    <a href="/index.html" class="mt-8 text-gray-600 hover:underline">Grįžti į pradžią</a>
+  </main>
+  <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
+    © 2025 Taupuolis.lt – Visos teisės saugomos.
+  </footer>
 </body>
 </html>

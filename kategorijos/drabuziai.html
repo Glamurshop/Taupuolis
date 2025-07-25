@@ -1,24 +1,42 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="lt">
 <head>
-  <meta charset="utf-8">
-  <title>Drabuziai – Pasiūlymai</title>
+  <meta charset="UTF-8" />
+  <title>Drabužiai – Taupuolis.lt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Drabuziai</h1>
-  <div class="grid grid-cols-2 gap-4">
-    
-      <a href="testeriai-tik-3.html">
-        <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Testeriai – tik 3€" style="width:200px;height:150px;">
-        <h2>Testeriai – tik 3€</h2>
-      </a>
-    
-      <a href="dovanu-rinkinys-vyrams.html">
-        <img src="https://www.savascentras.lt/wp-content/uploads/2018/06/Douglas-logo.jpg" alt="Dovanų rinkinys vyrams" style="width:200px;height:150px;">
-        <h2>Dovanų rinkinys vyrams</h2>
-      </a>
-    
-  </div>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <header class="bg-white border-b p-4 flex items-center justify-between">
+    <a href="/index.html" class="text-xl font-bold text-yellow-600">Taupuolis.lt</a>
+    <span class="text-lg text-gray-700 font-semibold">Kategorija: Drabužiai</span>
+  </header>
+  <main class="flex-1 flex flex-col items-center py-8">
+    <div class="max-w-4xl w-full">
+      <h1 class="text-3xl font-bold mb-6">Drabužiai</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+                <a href="/pasiulymai/dovanu-rinkinys-vyrams.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/HAWAIIAN/HAWAIIAN-3.png" alt="Dovanų rinkinys vyrams" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Dovanų rinkinys vyrams</div>
+                  <div class="text-sm text-gray-600">Douglas</div>
+                  <img src="https://www.savascentras.lt/wp-content/uploads/2018/06/Douglas-logo.jpg" alt="Douglas logo" class="h-8 w-8 rounded-full mt-2" />
+                </a>
+            
+
+                <a href="/pasiulymai/testeriai-tik-3eur.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-6.png" alt="Testeriai – tik 3€" class="h-32 w-full object-contain mb-2 rounded" />
+                  <div class="font-bold">Testeriai – tik 3€</div>
+                  <div class="text-sm text-gray-600">Perfumer</div>
+                  <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Perfumer logo" class="h-8 w-8 rounded-full mt-2" />
+                </a>
+            
+      </div>
+    </div>
+    <a href="/index.html" class="mt-8 text-gray-600 hover:underline">Grįžti į pradžią</a>
+  </main>
+  <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
+    © 2025 Taupuolis.lt – Visos teisės saugomos.
+  </footer>
 </body>
 </html>
