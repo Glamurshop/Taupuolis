@@ -160,24 +160,47 @@
     <!-- Main turinys -->
     <main class="py-8">
       <div class="max-w-7xl mx-auto px-4 py-8">
-        <!-- Specialus Taupuolis.lt baneris -->
+        <!-- Slideris su realiais dealais -->
         <div class="mb-8">
-          <div class="relative bg-gradient-to-r from-yellow-200 via-yellow-100 to-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center min-h-[220px]">
-            <div class="flex-1 p-8 flex flex-col justify-center">
-              <div class="flex items-center gap-3 mb-2">
-                <img src="/favicon.ico" alt="Taupuolis.lt" class="h-10 w-10 rounded-full bg-white shadow border" />
-                <span class="text-xl font-bold text-yellow-700">Taupuolis.lt</span>
-              </div>
-              <h2 class="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900">VIP Holiday Shop</h2>
-              <p class="text-gray-700 mb-4 text-lg">Gauk išskirtinius nuolaidų kodus ir pasiūlymus tik Taupuolis.lt lankytojams! Prisijunk prie mūsų naujienlaiškio ir gauk asmeninį kodą.</p>
-              <a href="/naujienlaiskis.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold shadow transition">Gauti kodą</a>
+          <div id="real-deals-slider" class="relative w-full h-[220px] rounded-2xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center">
+            <div id="slider-track" class="w-full h-full flex transition-transform duration-500"></div>
+            <!-- Rodyklės -->
+            <button id="slider-prev" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+            <button id="slider-next" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <!-- Informacinė juosta po slideriu -->
+        <div class="bg-yellow-200 rounded-xl flex flex-col md:flex-row items-center justify-between gap-8 px-8 py-6 mb-10">
+          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">🔎</span>
+            <div class="text-left">
+              <div class="font-bold text-lg">Visi pasiūlymai peržiūrėti</div>
+              <div class="text-sm text-gray-700">Mūsų komanda tikrina kiekvieną nuolaidą</div>
             </div>
-            <div class="flex-1 flex items-center justify-center p-4 min-w-[200px]">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Holiday Shop" class="rounded-xl shadow-lg object-cover h-48 w-full max-w-xs" />
+          </div>
+          <div class="hidden md:flex items-center justify-center">
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+          </div>
+          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">💡</span>
+            <div class="text-left">
+              <div class="font-bold text-lg">Nėra paslėptų kainų</div>
+              <div class="text-sm text-gray-700">Matysite tik tikras galutines kainas</div>
             </div>
-            <!-- Dekoratyviniai elementai -->
-            <div class="absolute top-0 left-0 w-32 h-32 bg-yellow-300 rounded-full opacity-30 -z-10"></div>
-            <div class="absolute bottom-0 right-0 w-40 h-40 bg-yellow-100 rounded-full opacity-20 -z-10"></div>
+          </div>
+          <div class="hidden md:flex items-center justify-center">
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+          </div>
+          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">⏰</span>
+            <div class="text-left">
+              <div class="font-bold text-lg">Kasdien atnaujinama</div>
+              <div class="text-sm text-gray-700">Naujausi kodai ir akcijos kiekvieną dieną</div>
+            </div>
           </div>
         </div>
         <h2 class="text-3xl font-semibold mb-4">Šiandienos TOP pasiūlymai</h2>
@@ -388,6 +411,54 @@
         }).join('');
       }
       renderRealDealsGrid();
+
+      // Slideris su realiais dealais
+      async function renderRealDealsSlider() {
+        const res = await fetch('visi_pasiulymai.json');
+        const deals = await res.json();
+        // Imame pirmus 5 dealus (arba mažiau, jei nėra tiek)
+        const sliderDeals = deals.slice(0, 5);
+        const track = document.getElementById('slider-track');
+        let current = 0;
+        function renderSlides() {
+          track.innerHTML = sliderDeals.map((deal, i) => `
+            <a href="/pasiulymai/${deal.pavadinimas
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/(^-|-$)/g, '')
+            }.html" class="min-w-full h-[220px] flex items-stretch group transition-opacity duration-500 ${i === current ? '' : 'opacity-0 pointer-events-none'}">
+              <div class="relative w-full h-full flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="flex-1 h-full flex items-center justify-center p-4 min-w-[200px]">
+                  <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="rounded-xl shadow-lg object-cover h-40 w-full max-w-xs" />
+                  <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-4 left-4 h-10 w-10 rounded-full bg-white shadow border" />
+                  ${(deal.vip || deal.vip_retailer) ? `<span class='absolute top-4 right-4 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 shadow'><svg xmlns='http://www.w3.org/2000/svg' class='h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>VIP RETAILER</span>` : ''}
+                </div>
+                <div class="flex-1 p-8 flex flex-col justify-center">
+                  <h2 class="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">${deal.pavadinimas}</h2>
+                  <p class="text-gray-700 mb-4 text-lg">${deal.aprasymas}</p>
+                  <span class="bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded mb-2 inline-block">Galioja iki: ${deal.terminas}</span>
+                </div>
+              </div>
+            </a>
+          `).join('');
+          track.style.transform = `translateX(-${current * 100}%)`;
+        }
+        renderSlides();
+        document.getElementById('slider-prev').onclick = () => {
+          current = (current - 1 + sliderDeals.length) % sliderDeals.length;
+          renderSlides();
+        };
+        document.getElementById('slider-next').onclick = () => {
+          current = (current + 1) % sliderDeals.length;
+          renderSlides();
+        };
+        // Automatinis slinkimas kas 5s
+        setInterval(() => {
+          current = (current + 1) % sliderDeals.length;
+          renderSlides();
+        }, 5000);
+      }
+      renderRealDealsSlider();
 
       // Paieškos dropdown uždarymas paspaudus už jo
       function setupSearchDropdownClose(input, results) {
