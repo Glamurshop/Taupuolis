@@ -413,44 +413,62 @@
             const date = new Date(d.terminas);
             return date >= now;
           });
-          // Random 9
-          const shuffled = validDeals.sort(() => 0.5 - Math.random());
-          const selected = shuffled.slice(0, 9);
+          // Surūšiuojam pagal galiojimo datą (artimiausi viršuje)
+          validDeals.sort((a, b) => new Date(a.terminas) - new Date(b.terminas));
           const grid = document.getElementById('deals-grid');
+          let html = '';
           if (validDeals.length === 0) {
-            grid.innerHTML = '<div class="text-center text-gray-500 col-span-3">Šiuo metu nėra galiojančių pasiūlymų. Užsukite vėliau!</div>';
+            // Placeholder kortelės
+            for (let i = 0; i < 6; i++) {
+              html += `<div class="bg-gray-100 rounded-xl border border-dashed border-gray-300 flex flex-col items-center justify-center h-48 text-gray-400 text-lg font-semibold">Nėra pasiūlymo</div>`;
+            }
+            grid.innerHTML = html;
             return;
           }
-          grid.innerHTML = selected.map(deal => `
+          html = validDeals.map(deal => `
             <a href="/pasiulymai/${deal.pavadinimas
               .toLowerCase()
               .replace(/[^a-z0-9]+/g, '-')
               .replace(/(^-|-$)/g, '')
-            }.html" class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col group border border-gray-200">
-              <div class="relative">
-                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-32 object-cover" />
-                <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-8 w-8 rounded bg-white p-1 shadow border" />
-                <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
-                  <svg xmlns='http://www.w3.org/2000/svg' class='inline h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>
-                  VIP
-                </span>
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="flex items-center gap-2 mb-1">
-                  <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-0.5 rounded">EXCLUSIVE</span>
-                  <span class="ml-auto text-xs text-gray-500">Galioja iki: ${deal.terminas}</span>
+            }.html" class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col border border-gray-200 min-h-[160px] group">
+              <div class="flex items-stretch h-20 relative">
+                <div class="flex items-center justify-center w-20 h-20 bg-gray-100 flex-shrink-0">
+                  <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="h-10 w-10 rounded bg-white shadow border" />
+                  <span class="absolute top-2 left-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 z-10">
+                    <svg xmlns='http://www.w3.org/2000/svg' class='inline h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>
+                    VIP
+                  </span>
                 </div>
-                <div class="font-bold uppercase text-xs text-gray-500 mb-1">${deal.pardavejas}</div>
-                <div class="font-bold text-base mb-1">${deal.pavadinimas}</div>
-                <div class="text-gray-700 text-sm flex-1">${deal.aprasymas}</div>
+                <div class="flex-1 flex flex-col justify-between p-3">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-0.5 rounded">EXCLUSIVE</span>
+                    <span class="ml-auto text-xs text-gray-500">Galioja iki: ${deal.terminas}</span>
+                  </div>
+                  <div class="font-bold text-base mb-0.5">${deal.pavadinimas}</div>
+                  <div class="font-bold uppercase text-xs text-gray-500 mb-0.5">${deal.pardavejas}</div>
+                </div>
               </div>
+              <div class="px-4 pb-3 pt-1 text-gray-700 text-sm flex-1">${deal.aprasymas}</div>
             </a>
           `).join('');
+          grid.innerHTML = html;
         } catch (e) {
           document.getElementById('deals-grid').innerHTML = '<div class="text-center text-gray-500">Nepavyko užkrauti pasiūlymų.</div>';
         }
       }
       loadDeals();
+
+      // Paieškos dropdown uždarymas paspaudus už jo
+      function setupSearchDropdownClose(input, results) {
+        if (!input || !results) return;
+        document.addEventListener('mousedown', function(e) {
+          if (!results.contains(e.target) && e.target !== input) {
+            results.classList.add('hidden');
+          }
+        });
+      }
+      setupSearchDropdownClose(searchInput, searchResults);
+      setupSearchDropdownClose(searchInputMobile, searchResultsMobile);
     </script>
   </body>
 </html>
