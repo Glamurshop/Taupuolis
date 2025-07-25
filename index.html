@@ -278,7 +278,7 @@
       <!-- Banerių (dealų) gridas puslapio apačioje -->
       <section>
         <h3 class="text-2xl font-bold text-center mb-6">Šiandienos TOP pasiūlymai</h3>
-        <div id="deals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="deals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
       </section>
     </main>
     <!-- Aprašymas apie Taupuolis.lt ir projekto idėją -->
@@ -299,25 +299,65 @@
         { name: 'Glamur', url: '/pardavejai/glamur.html' },
         { name: 'Perfumer', url: '/pardavejai/perfumer.html' },
       ];
+      // Kategorijų sąrašas
+      const categories = [
+        { name: 'Kvepalai', url: '/kategorijos/kvepalai.html' },
+        { name: 'Kosmetika', url: '/kategorijos/kosmetika.html' },
+        { name: 'Maistas', url: '/kategorijos/maistas.html' },
+        { name: 'Elektronika', url: '/kategorijos/elektronika.html' },
+        { name: 'Drabužiai', url: '/kategorijos/drabužiai.html' },
+        { name: 'Sportas', url: '/kategorijos/sportas.html' },
+      ];
+      // Dealų sąrašas (dinamiškai iš visi_pasiulymai.json)
+      let allDeals = [];
+      fetch('visi_pasiulymai.json').then(r => r.json()).then(data => { allDeals = data; });
+
+      function renderSearchResults(value, resultsEl) {
+        const valueLower = value.trim().toLowerCase();
+        if (!valueLower) {
+          resultsEl.innerHTML = '';
+          resultsEl.classList.add('hidden');
+          return;
+        }
+        // Pardavėjai
+        const vendorMatches = vendors.filter(v => v.name.toLowerCase().includes(valueLower));
+        // Dealai
+        const dealMatches = allDeals.filter(d =>
+          d.pavadinimas.toLowerCase().includes(valueLower) ||
+          (d.aprasymas && d.aprasymas.toLowerCase().includes(valueLower))
+        ).slice(0, 5); // max 5
+        // Kategorijos
+        const categoryMatches = categories.filter(c => c.name.toLowerCase().includes(valueLower));
+        let html = '';
+        if (vendorMatches.length) {
+          html += '<div class="px-4 py-2 text-xs text-gray-500">Pardavėjai</div>';
+          html += vendorMatches.map(v => `<a href="${v.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${v.name}</a>`).join('');
+        }
+        if (dealMatches.length) {
+          html += '<div class="px-4 py-2 text-xs text-gray-500">Pasiūlymai</div>';
+          html += dealMatches.map(d => `<a href="/pasiulymai/${d.pavadinimas.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.html" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${d.pavadinimas} <span class='text-xs text-gray-400'>(${d.pardavejas})</span></a>`).join('');
+        }
+        if (categoryMatches.length) {
+          html += '<div class="px-4 py-2 text-xs text-gray-500">Kategorijos</div>';
+          html += categoryMatches.map(c => `<a href="${c.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${c.name}</a>`).join('');
+        }
+        // Papildomi linkai
+        html += '<div class="px-4 py-2 text-xs text-gray-500">Kita</div>';
+        html += `<a href="/naujienlaiskis.html" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Prenumeruok naujienlaiškį</a>`;
+        html += `<a href="/kategorijos/" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Visos kategorijos</a>`;
+        html += `<a href="/visi_pasiulymai.json" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Visi pasiūlymai (JSON)</a>`;
+        if (!vendorMatches.length && !dealMatches.length && !categoryMatches.length) {
+          html = '<div class="px-4 py-2 text-gray-500">Nieko nerasta</div>' + html;
+        }
+        resultsEl.innerHTML = html;
+        resultsEl.classList.remove('hidden');
+      }
       // Paieška desktopui
       const searchInput = document.getElementById('search-input');
       const searchResults = document.getElementById('search-results');
       if (searchInput && searchResults) {
         searchInput.addEventListener('input', function() {
-          const value = this.value.trim().toLowerCase();
-          if (!value) {
-            searchResults.innerHTML = '';
-            searchResults.classList.add('hidden');
-            return;
-          }
-          const matches = vendors.filter(v => v.name.toLowerCase().includes(value));
-          if (matches.length === 0) {
-            searchResults.innerHTML = '<div class="px-4 py-2 text-gray-500">Nieko nerasta</div>';
-            searchResults.classList.remove('hidden');
-            return;
-          }
-          searchResults.innerHTML = matches.map(v => `<a href="${v.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${v.name}</a>`).join('');
-          searchResults.classList.remove('hidden');
+          renderSearchResults(this.value, searchResults);
         });
         searchInput.addEventListener('blur', function() {
           setTimeout(() => searchResults.classList.add('hidden'), 150);
@@ -331,20 +371,7 @@
       const searchResultsMobile = document.getElementById('search-results-mobile');
       if (searchInputMobile && searchResultsMobile) {
         searchInputMobile.addEventListener('input', function() {
-          const value = this.value.trim().toLowerCase();
-          if (!value) {
-            searchResultsMobile.innerHTML = '';
-            searchResultsMobile.classList.add('hidden');
-            return;
-          }
-          const matches = vendors.filter(v => v.name.toLowerCase().includes(value));
-          if (matches.length === 0) {
-            searchResultsMobile.innerHTML = '<div class="px-4 py-2 text-gray-500">Nieko nerasta</div>';
-            searchResultsMobile.classList.remove('hidden');
-            return;
-          }
-          searchResultsMobile.innerHTML = matches.map(v => `<a href="${v.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${v.name}</a>`).join('');
-          searchResultsMobile.classList.remove('hidden');
+          renderSearchResults(this.value, searchResultsMobile);
         });
         searchInputMobile.addEventListener('blur', function() {
           setTimeout(() => searchResultsMobile.classList.add('hidden'), 150);
@@ -399,19 +426,22 @@
               .toLowerCase()
               .replace(/[^a-z0-9]+/g, '-')
               .replace(/(^-|-$)/g, '')
-            }.html" class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col group">
+            }.html" class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col group border border-gray-200">
               <div class="relative">
-                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-200" />
-                <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-10 w-10 rounded bg-white p-1 shadow" />
-                <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded">VIP RETAILER</span>
+                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-32 object-cover" />
+                <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-8 w-8 rounded bg-white p-1 shadow border" />
+                <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
+                  <svg xmlns='http://www.w3.org/2000/svg' class='inline h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>
+                  VIP
+                </span>
               </div>
               <div class="p-4 flex-1 flex flex-col">
                 <div class="flex items-center gap-2 mb-1">
                   <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-0.5 rounded">EXCLUSIVE</span>
                   <span class="ml-auto text-xs text-gray-500">Galioja iki: ${deal.terminas}</span>
                 </div>
-                <div class="font-bold uppercase text-sm mb-1">${deal.pardavejas}</div>
-                <div class="font-bold text-lg mb-1">${deal.pavadinimas}</div>
+                <div class="font-bold uppercase text-xs text-gray-500 mb-1">${deal.pardavejas}</div>
+                <div class="font-bold text-base mb-1">${deal.pavadinimas}</div>
                 <div class="text-gray-700 text-sm flex-1">${deal.aprasymas}</div>
               </div>
             </a>
