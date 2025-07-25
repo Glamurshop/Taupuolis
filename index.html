@@ -159,127 +159,57 @@
     </nav>
     <!-- Main turinys -->
     <main class="py-8">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-semibold mb-4">Pagrindinis turinys</h2>
-        <!-- Banerių gridas vietoje karuselės -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          <!-- Baneris 1 -->
-          <div class="bg-white rounded-xl shadow-lg flex flex-col overflow-hidden">
-            <div class="bg-yellow-300 flex items-center justify-between p-4">
-              <div class="flex items-center gap-2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Unsplash_logo.svg" alt="Unsplash" class="h-10 w-10 rounded bg-white shadow" />
-                <span class="bg-yellow-400 text-xs font-bold px-2 py-1 rounded">VIP</span>
-                <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-1 rounded">EXCLUSIVE</span>
-              </div>
-              <span class="text-lg font-bold">Unsplash</span>
-            </div>
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Free Unsplash" class="object-cover h-48 w-full" />
-            <div class="p-4 flex-1 flex flex-col">
-              <div class="font-bold text-lg mb-1">Nemokamas pavyzdinis baneris</div>
-              <div class="text-gray-700 text-sm flex-1 mb-2">Gaukite 20% nuolaidą visiems Unsplash paveikslėliams! (juokaujame – jie visada nemokami)</div>
-              <a href="https://unsplash.com/" target="_blank" rel="noopener" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded font-semibold shadow">Shop Now</a>
+      <div class="max-w-7xl mx-auto px-4 py-8">
+        <h2 class="text-3xl font-semibold mb-4">Šiandienos TOP pasiūlymai</h2>
+        <div id="real-deals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+      <!-- Informacinė juosta per visą plotį -->
+      <div class="bg-yellow-200 py-6 w-full">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-12 px-4">
+          <!-- Priežastis 1 -->
+          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
+              🔎
+            </span>
+            <div class="text-left">
+              <div class="font-bold text-lg">Visi pasiūlymai peržiūrėti</div>
+              <div class="text-sm text-gray-700">Mūsų komanda tikrina kiekvieną nuolaidą</div>
             </div>
           </div>
-          <!-- Baneris 2 -->
-          <div class="bg-white rounded-xl shadow-lg flex flex-col overflow-hidden">
-            <div class="bg-yellow-300 flex items-center justify-between p-4">
-              <div class="flex items-center gap-2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Google-flutter-logo.svg" alt="Flutter" class="h-10 w-10 rounded bg-white shadow" />
-                <span class="bg-yellow-400 text-xs font-bold px-2 py-1 rounded">VIP</span>
-                <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-1 rounded">EXCLUSIVE</span>
-              </div>
-              <span class="text-lg font-bold">Flutter</span>
-            </div>
-            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Flutter" class="object-cover h-48 w-full" />
-            <div class="p-4 flex-1 flex flex-col">
-              <div class="font-bold text-lg mb-1">Flutter baneris</div>
-              <div class="text-gray-700 text-sm flex-1 mb-2">Išbandykite Flutter – modernią UI kūrimo platformą!</div>
-              <a href="https://flutter.dev/" target="_blank" rel="noopener" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded font-semibold shadow">Shop Now</a>
+          <!-- Skirtukas -->
+          <div class="hidden md:flex items-center justify-center">
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+          </div>
+          <!-- Priežastis 2 -->
+          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
+              💡
+            </span>
+            <div class="text-left">
+              <div class="font-bold text-lg">Nėra paslėptų kainų</div>
+              <div class="text-sm text-gray-700">Matysite tik tikras galutines kainas</div>
             </div>
           </div>
-          <!-- Baneris 3 -->
-          <div class="bg-white rounded-xl shadow-lg flex flex-col overflow-hidden">
-            <div class="bg-yellow-300 flex items-center justify-between p-4">
-              <div class="flex items-center gap-2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="h-10 w-10 rounded bg-white shadow" />
-                <span class="bg-yellow-400 text-xs font-bold px-2 py-1 rounded">VIP</span>
-                <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-1 rounded">EXCLUSIVE</span>
-              </div>
-              <span class="text-lg font-bold">Netflix</span>
-            </div>
-            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Netflix" class="object-cover h-48 w-full" />
-            <div class="p-4 flex-1 flex flex-col">
-              <div class="font-bold text-lg mb-1">Netflix baneris</div>
-              <div class="text-gray-700 text-sm flex-1 mb-2">Žiūrėk mėgstamiausius filmus ir serialus su nuolaida!</div>
-              <a href="https://netflix.com/" target="_blank" rel="noopener" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded font-semibold shadow">Shop Now</a>
-            </div>
+          <!-- Skirtukas -->
+          <div class="hidden md:flex items-center justify-center">
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
           </div>
-        </div>
-        <!-- Populiarios kategorijos -->
-        <section class="mb-10">
-          <h3 class="text-2xl font-bold text-center mb-6">Populiarios kategorijos</h3>
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="/kategorijos/kvepalai.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Kvepalai</a>
-            <a href="/kategorijos/kosmetika.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Kosmetika</a>
-            <a href="/kategorijos/maistas.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Maistas</a>
-            <a href="/kategorijos/elektronika.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Elektronika</a>
-            <a href="/kategorijos/drabužiai.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Drabužiai</a>
-            <a href="/kategorijos/sportas.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Sportas</a>
-          </div>
-        </section>
-        <!-- Informacinė juosta per visą plotį -->
-        <div class="bg-yellow-200 py-6 w-full">
-          <div class="flex flex-col md:flex-row items-center justify-center gap-12 px-4">
-            <!-- Priežastis 1 -->
-            <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-              <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
-                🔎
-              </span>
-              <div class="text-left">
-                <div class="font-bold text-lg">Visi pasiūlymai peržiūrėti</div>
-                <div class="text-sm text-gray-700">Mūsų komanda tikrina kiekvieną nuolaidą</div>
-              </div>
-            </div>
-            <!-- Skirtukas -->
-            <div class="hidden md:flex items-center justify-center">
-              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            </div>
-            <!-- Priežastis 2 -->
-            <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-              <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
-                💡
-              </span>
-              <div class="text-left">
-                <div class="font-bold text-lg">Nėra paslėptų kainų</div>
-                <div class="text-sm text-gray-700">Matysite tik tikras galutines kainas</div>
-              </div>
-            </div>
-            <!-- Skirtukas -->
-            <div class="hidden md:flex items-center justify-center">
-              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            </div>
-            <!-- Priežastis 3 -->
-            <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-              <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
-                ⏰
-              </span>
-              <div class="text-left">
-                <div class="font-bold text-lg">Kasdien atnaujinama</div>
-                <div class="text-sm text-gray-700">Naujausi kodai ir akcijos kiekvieną dieną</div>
-              </div>
+          <!-- Priežastis 3 -->
+          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
+              ⏰
+            </span>
+            <div class="text-left">
+              <div class="font-bold text-lg">Kasdien atnaujinama</div>
+              <div class="text-sm text-gray-700">Naujausi kodai ir akcijos kiekvieną dieną</div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Banerių (dealų) carousel gridas -->
-      <section>
-        <h3 class="text-2xl font-bold text-center mb-6">Šiandienos TOP pasiūlymai</h3>
-        <div id="deals-carousel" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-      </section>
     </main>
     <!-- Aprašymas apie Taupuolis.lt ir projekto idėją -->
     <section class="max-w-3xl mx-auto mt-12 mb-8 p-6 bg-white rounded-xl shadow text-center">
@@ -401,65 +331,43 @@
           link.addEventListener('click', closeMenu);
         });
       }
-      // Banerių (dealų) carousel iš visi_pasiulymai.json
-      async function loadDealsCarousel() {
-        try {
-          const res = await fetch('visi_pasiulymai.json');
-          const deals = await res.json();
-          // Filtruojam tik galiojančius (iki šiandienos arba vėliau)
-          const now = new Date();
-          const validDeals = deals.filter(d => {
-            if (!d.terminas) return false;
-            const date = new Date(d.terminas);
-            return date >= now;
-          });
-          // Surūšiuojam pagal galiojimo datą (artimiausi viršuje)
-          validDeals.sort((a, b) => new Date(a.terminas) - new Date(b.terminas));
-          // Carousel state
-          let start = 0;
-          const showCount = 3;
-          const grid = document.getElementById('deals-carousel');
-          function renderCarousel() {
-            let html = '';
-            const shown = validDeals.slice(start, start + showCount);
-            shown.forEach(deal => {
-              html += `
-                <a href="/pasiulymai/${deal.pavadinimas
-                  .toLowerCase()
-                  .replace(/[^a-z0-9]+/g, '-')
-                  .replace(/(^-|-$)/g, '')
-                }.html" class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col border border-gray-200 group">
-                  <div class="relative h-48">
-                    <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-full object-cover" />
-                    <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute bottom-2 left-2 h-10 w-10 rounded bg-white p-1 shadow border" />
-                    <span class="absolute bottom-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 z-10">
-                      <svg xmlns='http://www.w3.org/2000/svg' class='inline h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>
-                      VIP RETAILER
-                    </span>
-                  </div>
-                  <div class="p-4 flex-1 flex flex-col">
-                    <div class="font-bold text-base mb-1">${deal.pavadinimas}</div>
-                    <div class="font-bold uppercase text-xs text-gray-500 mb-1">${deal.pardavejas}</div>
-                    <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-0.5 rounded mb-2 inline-block">EXCLUSIVE</span>
-                    <div class="text-gray-700 text-sm flex-1 mb-2">${deal.aprasymas}</div>
-                    <span class="text-xs text-gray-500">Galioja iki: ${deal.terminas}</span>
-                  </div>
-                </a>
-              `;
-            });
-            grid.innerHTML = html;
-          }
-          renderCarousel();
-          // Automatinis keitimas kas 5s
-          setInterval(() => {
-            start = (start + showCount) % validDeals.length;
-            renderCarousel();
-          }, 5000);
-        } catch (e) {
-          document.getElementById('deals-carousel').innerHTML = '<div class="text-center text-gray-500">Nepavyko užkrauti pasiūlymų.</div>';
-        }
+      async function renderRealDealsGrid() {
+        const res = await fetch('visi_pasiulymai.json');
+        const deals = await res.json();
+        const grid = document.getElementById('real-deals-grid');
+        const now = new Date();
+        const tomorrow = new Date(now);
+        tomorrow.setDate(now.getDate() + 1);
+        // Rūšiuojam pagal galiojimo datą (artimiausi viršuje)
+        deals.sort((a, b) => new Date(a.terminas) - new Date(b.terminas));
+        grid.innerHTML = deals.map(deal => {
+          // Ar paskutinė diena?
+          const end = new Date(deal.terminas);
+          const isLastDay = end.toDateString() === now.toDateString() || end.toDateString() === tomorrow.toDateString();
+          return `
+            <div class="bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col">
+              <div class="relative">
+                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover">
+                <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-10 w-10 bg-white rounded shadow p-1">
+                ${(deal.vip || deal.vip_retailer) ? `
+                  <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 shadow">
+                    <svg xmlns='http://www.w3.org/2000/svg' class='h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>
+                    VIP RETAILER
+                  </span>
+                ` : ''}
+              </div>
+              <div class="p-4 flex-1 flex flex-col">
+                <div class="flex items-center gap-2 mb-1">
+                  ${isLastDay ? `<span class="bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded">LAST DAY</span>` : ''}
+                </div>
+                <div class="font-bold text-lg mb-1">${deal.pavadinimas}</div>
+                <div class="text-gray-700 text-sm flex-1">${deal.aprasymas}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
       }
-      loadDealsCarousel();
+      renderRealDealsGrid();
 
       // Paieškos dropdown uždarymas paspaudus už jo
       function setupSearchDropdownClose(input, results) {
