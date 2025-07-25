@@ -141,11 +141,6 @@
     <main class="py-8">
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="text-3xl font-semibold mb-4">Pagrindinis turinys</h2>
-        <!-- Banerių (dealų) gridas -->
-        <section>
-          <h3 class="text-2xl font-bold text-center mb-6">Šiandienos TOP pasiūlymai</h3>
-          <div id="deals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        </section>
         <!-- Carousel (slideris) -->
         <div id="default-carousel" class="relative w-full" data-carousel="slide">
           <!-- Carousel wrapper -->
@@ -182,54 +177,59 @@
             </span>
           </button>
         </div>
-      </div>
-      <!-- Informacinė juosta per visą plotį -->
-      <div class="bg-yellow-200 py-6 w-full">
-        <div class="flex flex-col md:flex-row items-center justify-center gap-12 px-4">
-          <!-- Priežastis 1 -->
-          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
-              🔎
-            </span>
-            <div class="text-left">
-              <div class="font-bold text-lg">Visi pasiūlymai peržiūrėti</div>
-              <div class="text-sm text-gray-700">Mūsų komanda tikrina kiekvieną nuolaidą</div>
+        <!-- Informacinė juosta per visą plotį -->
+        <div class="bg-yellow-200 py-6 w-full">
+          <div class="flex flex-col md:flex-row items-center justify-center gap-12 px-4">
+            <!-- Priežastis 1 -->
+            <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+              <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
+                🔎
+              </span>
+              <div class="text-left">
+                <div class="font-bold text-lg">Visi pasiūlymai peržiūrėti</div>
+                <div class="text-sm text-gray-700">Mūsų komanda tikrina kiekvieną nuolaidą</div>
+              </div>
             </div>
-          </div>
-          <!-- Skirtukas -->
-          <div class="hidden md:flex items-center justify-center">
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-          </div>
-          <!-- Priežastis 2 -->
-          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
-              💡
-            </span>
-            <div class="text-left">
-              <div class="font-bold text-lg">Nėra paslėptų kainų</div>
-              <div class="text-sm text-gray-700">Matysite tik tikras galutines kainas</div>
+            <!-- Skirtukas -->
+            <div class="hidden md:flex items-center justify-center">
+              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
             </div>
-          </div>
-          <!-- Skirtukas -->
-          <div class="hidden md:flex items-center justify-center">
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-          </div>
-          <!-- Priežastis 3 -->
-          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
-              ⏰
-            </span>
-            <div class="text-left">
-              <div class="font-bold text-lg">Kasdien atnaujinama</div>
-              <div class="text-sm text-gray-700">Naujausi kodai ir akcijos kiekvieną dieną</div>
+            <!-- Priežastis 2 -->
+            <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+              <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
+                💡
+              </span>
+              <div class="text-left">
+                <div class="font-bold text-lg">Nėra paslėptų kainų</div>
+                <div class="text-sm text-gray-700">Matysite tik tikras galutines kainas</div>
+              </div>
+            </div>
+            <!-- Skirtukas -->
+            <div class="hidden md:flex items-center justify-center">
+              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+              <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
+            </div>
+            <!-- Priežastis 3 -->
+            <div class="flex items-center gap-4 flex-1 min-w-[220px]">
+              <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">
+                ⏰
+              </span>
+              <div class="text-left">
+                <div class="font-bold text-lg">Kasdien atnaujinama</div>
+                <div class="text-sm text-gray-700">Naujausi kodai ir akcijos kiekvieną dieną</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- Banerių (dealų) gridas puslapio apačioje -->
+      <section>
+        <h3 class="text-2xl font-bold text-center mb-6">Šiandienos TOP pasiūlymai</h3>
+        <div id="deals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </section>
     </main>
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
