@@ -11,7 +11,7 @@
   </head>
   <body class="bg-white text-gray-900 overflow-x-hidden">
     <!-- Header su logotipu, paieška ir prisijungimu -->
-    <header class="border-b bg-white">
+    <header class="border-b bg-white sticky top-0 z-40">
       <div class="flex items-center justify-between max-w-7xl mx-auto px-6 py-4">
         <a href="/" class="text-2xl font-bold text-yellow-600">Taupuolis.lt</a>
         <!-- Hamburger mygtukas tik mobile -->
@@ -231,6 +231,13 @@
         <div id="deals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
       </section>
     </main>
+    <!-- Aprašymas apie Taupuolis.lt ir projekto idėją -->
+    <section class="max-w-3xl mx-auto mt-12 mb-8 p-6 bg-white rounded-xl shadow text-center">
+      <h4 class="text-2xl font-bold mb-2 text-yellow-600">Kas yra Taupuolis.lt?</h4>
+      <p class="text-gray-700 mb-2">Taupuolis.lt – tai platforma, kurioje vienoje vietoje surenkami geriausi nuolaidų kodai, akcijos ir pasiūlymai iš populiariausių Lietuvos ir užsienio pardavėjų.</p>
+      <p class="text-gray-700 mb-2">Mūsų tikslas – padėti taupyti laiką ir pinigus, kad rastum tik patikrintus, galiojančius ir tikrai naudingus pasiūlymus.</p>
+      <p class="text-gray-700">Projektas nuolat tobulinamas ir atnaujinamas, todėl kviečiame sekti naujienas ir dalintis savo pastebėjimais!</p>
+    </section>
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
       © 2025 Taupuolis.lt – Visos teisės saugomos.
@@ -306,6 +313,10 @@
           const shuffled = validDeals.sort(() => 0.5 - Math.random());
           const selected = shuffled.slice(0, 9);
           const grid = document.getElementById('deals-grid');
+          if (validDeals.length === 0) {
+            grid.innerHTML = '<div class="text-center text-gray-500 col-span-3">Šiuo metu nėra galiojančių pasiūlymų. Užsukite vėliau!</div>';
+            return;
+          }
           grid.innerHTML = selected.map(deal => `
             <a href="/pasiulymai/${deal.pavadinimas
               .toLowerCase()
