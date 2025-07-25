@@ -8,6 +8,15 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
 
+  <div id="header-placeholder"></div>
+  <script>
+    fetch('/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+  </script>
+
   <!-- HERO -->
   <section class="relative bg-white pt-16 pb-8 overflow-hidden">
     <img src="https://via.placeholder.com/150x150?text=IlluLeft" 

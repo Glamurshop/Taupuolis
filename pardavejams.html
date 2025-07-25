@@ -8,17 +8,14 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-  <!-- NAV -->
-  <header class="bg-white shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold text-yellow-500">Taupuolis.lt</a>
-      <nav class="space-x-4 text-sm">
-        <a href="index.html" class="hover:underline">Pagrindinis</a>
-        <a href="pardavejams.html" class="font-semibold">Pardavėjams</a>
-        <a href="kontaktai.html" class="hover:underline">Kontaktai</a>
-      </nav>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
+  <script>
+    fetch('/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+  </script>
 
   <!-- HERO -->
   <section class="bg-yellow-200 py-16">
