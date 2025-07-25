@@ -421,7 +421,7 @@
 
       // Horizontalus deals-carousel iš deals.json
       async function renderDealsSlider() {
-        const res = await fetch('deals.json');
+        const res = await fetch('visi_pasiulymai.json');
         const deals = await res.json();
         const track = document.getElementById('deals-slider-track');
         track.innerHTML = deals.map(deal => `
