@@ -370,7 +370,6 @@
       async function renderRealDealsSlider() {
         const res = await fetch('visi_pasiulymai.json');
         const deals = await res.json();
-        // Imame pirmus 5 dealus (arba mažiau, jei nėra tiek)
         const sliderDeals = deals.slice(0, 5);
         const track = document.getElementById('slider-track');
         let current = 0;
@@ -406,7 +405,6 @@
           current = (current + 1) % sliderDeals.length;
           renderSlides();
         };
-        // Automatinis slinkimas kas 5s
         setInterval(() => {
           current = (current + 1) % sliderDeals.length;
           renderSlides();
