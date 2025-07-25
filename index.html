@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="lt">
+<html lang="lt" class="overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Taupuolis.lt</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Flowbite UI komponentams (slideriui) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   </head>
-  <body class="bg-white text-gray-900">
+  <body class="bg-white text-gray-900 overflow-x-hidden">
     <!-- Header su logotipu, paieška ir prisijungimu -->
     <header class="border-b bg-white">
       <div class="flex items-center justify-between max-w-7xl mx-auto px-6 py-4">
@@ -26,15 +27,27 @@
           <a href="/auth/registruotis.html" class="hover:underline">Registruotis</a>
         </nav>
       </div>
-      <!-- Meniu mobilui (iš pradžių paslėptas) -->
-      <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
-        <a href="/pardavejai.html" class="block py-2 hover:underline">Visi pardavėjai</a>
-        <a href="/auth/prisijungti.html" class="block py-2 hover:underline">Prisijungti</a>
-        <a href="/auth/registruotis.html" class="block py-2 hover:underline">Registruotis</a>
-      </div>
     </header>
-    <!-- Mega menu žemiau -->
-    <nav class="border-b bg-gray-50">
+    <!-- Overlay ir drawer meniu mobilui -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-40 z-50 hidden md:hidden"></div>
+    <nav id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-full h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+      <button id="menu-close" class="absolute top-4 right-4 p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="flex flex-col mt-16 space-y-4 px-6">
+        <a href="/pardavejai.html" class="py-2 border-b">Visi pardavėjai</a>
+        <a href="/auth/prisijungti.html" class="py-2 border-b">Prisijungti</a>
+        <a href="/auth/registruotis.html" class="py-2 border-b">Registruotis</a>
+        <a href="#" class="py-2 border-b">Nuolaidos garantija</a>
+        <a href="#" class="py-2 border-b">Taupuolio gidas</a>
+        <a href="#" class="py-2 border-b">Populiaru</a>
+        <a href="#" class="py-2 border-b">Kategorijos</a>
+      </div>
+    </nav>
+    <!-- Mega menu žemiau (tik desktopui) -->
+    <nav class="border-b bg-gray-50 hidden md:block">
       <div class="flex justify-center space-x-12 max-w-7xl mx-auto px-6 py-2">
         <!-- Nuolaidos garantija -->
         <div class="group inline-block relative">
@@ -226,35 +239,50 @@
       ];
       const searchInput = document.getElementById('search-input');
       const searchResults = document.getElementById('search-results');
-      searchInput.addEventListener('input', function() {
-        const value = this.value.trim().toLowerCase();
-        if (!value) {
-          searchResults.innerHTML = '';
-          searchResults.classList.add('hidden');
-          return;
-        }
-        const matches = vendors.filter(v => v.name.toLowerCase().includes(value));
-        if (matches.length === 0) {
-          searchResults.innerHTML = '<div class="px-4 py-2 text-gray-500">Nieko nerasta</div>';
+      if (searchInput && searchResults) {
+        searchInput.addEventListener('input', function() {
+          const value = this.value.trim().toLowerCase();
+          if (!value) {
+            searchResults.innerHTML = '';
+            searchResults.classList.add('hidden');
+            return;
+          }
+          const matches = vendors.filter(v => v.name.toLowerCase().includes(value));
+          if (matches.length === 0) {
+            searchResults.innerHTML = '<div class="px-4 py-2 text-gray-500">Nieko nerasta</div>';
+            searchResults.classList.remove('hidden');
+            return;
+          }
+          searchResults.innerHTML = matches.map(v => `<a href="${v.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${v.name}</a>`).join('');
           searchResults.classList.remove('hidden');
-          return;
-        }
-        searchResults.innerHTML = matches.map(v => `<a href="${v.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${v.name}</a>`).join('');
-        searchResults.classList.remove('hidden');
-      });
-      // Paslėpti rezultatus kai išeinama iš inputo
-      searchInput.addEventListener('blur', function() {
-        setTimeout(() => searchResults.classList.add('hidden'), 150);
-      });
-      searchInput.addEventListener('focus', function() {
-        if (this.value.trim()) searchResults.classList.remove('hidden');
-      });
-      // Hamburger meniu mobilui
+        });
+        // Paslėpti rezultatus kai išeinama iš inputo
+        searchInput.addEventListener('blur', function() {
+          setTimeout(() => searchResults.classList.add('hidden'), 150);
+        });
+        searchInput.addEventListener('focus', function() {
+          if (this.value.trim()) searchResults.classList.remove('hidden');
+        });
+      }
+      // Drawer tipo hamburger meniu mobilui
       const menuToggle = document.getElementById('menu-toggle');
       const mobileMenu = document.getElementById('mobile-menu');
-      if(menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
+      const mobileOverlay = document.getElementById('mobile-overlay');
+      const menuClose = document.getElementById('menu-close');
+      function openMenu() {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileOverlay.classList.remove('hidden');
+      }
+      function closeMenu() {
+        mobileMenu.classList.add('translate-x-full');
+        mobileOverlay.classList.add('hidden');
+      }
+      if(menuToggle) menuToggle.addEventListener('click', openMenu);
+      if(menuClose) menuClose.addEventListener('click', closeMenu);
+      if(mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+      if(mobileMenu) {
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', closeMenu);
         });
       }
     </script>
