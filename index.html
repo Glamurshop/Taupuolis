@@ -161,42 +161,72 @@
     <main class="py-8">
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="text-3xl font-semibold mb-4">Pagrindinis turinys</h2>
-        <!-- Carousel (slideris) -->
-        <div id="default-carousel" class="relative w-full" data-carousel="slide">
-          <!-- Carousel wrapper -->
-          <div class="relative h-[450px] overflow-hidden rounded-lg">
-            <!-- Slide 1 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <a href="https://glamur.lt" target="_blank" rel="noopener noreferrer">
-                <img src="https://cdn.shopify.com/s/files/1/0864/5161/8058/files/Versace_eau_fraiche_lt-2.webp?v=1752830792" class="w-full h-full object-contain mx-auto" alt="Versace" />
-              </a>
+        <!-- Banerių gridas vietoje karuselės -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <!-- Baneris 1 -->
+          <div class="bg-white rounded-xl shadow-lg flex flex-col overflow-hidden">
+            <div class="bg-yellow-300 flex items-center justify-between p-4">
+              <div class="flex items-center gap-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Unsplash_logo.svg" alt="Unsplash" class="h-10 w-10 rounded bg-white shadow" />
+                <span class="bg-yellow-400 text-xs font-bold px-2 py-1 rounded">VIP</span>
+                <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-1 rounded">EXCLUSIVE</span>
+              </div>
+              <span class="text-lg font-bold">Unsplash</span>
             </div>
-            <!-- Slide 2 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="https://cdn.shopify.com/s/files/1/0864/5161/8058/files/nuxe_kosmetika-3.webp?v=1752830668" class="w-full h-full object-contain mx-auto" alt="Nuxe" />
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Free Unsplash" class="object-cover h-48 w-full" />
+            <div class="p-4 flex-1 flex flex-col">
+              <div class="font-bold text-lg mb-1">Nemokamas pavyzdinis baneris</div>
+              <div class="text-gray-700 text-sm flex-1 mb-2">Gaukite 20% nuolaidą visiems Unsplash paveikslėliams! (juokaujame – jie visada nemokami)</div>
+              <a href="https://unsplash.com/" target="_blank" rel="noopener" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded font-semibold shadow">Shop Now</a>
             </div>
           </div>
-          <!-- Indicators -->
-          <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-            <button type="button" class="w-3 h-3 rounded-full bg-white" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-3 h-3 rounded-full bg-white" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+          <!-- Baneris 2 -->
+          <div class="bg-white rounded-xl shadow-lg flex flex-col overflow-hidden">
+            <div class="bg-yellow-300 flex items-center justify-between p-4">
+              <div class="flex items-center gap-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Google-flutter-logo.svg" alt="Flutter" class="h-10 w-10 rounded bg-white shadow" />
+                <span class="bg-yellow-400 text-xs font-bold px-2 py-1 rounded">VIP</span>
+                <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-1 rounded">EXCLUSIVE</span>
+              </div>
+              <span class="text-lg font-bold">Flutter</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Flutter" class="object-cover h-48 w-full" />
+            <div class="p-4 flex-1 flex flex-col">
+              <div class="font-bold text-lg mb-1">Flutter baneris</div>
+              <div class="text-gray-700 text-sm flex-1 mb-2">Išbandykite Flutter – modernią UI kūrimo platformą!</div>
+              <a href="https://flutter.dev/" target="_blank" rel="noopener" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded font-semibold shadow">Shop Now</a>
+            </div>
           </div>
-          <!-- Navigation buttons -->
-          <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-10 h-10 bg-white/70 rounded-full">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 6 10">
-                <path d="M5 1 1 5l4 4" />
-              </svg>
-            </span>
-          </button>
-          <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-10 h-10 bg-white/70 rounded-full">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 6 10">
-                <path d="m1 1 4 4-4 4" />
-              </svg>
-            </span>
-          </button>
+          <!-- Baneris 3 -->
+          <div class="bg-white rounded-xl shadow-lg flex flex-col overflow-hidden">
+            <div class="bg-yellow-300 flex items-center justify-between p-4">
+              <div class="flex items-center gap-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="h-10 w-10 rounded bg-white shadow" />
+                <span class="bg-yellow-400 text-xs font-bold px-2 py-1 rounded">VIP</span>
+                <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-1 rounded">EXCLUSIVE</span>
+              </div>
+              <span class="text-lg font-bold">Netflix</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Netflix" class="object-cover h-48 w-full" />
+            <div class="p-4 flex-1 flex flex-col">
+              <div class="font-bold text-lg mb-1">Netflix baneris</div>
+              <div class="text-gray-700 text-sm flex-1 mb-2">Žiūrėk mėgstamiausius filmus ir serialus su nuolaida!</div>
+              <a href="https://netflix.com/" target="_blank" rel="noopener" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded font-semibold shadow">Shop Now</a>
+            </div>
+          </div>
         </div>
+        <!-- Populiarios kategorijos -->
+        <section class="mb-10">
+          <h3 class="text-2xl font-bold text-center mb-6">Populiarios kategorijos</h3>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/kategorijos/kvepalai.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Kvepalai</a>
+            <a href="/kategorijos/kosmetika.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Kosmetika</a>
+            <a href="/kategorijos/maistas.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Maistas</a>
+            <a href="/kategorijos/elektronika.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Elektronika</a>
+            <a href="/kategorijos/drabužiai.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Drabužiai</a>
+            <a href="/kategorijos/sportas.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-3 rounded-lg shadow text-lg transition">Sportas</a>
+          </div>
+        </section>
         <!-- Informacinė juosta per visą plotį -->
         <div class="bg-yellow-200 py-6 w-full">
           <div class="flex flex-col md:flex-row items-center justify-center gap-12 px-4">
