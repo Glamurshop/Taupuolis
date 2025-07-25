@@ -141,6 +141,11 @@
     <main class="py-8">
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="text-3xl font-semibold mb-4">Pagrindinis turinys</h2>
+        <!-- Banerių (dealų) gridas -->
+        <section>
+          <h3 class="text-2xl font-bold text-center mb-6">Šiandienos TOP pasiūlymai</h3>
+          <div id="deals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
         <!-- Carousel (slideris) -->
         <div id="default-carousel" class="relative w-full" data-carousel="slide">
           <!-- Carousel wrapper -->
@@ -285,6 +290,49 @@
           link.addEventListener('click', closeMenu);
         });
       }
+      // Banerių (dealų) gridas iš visi_pasiulymai.json
+      async function loadDeals() {
+        try {
+          const res = await fetch('visi_pasiulymai.json');
+          const deals = await res.json();
+          // Filtruojam tik galiojančius (iki šiandienos arba vėliau)
+          const now = new Date();
+          const validDeals = deals.filter(d => {
+            if (!d.terminas) return false;
+            const date = new Date(d.terminas);
+            return date >= now;
+          });
+          // Random 9
+          const shuffled = validDeals.sort(() => 0.5 - Math.random());
+          const selected = shuffled.slice(0, 9);
+          const grid = document.getElementById('deals-grid');
+          grid.innerHTML = selected.map(deal => `
+            <a href="/pasiulymai/${deal.pavadinimas
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/(^-|-$)/g, '')
+            }.html" class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden flex flex-col group">
+              <div class="relative">
+                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-200" />
+                <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-10 w-10 rounded bg-white p-1 shadow" />
+                <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded">VIP RETAILER</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="bg-orange-200 text-orange-800 text-xs font-bold px-2 py-0.5 rounded">EXCLUSIVE</span>
+                  <span class="ml-auto text-xs text-gray-500">Galioja iki: ${deal.terminas}</span>
+                </div>
+                <div class="font-bold uppercase text-sm mb-1">${deal.pardavejas}</div>
+                <div class="font-bold text-lg mb-1">${deal.pavadinimas}</div>
+                <div class="text-gray-700 text-sm flex-1">${deal.aprasymas}</div>
+              </div>
+            </a>
+          `).join('');
+        } catch (e) {
+          document.getElementById('deals-grid').innerHTML = '<div class="text-center text-gray-500">Nepavyko užkrauti pasiūlymų.</div>';
+        }
+      }
+      loadDeals();
     </script>
   </body>
 </html>
