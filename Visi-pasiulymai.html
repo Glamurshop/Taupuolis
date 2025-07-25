@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visi pasiūlymai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Visi pasiūlymai</h1>
+    <!-- Filtravimo mygtukai -->
+    <div id="filter-buttons" class="flex flex-wrap gap-2 mb-8"></div>
+    <!-- Deal kortelės -->
+    <div id="deals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  </div>
+  <script>
+    // Pavyzdinis deals.json (vietoje fetch, kad veiktų iškart)
+    const deals = [
+      {
+        "title": "Kelionė į Paryžių",
+        "description": "Savaitgalio kelionė dviems su nuolaida.",
+        "image_url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+        "vendor_logo": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Unsplash_logo.svg",
+        "redirect_url": "https://keliones.lt",
+        "category": "kelionės"
+      },
+      {
+        "title": "Veido kremas su vitaminu C",
+        "description": "Švytinčiai odai – išbandyk naują kremą.",
+        "image_url": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+        "vendor_logo": "",
+        "redirect_url": "https://grozis.lt",
+        "category": "grožis"
+      },
+      {
+        "title": "Nike Air Max",
+        "description": "Naujausia kolekcija su 15% nuolaida.",
+        "image_url": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80",
+        "vendor_logo": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg",
+        "redirect_url": "https://mada.lt",
+        "category": "madų prekės"
+      },
+      {
+        "title": "Išmanusis laikrodis",
+        "description": "Stebėk savo aktyvumą ir sveikatą.",
+        "image_url": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+        "vendor_logo": "",
+        "redirect_url": "https://technika.lt",
+        "category": "technika"
+      }
+    ];
+
+    // 1. Surinkti unikalias kategorijas
+    const categories = Array.from(new Set(deals.map(d => d.category)));
+
+    // 2. Sugeneruoti filtravimo mygtukus
+    const filterButtons = document.getElementById('filter-buttons');
+    filterButtons.innerHTML =
+      `<button data-category="all" class="filter-btn bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded transition">Visi</button>` +
+      categories.map(cat =>
+        `<button data-category="${cat}" class="filter-btn bg-gray-200 hover:bg-yellow-400 text-gray-900 font-bold px-4 py-2 rounded transition">${cat.charAt(0).toUpperCase() + cat.slice(1)}</button>`
+      ).join('');
+
+    // 3. Sugeneruoti deal korteles
+    const dealsGrid = document.getElementById('deals-grid');
+    dealsGrid.innerHTML = deals.map(deal => `
+      <div class="deal-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-category="${deal.category}">
+        <div class="relative">
+          <img src="${deal.image_url}" alt="${deal.title}" class="w-full h-40 object-cover" loading="lazy" />
+          ${deal.vendor_logo ? `<img src="${deal.vendor_logo}" alt="Vendor Logo" class="absolute top-3 left-3 h-10 w-10 rounded-full bg-white shadow border object-contain" style="image-rendering: auto;"/>` : ''}
+        </div>
+        <div class="flex-1 flex flex-col justify-between p-4">
+          <div>
+            <div class="font-bold text-lg mb-1">${deal.title}</div>
+            <div class="text-gray-700 mb-3">${deal.description}</div>
+          </div>
+          <a href="${deal.redirect_url}" target="_blank" rel="noopener"
+             class="inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded transition shadow text-center">
+            Shop Now
+          </a>
+        </div>
+      </div>
+    `).join('');
+
+    // 4. Filtravimo logika
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const cat = this.getAttribute('data-category');
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-yellow-500', 'text-white'));
+        this.classList.add('bg-yellow-500', 'text-white');
+        document.querySelectorAll('.deal-card').forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-category') === cat) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
