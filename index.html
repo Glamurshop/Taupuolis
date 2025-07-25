@@ -13,12 +13,60 @@
   <!-- Header -->
   <header class="py-4 px-6 flex justify-between items-center border-b">
     <h1 class="text-2xl font-bold text-yellow-600">Taupuolis.lt</h1>
+    <nav class="relative">
+      <div class="group inline-block relative">
+        <button
+          class="inline-flex items-center px-4 py-2 text-gray-700 hover:text-gray-900 focus:outline-none"
+        >
+          Kategorijos
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <!-- Dropdown čia! -->
+        <div class="absolute left-1/2 top-full mt-0 w-[800px] -translate-x-1/2
+        bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible
+        fade z-50">
+      
+        <div class="px-6 py-8 grid grid-cols-4 gap-8">
+          <div class="flex flex-col space-y-1">
+            <a href="/kategorijos/kvepalai.html"    class="block text-gray-800 hover:text-gray-900">Kvepalai</a>
+            <a href="/kategorijos/kosmetika.html"   class="block text-gray-800 hover:text-gray-900">Kosmetika</a>
+            <a href="/kategorijos/vaikams.html"     class="block text-gray-800 hover:text-gray-900">Vaikams</a>
+            <a href="/kategorijos/maistas.html"     class="block text-gray-800 hover:text-gray-900">Maistas</a>
+            <a href="/kategorijos/elektronika.html" class="block text-gray-800 hover:text-gray-900">Elektronika</a>
+          </div>
+          <div class="flex flex-col space-y-1">
+            <a href="/kategorijos/avalynė.html"     class="block text-gray-800 hover:text-gray-900">Avalynė</a>
+            <a href="/kategorijos/drabužiai.html"   class="block text-gray-800 hover:text-gray-900">Drabužiai</a>
+            <a href="/kategorijos/gyvūnams.html"    class="block text-gray-800 hover:text-gray-900">Gyvūnams</a>
+            <a href="/kategorijos/sportas.html"     class="block text-gray-800 hover:text-gray-900">Sportas</a>
+            <a href="/kategorijos/grožis.html"      class="block text-gray-800 hover:text-gray-900">Grožis</a>
+          </div>
+          <div class="flex flex-col space-y-1">
+            <a href="/kategorijos/sveikata.html"    class="block text-gray-800 hover:text-gray-900">Sveikata</a>
+            <a href="/kategorijos/buitis.html"      class="block text-gray-800 hover:text-gray-900">Buitis</a>
+            <a href="/kategorijos/gėrimai.html"     class="block text-gray-800 hover:text-gray-900">Gėrimai</a>
+            <a href="/kategorijos/paslaugos.html"   class="block text-gray-800 hover:text-gray-900">Paslaugos</a>
+            <a href="/kategorijos/aksesuarai.html"  class="block text-gray-800 hover:text-gray-900">Aksesuarai</a>
+          </div>
+          <div class="flex flex-col space-y-1">
+            <a href="/kategorijos/automobiliai.html"class="block text-gray-800 hover:text-gray-900">Automobiliai</a>
+            <a href="/kategorijos/technika.html"    class="block text-gray-800 hover:text-gray-900">Technika</a>
+            <a href="/kategorijos/žaislai.html"     class="block text-gray-800 hover:text-gray-900">Žaislai</a>
+            <a href="/kategorijos/knygos.html"      class="block text-gray-800 hover:text-gray-900">Knygos</a>
+          </div>
+        </div>
+      </div>
+    </nav>
     <nav class="space-x-4 text-sm">
       <a href="pardavejai.html" class="text-sm text-gray-700 hover:underline">Pardavėjai</a>
       <a href="kontaktai.html" class="text-sm text-gray-700 hover:underline">Kontaktai</a>
       <a href="#" class="hover:underline">Prisijungti</a>
       <a href="#" class="hover:underline">Registruotis</a>
     </nav>
+    
   </header>
 
   <!-- Main turinys -->
