@@ -6,10 +6,10 @@
       <input type="text" placeholder="Ieškoti pardavėjo..." class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:ring-2 focus:ring-yellow-400 focus:outline-none text-gray-900 bg-white shadow-sm" />
     </form>
     <div class="flex items-center space-x-6">
-      <a href="/Visi-pasiulymai.html" class="text-gray-800 hover:text-yellow-600 font-semibold transition hidden md:inline">Visi pasiūlymai</a>
-      <a href="/pardavejai.html" class="text-gray-800 hover:text-yellow-600 font-semibold transition hidden md:inline">Visi pardavėjai</a>
-      <a href="/auth/prisijungti.html" class="text-gray-800 hover:text-yellow-600 font-semibold transition hidden md:inline">Prisijungti</a>
-      <a href="/auth/registruotis.html" class="text-gray-800 hover:text-yellow-600 font-semibold transition hidden md:inline">Registruotis</a>
+      <a href="/Visi-pasiulymai.html" class="text-gray-800 hover:text-yellow-600 font-semibold transition hidden md:inline" style="display:none;" id="nav-deals">Visi pasiūlymai</a>
+      <a href="/pardavejai.html" class="text-gray-800 hover:text-yellow-600 font-semibold transition hidden md:inline" style="display:none;" id="nav-vendors">Visi pardavėjai</a>
+      <a href="/auth/prisijungti.html" class="text-gray-800 hover:text-yellow-600 font-semibold transition hidden md:inline" style="display:none;" id="nav-login">Prisijungti</a>
+      <a href="/auth/registruotis.html" class="text-gray-800 hover:text-yellow-600 font-semibold transition hidden md:inline" style="display:none;" id="nav-register">Registruotis</a>
       <!-- Hamburger mygtukas tik mobile -->
       <button id="menu-toggle" class="md:hidden p-2 rounded focus:outline-none" aria-label="Atidaryti meniu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -151,4 +151,15 @@
       link.addEventListener('click', closeMenu);
     });
   }
+
+  // Užtikrinu, kad nuorodos būtų matomos tik desktop
+  function updateNavLinksVisibility() {
+    const isDesktop = window.innerWidth >= 768;
+    document.getElementById('nav-deals').style.display = isDesktop ? 'inline' : 'none';
+    document.getElementById('nav-vendors').style.display = isDesktop ? 'inline' : 'none';
+    document.getElementById('nav-login').style.display = isDesktop ? 'inline' : 'none';
+    document.getElementById('nav-register').style.display = isDesktop ? 'inline' : 'none';
+  }
+  window.addEventListener('resize', updateNavLinksVisibility);
+  window.addEventListener('DOMContentLoaded', updateNavLinksVisibility);
 </script> 
