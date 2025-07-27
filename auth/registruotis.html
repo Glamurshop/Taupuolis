@@ -5,7 +5,7 @@
   <title>Registruotis - Taupuolis.lt</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+<body class="bg-gray-50 min-h-screen">
   <div id="header-placeholder"></div>
   <script>
     fetch('/header.html')
@@ -25,15 +25,17 @@
         });
       });
   </script>
-  <div class="bg-white p-8 rounded shadow max-w-md w-full">
-    <h1 class="text-2xl font-bold mb-6">Registruotis</h1>
-    <form>
-      <input type="text" placeholder="Vardas" class="w-full mb-4 px-4 py-2 border rounded" required>
-      <input type="email" placeholder="El. paštas" class="w-full mb-4 px-4 py-2 border rounded" required>
-      <input type="password" placeholder="Slaptažodis" class="w-full mb-4 px-4 py-2 border rounded" required>
-      <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600">Registruotis</button>
-    </form>
-    <p class="mt-4 text-sm">Jau turite paskyrą? <a href="prisijungti.html" class="text-yellow-600 hover:underline">Prisijungti</a></p>
-  </div>
+  <main class="pt-32 flex justify-center">
+    <div class="bg-white p-8 rounded shadow max-w-md w-full">
+      <h1 class="text-2xl font-bold mb-6">Registruotis</h1>
+      <form>
+        <input type="text" placeholder="Vardas" class="w-full mb-4 px-4 py-2 border rounded" required>
+        <input type="email" placeholder="El. paštas" class="w-full mb-4 px-4 py-2 border rounded" required>
+        <input type="password" placeholder="Slaptažodis" class="w-full mb-4 px-4 py-2 border rounded" required>
+        <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600">Registruotis</button>
+      </form>
+      <p class="mt-4 text-sm">Jau turite paskyrą? <a href="prisijungti.html" class="text-yellow-600 hover:underline">Prisijungti</a></p>
+    </div>
+  </main>
 </body>
 </html>

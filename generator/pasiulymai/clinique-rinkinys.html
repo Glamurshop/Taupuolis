@@ -7,13 +7,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
-  <header class="bg-white border-b p-4 flex items-center justify-between">
-    <a href="/index.html" class="text-xl font-bold text-yellow-600">Taupuolis.lt</a>
-    <a href="/pardavejai/douglas.html" class="flex items-center gap-2 text-sm text-gray-700 hover:underline">
-      <img src="https://www.savascentras.lt/wp-content/uploads/2018/06/Douglas-logo.jpg" alt="Douglas logo" class="h-8 w-8 rounded-full border" />
-      Douglas
-    </a>
-  </header>
+  <div id="header-placeholder"></div>
+  <script>
+    fetch('/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+  </script>
   <main class="flex-1 flex items-center justify-center py-8">
     <div class="bg-white rounded shadow p-8 max-w-2xl w-full">
       <div class="flex flex-col md:flex-row gap-8">
@@ -27,7 +28,7 @@
               <a href="/kategorijos/vaikams.html" class="text-yellow-700 hover:underline">Vaikams</a>
             </div>
             <div class="mb-2">
-              <span class="font-semibold">Galioja iki:</span> 2025-07-28
+              <span class="font-semibold">Galioja iki:</span> 2025-07-27
             </div>
             <div class="mb-2">
               <span class="font-semibold">Nuolaidos kodas:</span>
@@ -47,4 +48,4 @@
     © 2025 Taupuolis.lt – Visos teisės saugomos.
   </footer>
 </body>
-</html>
+</html> 
