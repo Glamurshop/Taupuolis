@@ -115,64 +115,8 @@
             </div>
           </div>
         </div>
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-3xl font-semibold">Šiandienos TOP pasiūlymai</h2>
-          <div id="loading-indicator" class="flex items-center gap-2 text-sm text-gray-500">
-            <div class="w-4 h-4 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
-            <span>Kraunama...</span>
-          </div>
-        </div>
-        <div id="real-deals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Placeholder'iai kol kraunasi -->
-          <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-            <div class="w-full h-40 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-pulse"></div>
-            <div class="p-4">
-              <div class="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded mb-1 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
-            </div>
-          </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-            <div class="w-full h-40 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-pulse"></div>
-            <div class="p-4">
-              <div class="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded mb-1 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
-            </div>
-          </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-            <div class="w-full h-40 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-pulse"></div>
-            <div class="p-4">
-              <div class="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded mb-1 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
-            </div>
-          </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-            <div class="w-full h-40 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-pulse"></div>
-            <div class="p-4">
-              <div class="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded mb-1 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
-            </div>
-          </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-            <div class="w-full h-40 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-pulse"></div>
-            <div class="p-4">
-              <div class="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded mb-1 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
-            </div>
-          </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
-            <div class="w-full h-40 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-pulse"></div>
-            <div class="p-4">
-              <div class="h-4 bg-gray-200 rounded mb-2 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded mb-1 animate-pulse"></div>
-              <div class="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
-            </div>
-          </div>
-        </div>
+        <h2 class="text-3xl font-semibold mb-4">Šiandienos TOP pasiūlymai</h2>
+        <div id="real-deals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         <!-- Slideris su realiais dealais po grido -->
         <div class="mt-8 mb-8">
           <div id="real-deals-slider" class="relative w-full h-[220px] rounded-2xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center">
@@ -316,18 +260,12 @@
         // Rūšiuojam pagal galiojimo datą (artimiausi viršuje)
         deals.sort((a, b) => new Date(a.terminas) - new Date(b.terminas));
         
-        // Paslėpiame loading indikatorių po visų elementų
-        const loadingIndicator = document.getElementById('loading-indicator');
-        
-        // Krauname su vėlavimu ir animacijomis
-        deals.forEach((deal, index) => {
-          setTimeout(() => {
-            const end = new Date(deal.terminas);
-            const isLastDay = end.toDateString() === now.toDateString() || end.toDateString() === tomorrow.toDateString();
-            
-            const dealElement = document.createElement('div');
-            dealElement.className = 'bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col transform scale-95 opacity-0 transition-all duration-500 ease-out';
-            dealElement.innerHTML = `
+        grid.innerHTML = deals.map(deal => {
+          // Ar paskutinė diena?
+          const end = new Date(deal.terminas);
+          const isLastDay = end.toDateString() === now.toDateString() || end.toDateString() === tomorrow.toDateString();
+          return `
+            <div class="bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col">
               <div class="relative">
                 <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover" loading="lazy">
                 <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-10 w-10 bg-white rounded shadow p-1">
@@ -345,36 +283,9 @@
                 <div class="font-bold text-lg mb-1">${deal.pavadinimas}</div>
                 <div class="text-gray-700 text-sm flex-1">${deal.aprasymas}</div>
               </div>
-            `;
-            
-            // Pašaliname placeholder'į ir pridedame tikrą elementą
-            const placeholders = grid.querySelectorAll('.animate-pulse');
-            if (placeholders[index]) {
-              placeholders[index].replaceWith(dealElement);
-            } else {
-              grid.appendChild(dealElement);
-            }
-            
-            // Pridedame animaciją po 100ms
-            setTimeout(() => {
-              dealElement.classList.remove('scale-95', 'opacity-0');
-              dealElement.classList.add('scale-100', 'opacity-100');
-            }, 100);
-            
-            // Paslėpiame loading indikatorių po paskutinio elemento
-            if (index === deals.length - 1) {
-              setTimeout(() => {
-                if (loadingIndicator) {
-                  loadingIndicator.style.opacity = '0';
-                  setTimeout(() => {
-                    loadingIndicator.style.display = 'none';
-                  }, 300);
-                }
-              }, 600);
-            }
-            
-          }, index * 500); // 500ms vėlavimas tarp elementų (padidintas iš 200ms)
-        });
+            </div>
+          `;
+        }).join('');
       }
       
 
