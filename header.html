@@ -103,4 +103,51 @@
       </div>
     </div>
   </div>
-</nav> 
+</nav>
+<!-- Hamburger mygtukas tik mobile -->
+<button id="menu-toggle" class="md:hidden p-2 rounded focus:outline-none">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+  </svg>
+</button>
+<!-- Overlay ir drawer meniu mobilui -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-40 z-50 hidden md:hidden"></div>
+<nav id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-full h-full bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 md:hidden">
+  <button id="menu-close" class="absolute top-4 right-4 p-2">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+  <div class="flex flex-col space-y-4 px-6 mt-16">
+    <a href="/pardavejai.html" class="py-2 border-b">Visi pardavėjai</a>
+    <a href="/auth/prisijungti.html" class="py-2 border-b">Prisijungti</a>
+    <a href="/auth/registruotis.html" class="py-2 border-b">Registruotis</a>
+    <a href="#" class="py-2 border-b">Nuolaidos garantija</a>
+    <a href="#" class="py-2 border-b">Taupuolio gidas</a>
+    <a href="#" class="py-2 border-b">Populiaru</a>
+    <a href="#" class="py-2 border-b">Kategorijos</a>
+  </div>
+</nav>
+<script>
+  // Hamburger meniu JS
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileOverlay = document.getElementById('mobile-overlay');
+  const menuClose = document.getElementById('menu-close');
+  function openMenu() {
+    mobileMenu.classList.remove('translate-x-full');
+    mobileOverlay.classList.remove('hidden');
+  }
+  function closeMenu() {
+    mobileMenu.classList.add('translate-x-full');
+    mobileOverlay.classList.add('hidden');
+  }
+  if(menuToggle) menuToggle.addEventListener('click', openMenu);
+  if(menuClose) menuClose.addEventListener('click', closeMenu);
+  if(mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+  if(mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+</script> 
