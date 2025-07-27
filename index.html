@@ -140,6 +140,21 @@
       © 2025 Taupuolis.lt – Visos teisės saugomos.
     </footer>
     <script>
+      // Paveikslėlių optimizacijos nustatymai
+      const imageOptimization = {
+        // Lazy loading
+        lazyLoad: true,
+        // Placeholder dydžiai
+        placeholderWidth: 300,
+        placeholderHeight: 300,
+        // Kraunamų paveikslėlių prioritetas
+        priorityImages: [
+          'https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-10.png',
+          'https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-11.png',
+          'https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-12.png'
+        ]
+      };
+
       // Pardavėjų failų sąrašas
       const vendors = [
         { name: 'Douglas', url: '/pardavejai/douglas.html' },
@@ -250,7 +265,7 @@
           return `
             <div class="bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col">
               <div class="relative">
-                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover">
+                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover" loading="lazy" onload="this.style.opacity='1'" style="opacity: 0; transition: opacity 0.3s;">
                 <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-10 w-10 bg-white rounded shadow p-1">
                 ${(deal.vip || deal.vip_retailer) ? `
                   <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 shadow">
@@ -270,6 +285,17 @@
           `;
         }).join('');
       }
+      // Optimizuotas paveikslėlių kraunamą
+      function preloadPriorityImages() {
+        imageOptimization.priorityImages.forEach(src => {
+          const img = new Image();
+          img.src = src;
+        });
+      }
+      
+      // Krauname prioritetinius paveikslėlius
+      preloadPriorityImages();
+      
       renderRealDealsGrid();
 
       // Slideris su realiais dealais
