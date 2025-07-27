@@ -140,13 +140,10 @@
   </div>
 </nav> 
 <script>
-  // Pardavėjų failų sąrašas (universalus)
-  const vendors = [
-    { name: 'Douglas', url: '/pardavejai/douglas.html' },
-    { name: 'Glamur', url: '/pardavejai/glamur.html' },
-    { name: 'Perfumer', url: '/pardavejai/perfumer.html' },
-    // ... pridėk kitus, jei reikia
-  ];
+  // Dinamiškai užkraunamas pardavėjų sąrašas
+  let vendors = [];
+  fetch('/vendors.json').then(r => r.json()).then(data => { vendors = data; });
+
   function renderSearchResults(value, resultsEl) {
     const valueLower = value.trim().toLowerCase();
     if (!valueLower) {
@@ -164,13 +161,19 @@
     if (!vendorMatches.length) {
       html = '<div class="px-4 py-2 text-gray-500">Nieko nerasta</div>' + html;
     }
+    // Papildomi linkai
+    html += '<div class="px-4 py-2 text-xs text-gray-500">Kita</div>';
+    html += `<a href="/naujienlaiskis.html" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Prenumeruok naujienlaiškį</a>`;
+    html += `<a href="/kategorijos/" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Visos kategorijos</a>`;
+    html += `<a href="/visi_pasiulymai.json" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Visi pasiūlymai (JSON)</a>`;
     resultsEl.innerHTML = html;
     resultsEl.classList.remove('hidden');
   }
   // Paieška desktopui
   const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
-  if (searchInput && searchResults) {
+  const searchForm = document.getElementById('search-form');
+  if (searchInput && searchResults && searchForm) {
     searchInput.addEventListener('input', function() {
       renderSearchResults(this.value, searchResults);
     });
@@ -180,11 +183,17 @@
     searchInput.addEventListener('focus', function() {
       if (this.value.trim()) searchResults.classList.remove('hidden');
     });
+    searchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const q = searchInput.value.trim();
+      if(q) window.location.href = '/paieska?q=' + encodeURIComponent(q);
+    });
   }
   // Paieška mobilui
   const searchInputMobile = document.getElementById('search-input-mobile');
   const searchResultsMobile = document.getElementById('search-results-mobile');
-  if (searchInputMobile && searchResultsMobile) {
+  const searchFormMobile = document.getElementById('search-form-mobile');
+  if (searchInputMobile && searchResultsMobile && searchFormMobile) {
     searchInputMobile.addEventListener('input', function() {
       renderSearchResults(this.value, searchResultsMobile);
     });
@@ -193,6 +202,11 @@
     });
     searchInputMobile.addEventListener('focus', function() {
       if (this.value.trim()) searchResultsMobile.classList.remove('hidden');
+    });
+    searchFormMobile.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const q = searchInputMobile.value.trim();
+      if(q) window.location.href = '/paieska?q=' + encodeURIComponent(q);
     });
   }
 </script> 
