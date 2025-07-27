@@ -13,7 +13,7 @@
       .then(data => {
         const placeholder = document.getElementById('header-placeholder');
         placeholder.innerHTML = data;
-        // Paleidžiam visus <script> tagus iš header
+        // Paleidžiam visus <script> tagus iš header (jei yra)
         placeholder.querySelectorAll('script').forEach(oldScript => {
           const newScript = document.createElement('script');
           if (oldScript.src) {
@@ -23,6 +23,29 @@
           }
           oldScript.replaceWith(newScript);
         });
+        // Hamburger meniu JS
+        setTimeout(function() {
+          const menuToggle = document.getElementById('menu-toggle');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const mobileOverlay = document.getElementById('mobile-overlay');
+          const menuClose = document.getElementById('menu-close');
+          function openMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileOverlay.classList.remove('hidden');
+          }
+          function closeMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            mobileOverlay.classList.add('hidden');
+          }
+          if(menuToggle) menuToggle.onclick = openMenu;
+          if(menuClose) menuClose.onclick = closeMenu;
+          if(mobileOverlay) mobileOverlay.onclick = closeMenu;
+          if(mobileMenu) {
+            mobileMenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', closeMenu);
+            });
+          }
+        }, 0);
       });
   </script>
   <main class="pt-32 flex justify-center">
