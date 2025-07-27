@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paieška – Taupuolis.lt</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div id="header-placeholder"></div>
+  <script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const newScript = document.createElement('script');
+        if (oldScript.src) {
+          newScript.src = oldScript.src;
+        } else {
+          newScript.textContent = oldScript.textContent;
+        }
+        oldScript.replaceWith(newScript);
+      });
+      setTimeout(function() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const menuClose = document.getElementById('menu-close');
+        function openMenu() {
+          mobileMenu.classList.remove('translate-x-full');
+          mobileOverlay.classList.remove('hidden');
+        }
+        function closeMenu() {
+          mobileMenu.classList.add('translate-x-full');
+          mobileOverlay.classList.add('hidden');
+        }
+        if(menuToggle) menuToggle.onclick = openMenu;
+        if(menuClose) menuClose.onclick = closeMenu;
+        if(mobileOverlay) mobileOverlay.onclick = closeMenu;
+        if(mobileMenu) {
+          mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+          });
+        }
+      }, 0);
+    });
+  </script>
+  <main class="max-w-2xl mx-auto pt-32 px-4">
+    <h1 class="text-3xl font-bold mb-6">Paieškos rezultatai</h1>
+    <div id="search-results-list" class="bg-white rounded shadow p-6"></div>
+  </main>
+  <script>
+    // Gauti q iš URL
+    function getQueryParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name) || '';
+    }
+    const q = getQueryParam('q');
+    document.title = `Paieška: ${q} – Taupuolis.lt`;
+    // Dinamiškai užkrauti vendors.json ir parodyti rezultatus
+    fetch('/vendors.json').then(r => r.json()).then(vendors => {
+      const results = vendors.filter(v => v.name.toLowerCase().includes(q.trim().toLowerCase()));
+      let html = '';
+      if (results.length) {
+        html += '<div class="mb-4 text-gray-700">Rasta pardavėjų: <b>' + results.length + '</b></div>';
+        html += results.map(v => `<a href="${v.url}" class="block px-4 py-3 border-b hover:bg-gray-50 text-lg">${v.name}</a>`).join('');
+      } else {
+        html += '<div class="mb-4 text-gray-500">Nieko nerasta pagal užklausą.</div>';
+      }
+      // Papildomi linkai
+      html += '<div class="mt-8 text-xs text-gray-500">Kita</div>';
+      html += `<a href="/naujienlaiskis.html" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Prenumeruok naujienlaiškį</a>`;
+      html += `<a href="/kategorijos/" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Visos kategorijos</a>`;
+      html += `<a href="/visi_pasiulymai.json" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Visi pasiūlymai (JSON)</a>`;
+      document.getElementById('search-results-list').innerHTML = html;
+    });
+  </script>
+</body>
+</html> 

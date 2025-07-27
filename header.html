@@ -140,15 +140,20 @@
   </div>
 </nav> 
 <script>
-  // Dinamiškai užkraunamas pardavėjų sąrašas
-  let vendors = [];
-  fetch('/vendors.json').then(r => r.json()).then(data => { vendors = data; });
+  let vendors = null;
+  let vendorsLoaded = false;
+  fetch('/vendors.json').then(r => r.json()).then(data => { vendors = data; vendorsLoaded = true; });
 
   function renderSearchResults(value, resultsEl) {
     const valueLower = value.trim().toLowerCase();
     if (!valueLower) {
       resultsEl.innerHTML = '';
       resultsEl.classList.add('hidden');
+      return;
+    }
+    if (!vendorsLoaded) {
+      resultsEl.innerHTML = '<div class="px-4 py-2 text-gray-500">Kraunama...</div>';
+      resultsEl.classList.remove('hidden');
       return;
     }
     // Pardavėjai
@@ -181,12 +186,12 @@
       setTimeout(() => searchResults.classList.add('hidden'), 150);
     });
     searchInput.addEventListener('focus', function() {
-      if (this.value.trim()) searchResults.classList.remove('hidden');
+      if (this.value.trim()) renderSearchResults(this.value, searchResults);
     });
     searchForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const q = searchInput.value.trim();
-      if(q) window.location.href = '/paieska?q=' + encodeURIComponent(q);
+      if(q) window.location.href = '/paieska.html?q=' + encodeURIComponent(q);
     });
   }
   // Paieška mobilui
@@ -201,12 +206,12 @@
       setTimeout(() => searchResultsMobile.classList.add('hidden'), 150);
     });
     searchInputMobile.addEventListener('focus', function() {
-      if (this.value.trim()) searchResultsMobile.classList.remove('hidden');
+      if (this.value.trim()) renderSearchResults(this.value, searchResultsMobile);
     });
     searchFormMobile.addEventListener('submit', function(e) {
       e.preventDefault();
       const q = searchInputMobile.value.trim();
-      if(q) window.location.href = '/paieska?q=' + encodeURIComponent(q);
+      if(q) window.location.href = '/paieska.html?q=' + encodeURIComponent(q);
     });
   }
 </script> 
