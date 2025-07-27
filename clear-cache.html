@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Išvalyti kešą - Taupuolis.lt</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT">
+    <script>
+        // Force HTTPS redirect
+        if (window.location.protocol === 'http:') {
+            window.location.href = window.location.href.replace('http:', 'https:');
+        }
+        
+        // Clear all caches
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                for (let name of names) {
+                    caches.delete(name);
+                }
+            });
+        }
+        
+        // Clear localStorage and sessionStorage
+        localStorage.clear();
+        sessionStorage.clear();
+        
+        // Redirect to main page after cache clear
+        setTimeout(function() {
+            window.location.href = 'https://taupuolis.lt/';
+        }, 1000);
+    </script>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
+    <h1>Išvalomas kešas...</h1>
+    <p>Palaukite, kol naršyklė išvalys kešą ir nukreips į saugią svetainę.</p>
+    <div style="margin: 20px;">
+        <div style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+    </div>
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</body>
+</html> 

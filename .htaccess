@@ -1,7 +1,10 @@
-# Force HTTPS
+# Force HTTPS with HSTS
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# HSTS (HTTP Strict Transport Security)
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
 # Security headers
 Header always set X-Content-Type-Options nosniff
