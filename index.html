@@ -115,7 +115,13 @@
             </div>
           </div>
         </div>
-        <h2 class="text-3xl font-semibold mb-4">Šiandienos TOP pasiūlymai</h2>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-3xl font-semibold">Šiandienos TOP pasiūlymai</h2>
+          <div id="loading-indicator" class="flex items-center gap-2 text-sm text-gray-500">
+            <div class="w-4 h-4 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            <span>Kraunama...</span>
+          </div>
+        </div>
         <div id="real-deals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <!-- Placeholder'iai kol kraunasi -->
           <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
@@ -310,14 +316,14 @@
         // Rūšiuojam pagal galiojimo datą (artimiausi viršuje)
         deals.sort((a, b) => new Date(a.terminas) - new Date(b.terminas));
         
-        // Krauname su vėlavimu
+        // Krauname su vėlavimu ir animacijomis
         deals.forEach((deal, index) => {
           setTimeout(() => {
             const end = new Date(deal.terminas);
             const isLastDay = end.toDateString() === now.toDateString() || end.toDateString() === tomorrow.toDateString();
             
             const dealElement = document.createElement('div');
-            dealElement.className = 'bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col';
+            dealElement.className = 'bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col transform scale-95 opacity-0 transition-all duration-500 ease-out';
             dealElement.innerHTML = `
               <div class="relative">
                 <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover" loading="lazy">
@@ -345,7 +351,14 @@
             } else {
               grid.appendChild(dealElement);
             }
-          }, index * 200); // 200ms vėlavimas tarp elementų
+            
+            // Pridedame animaciją po 100ms
+            setTimeout(() => {
+              dealElement.classList.remove('scale-95', 'opacity-0');
+              dealElement.classList.add('scale-100', 'opacity-100');
+            }, 100);
+            
+          }, index * 500); // 500ms vėlavimas tarp elementų (padidintas iš 200ms)
         });
       }
       
