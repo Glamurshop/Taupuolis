@@ -53,6 +53,7 @@ def main():
     all_deals = []
     categories = {}
     vendors_json = {}
+    all_vendors = []
 
     for sheet_meta in sheets:
         sheet_id = sheet_meta['id']
@@ -135,6 +136,11 @@ def main():
         vendor_json_path = os.path.join(OUT_VENDOR_DIR, f"{pardavejas_url}.json")
         with open(vendor_json_path, "w", encoding="utf-8") as f:
             json.dump(vendor_deals, f, ensure_ascii=False, indent=2)
+        # Pridėti į bendrą vendors sąrašą
+        all_vendors.append({
+            "name": pardavejas,
+            "url": f"/pardavejai/{pardavejas_url}.html"
+        })
 
     # Sugeneruoti kategorijų puslapius ir JSON
     for kategorija_url, kat in categories.items():
@@ -154,6 +160,9 @@ def main():
     # Bendras visų dealų JSON
     with open("visi_pasiulymai.json", "w", encoding="utf-8") as f:
         json.dump(all_deals, f, ensure_ascii=False, indent=2)
+    # Sugeneruoti vendors.json visiems pardavėjams
+    with open("vendors.json", "w", encoding="utf-8") as f:
+        json.dump(all_vendors, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
     main()
