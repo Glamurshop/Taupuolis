@@ -1,0 +1,4 @@
+Contact: mailto:security@taupuolis.lt
+Expires: 2026-01-27T00:00:00.000Z
+Preferred-Languages: lt, en
+Canonical: https://taupuolis.lt/.well-known/security.txt 

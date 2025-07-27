@@ -1,0 +1,13 @@
+/* TEAM */
+    Developer: Taupuolis.lt team
+    Contact: info@taupuolis.lt
+    From: Lithuania
+
+/* SITE */
+    Last update: 2025/01/27
+    Language: Lithuanian
+    Doctype: HTML5
+    IDE: Visual Studio Code
+    Standards: HTML5, CSS3, JavaScript
+    Components: Tailwind CSS, Flowbite
+    Software: Python, Jinja2 
