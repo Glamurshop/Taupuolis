@@ -15,7 +15,18 @@
       fetch('/header.html')
         .then(response => response.text())
         .then(data => {
-          document.getElementById('header-placeholder').innerHTML = data;
+          const placeholder = document.getElementById('header-placeholder');
+          placeholder.innerHTML = data;
+          // Paleidžiam visus <script> tagus iš header
+          placeholder.querySelectorAll('script').forEach(oldScript => {
+            const newScript = document.createElement('script');
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            oldScript.replaceWith(newScript);
+          });
         });
     </script>
     <!-- Main turinys -->
