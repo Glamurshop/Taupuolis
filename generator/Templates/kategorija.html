@@ -12,7 +12,39 @@
     fetch('/header.html')
       .then(response => response.text())
       .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
+        const placeholder = document.getElementById('header-placeholder');
+        placeholder.innerHTML = data;
+        // Paleidžiam visus <script> tagus iš header
+        placeholder.querySelectorAll('script').forEach(oldScript => {
+          const newScript = document.createElement('script');
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+          } else {
+            newScript.textContent = oldScript.textContent;
+          }
+          oldScript.replaceWith(newScript);
+        });
+        // Hamburger meniu JS
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const menuClose = document.getElementById('menu-close');
+        function openMenu() {
+          mobileMenu.classList.remove('translate-x-full');
+          mobileOverlay.classList.remove('hidden');
+        }
+        function closeMenu() {
+          mobileMenu.classList.add('translate-x-full');
+          mobileOverlay.classList.add('hidden');
+        }
+        if(menuToggle) menuToggle.onclick = openMenu;
+        if(menuClose) menuClose.onclick = closeMenu;
+        if(mobileOverlay) mobileOverlay.onclick = closeMenu;
+        if(mobileMenu) {
+          mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+          });
+        }
       });
   </script>
   <main class="flex-1 flex flex-col items-center py-8">
