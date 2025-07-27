@@ -316,6 +316,9 @@
         // Rūšiuojam pagal galiojimo datą (artimiausi viršuje)
         deals.sort((a, b) => new Date(a.terminas) - new Date(b.terminas));
         
+        // Paslėpiame loading indikatorių po visų elementų
+        const loadingIndicator = document.getElementById('loading-indicator');
+        
         // Krauname su vėlavimu ir animacijomis
         deals.forEach((deal, index) => {
           setTimeout(() => {
@@ -357,6 +360,18 @@
               dealElement.classList.remove('scale-95', 'opacity-0');
               dealElement.classList.add('scale-100', 'opacity-100');
             }, 100);
+            
+            // Paslėpiame loading indikatorių po paskutinio elemento
+            if (index === deals.length - 1) {
+              setTimeout(() => {
+                if (loadingIndicator) {
+                  loadingIndicator.style.opacity = '0';
+                  setTimeout(() => {
+                    loadingIndicator.style.display = 'none';
+                  }, 300);
+                }
+              }, 600);
+            }
             
           }, index * 500); // 500ms vėlavimas tarp elementų (padidintas iš 200ms)
         });
