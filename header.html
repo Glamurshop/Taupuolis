@@ -142,8 +142,28 @@
 <script>
   let vendors = null;
   let vendorsLoaded = false;
-  fetch('/vendors.json').then(r => r.json()).then(data => { vendors = data; vendorsLoaded = true; });
-
+  const searchInput = document.getElementById('search-input');
+  const searchInputMobile = document.getElementById('search-input-mobile');
+  if (searchInput) searchInput.disabled = true;
+  if (searchInputMobile) searchInputMobile.disabled = true;
+  // Užkrauti vendors.json
+  fetch('/vendors.json').then(r => r.json()).then(data => {
+    if (Array.isArray(data) && data.length > 0) {
+      vendors = data;
+      vendorsLoaded = true;
+      if (searchInput) searchInput.disabled = false;
+      if (searchInputMobile) searchInputMobile.disabled = false;
+    }
+  }).catch(() => {
+    vendorsLoaded = false;
+  });
+  // Jei vendors.json neįkraunamas per 3 sek., rodyti klaidą
+  setTimeout(() => {
+    if (!vendorsLoaded) {
+      if (searchInput) searchInput.placeholder = 'Nepavyko užkrauti pardavėjų';
+      if (searchInputMobile) searchInputMobile.placeholder = 'Nepavyko užkrauti pardavėjų';
+    }
+  }, 3000);
   function renderSearchResults(value, resultsEl) {
     const valueLower = value.trim().toLowerCase();
     if (!valueLower) {
@@ -175,7 +195,6 @@
     resultsEl.classList.remove('hidden');
   }
   // Paieška desktopui
-  const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
   const searchForm = document.getElementById('search-form');
   if (searchInput && searchResults && searchForm) {
@@ -191,11 +210,10 @@
     searchForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const q = searchInput.value.trim();
-      if(q) window.location.href = '/paieska.html?q=' + encodeURIComponent(q);
+      if(q && vendorsLoaded) window.location.href = '/paieska.html?q=' + encodeURIComponent(q);
     });
   }
   // Paieška mobilui
-  const searchInputMobile = document.getElementById('search-input-mobile');
   const searchResultsMobile = document.getElementById('search-results-mobile');
   const searchFormMobile = document.getElementById('search-form-mobile');
   if (searchInputMobile && searchResultsMobile && searchFormMobile) {
@@ -211,7 +229,7 @@
     searchFormMobile.addEventListener('submit', function(e) {
       e.preventDefault();
       const q = searchInputMobile.value.trim();
-      if(q) window.location.href = '/paieska.html?q=' + encodeURIComponent(q);
+      if(q && vendorsLoaded) window.location.href = '/paieska.html?q=' + encodeURIComponent(q);
     });
   }
 </script> 
