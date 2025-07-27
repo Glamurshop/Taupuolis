@@ -26,10 +26,10 @@
         localStorage.clear();
         sessionStorage.clear();
         
-        // Redirect to main page after cache clear
-        setTimeout(function() {
-            window.location.href = 'https://taupuolis.lt/';
-        }, 1000);
+               // Redirect to main page after cache clear
+       setTimeout(function() {
+           window.location.href = 'https://taupuolis.lt/?v=' + Date.now();
+       }, 1000);
     </script>
 </head>
 <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">

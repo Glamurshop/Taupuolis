@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priverstinis HTTPS - Taupuolis.lt</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT">
+    <script>
+        // Force HTTPS redirect
+        if (window.location.protocol === 'http:') {
+            window.location.replace('https://taupuolis.lt/');
+        }
+        
+        // Check SSL status
+        function checkSSL() {
+            const isSecure = window.location.protocol === 'https:';
+            const statusEl = document.getElementById('ssl-status');
+            const infoEl = document.getElementById('ssl-info');
+            
+            if (isSecure) {
+                statusEl.textContent = '✅ Saugus ryšys (HTTPS)';
+                statusEl.className = 'text-green-600 font-bold';
+                infoEl.innerHTML = `
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                        <h3 class="text-green-800 font-semibold mb-2">Svetainė saugi!</h3>
+                        <p class="text-green-700 text-sm">Jūsų svetainė naudoja saugų HTTPS ryšį.</p>
+                        <p class="text-green-600 text-xs mt-2">SSL sertifikatas: Aktyvus</p>
+                    </div>
+                `;
+            } else {
+                statusEl.textContent = '❌ Nesaugus ryšys (HTTP)';
+                statusEl.className = 'text-red-600 font-bold';
+                infoEl.innerHTML = `
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                        <h3 class="text-red-800 font-semibold mb-2">Svetainė nesaugi!</h3>
+                        <p class="text-red-700 text-sm">Jūsų svetainė vis dar naudoja nesaugų HTTP ryšį.</p>
+                        <p class="text-red-600 text-xs mt-2">SSL sertifikatas: Neaktyvus</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Check on load
+        window.onload = checkSSL;
+    </script>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <h1 style="color: #333; text-align: center; margin-bottom: 30px;">🔒 SSL Sertifikato Statusas</h1>
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div id="ssl-status" style="font-size: 18px; margin-bottom: 10px;"></div>
+            <div id="ssl-info"></div>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <h3 style="color: #495057; margin-bottom: 15px;">ℹ️ Informacija apie SSL sertifikatą:</h3>
+            <ul style="color: #6c757d; line-height: 1.6; margin: 0; padding-left: 20px;">
+                <li>GitHub Pages automatiškai sukonfigūruoja SSL sertifikatą custom domenams</li>
+                <li>Procesas gali užtrukti iki 24 valandų</li>
+                <li>Pakeitimai `_redirects` ir `_headers` failuose veiks tik po SSL aktyvavimo</li>
+                <li>Patikrinkite GitHub repository Settings → Pages → Custom domain</li>
+            </ul>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="https://taupuolis.lt/" style="display: inline-block; background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 10px;">Eiti į svetainę</a>
+            <a href="https://github.com/your-username/your-repo/settings/pages" style="display: inline-block; background: #6c757d; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 10px;">GitHub Settings</a>
+        </div>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; text-align: center; color: #6c757d; font-size: 14px;">
+            <p>Jei problema išlieka, kreipkitės į GitHub support arba patikrinkite DNS nustatymus.</p>
+        </div>
+    </div>
+</body>
+</html> 
