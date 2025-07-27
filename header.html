@@ -139,3 +139,60 @@
     <a href="#" class="py-2 border-b">Kategorijos</a>
   </div>
 </nav> 
+<script>
+  // Pardavėjų failų sąrašas (universalus)
+  const vendors = [
+    { name: 'Douglas', url: '/pardavejai/douglas.html' },
+    { name: 'Glamur', url: '/pardavejai/glamur.html' },
+    { name: 'Perfumer', url: '/pardavejai/perfumer.html' },
+    // ... pridėk kitus, jei reikia
+  ];
+  function renderSearchResults(value, resultsEl) {
+    const valueLower = value.trim().toLowerCase();
+    if (!valueLower) {
+      resultsEl.innerHTML = '';
+      resultsEl.classList.add('hidden');
+      return;
+    }
+    // Pardavėjai
+    const vendorMatches = vendors.filter(v => v.name.toLowerCase().includes(valueLower));
+    let html = '';
+    if (vendorMatches.length) {
+      html += '<div class="px-4 py-2 text-xs text-gray-500">Pardavėjai</div>';
+      html += vendorMatches.map(v => `<a href="${v.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${v.name}</a>`).join('');
+    }
+    if (!vendorMatches.length) {
+      html = '<div class="px-4 py-2 text-gray-500">Nieko nerasta</div>' + html;
+    }
+    resultsEl.innerHTML = html;
+    resultsEl.classList.remove('hidden');
+  }
+  // Paieška desktopui
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('input', function() {
+      renderSearchResults(this.value, searchResults);
+    });
+    searchInput.addEventListener('blur', function() {
+      setTimeout(() => searchResults.classList.add('hidden'), 150);
+    });
+    searchInput.addEventListener('focus', function() {
+      if (this.value.trim()) searchResults.classList.remove('hidden');
+    });
+  }
+  // Paieška mobilui
+  const searchInputMobile = document.getElementById('search-input-mobile');
+  const searchResultsMobile = document.getElementById('search-results-mobile');
+  if (searchInputMobile && searchResultsMobile) {
+    searchInputMobile.addEventListener('input', function() {
+      renderSearchResults(this.value, searchResultsMobile);
+    });
+    searchInputMobile.addEventListener('blur', function() {
+      setTimeout(() => searchResultsMobile.classList.add('hidden'), 150);
+    });
+    searchInputMobile.addEventListener('focus', function() {
+      if (this.value.trim()) searchResultsMobile.classList.remove('hidden');
+    });
+  }
+</script> 
