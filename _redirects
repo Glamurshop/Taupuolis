@@ -1,0 +1,4 @@
+# Force HTTPS redirects
+http://taupuolis.lt/* https://taupuolis.lt/:splat 301!
+http://www.taupuolis.lt/* https://taupuolis.lt/:splat 301!
+https://www.taupuolis.lt/* https://taupuolis.lt/:splat 301! 
