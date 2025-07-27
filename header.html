@@ -130,25 +130,27 @@
   </div>
 </nav>
 <script>
-  // Hamburger meniu JS
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileOverlay = document.getElementById('mobile-overlay');
-  const menuClose = document.getElementById('menu-close');
-  function openMenu() {
-    mobileMenu.classList.remove('translate-x-full');
-    mobileOverlay.classList.remove('hidden');
-  }
-  function closeMenu() {
-    mobileMenu.classList.add('translate-x-full');
-    mobileOverlay.classList.add('hidden');
-  }
-  if(menuToggle) menuToggle.addEventListener('click', openMenu);
-  if(menuClose) menuClose.addEventListener('click', closeMenu);
-  if(mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
-  if(mobileMenu) {
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-  }
+  // Hamburger meniu JS – turi būti pačioje header.html pabaigoje!
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    const menuClose = document.getElementById('menu-close');
+    function openMenu() {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileOverlay.classList.remove('hidden');
+    }
+    function closeMenu() {
+      mobileMenu.classList.add('translate-x-full');
+      mobileOverlay.classList.add('hidden');
+    }
+    if(menuToggle) menuToggle.onclick = openMenu;
+    if(menuClose) menuClose.onclick = closeMenu;
+    if(mobileOverlay) mobileOverlay.onclick = closeMenu;
+    if(mobileMenu) {
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+    }
+  });
 </script> 
