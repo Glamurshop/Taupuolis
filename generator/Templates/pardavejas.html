@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ pardavejo_pavadinimas }} | Taupuolis.lt</title>
+    <title>{{ pardavejas }} | Taupuolis.lt</title>
     <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
     <div id="header-placeholder"></div>
-    <main>
-        <!-- Pardavėjo turinys čia -->
-        {{ pardavejo_turinys }}
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <div class="bg-white rounded shadow p-8 max-w-2xl w-full mb-8 mx-auto flex flex-col items-center">
+            <img src="{{ logo_url }}" alt="{{ pardavejas }} logo" class="h-20 w-20 rounded-full border mb-4" />
+            <h1 class="text-3xl font-bold mb-2">{{ pardavejas }}</h1>
+            <div class="text-gray-700 mb-4 text-center">{{ pardavejo_info }}</div>
+        </div>
+        <h2 class="text-xl font-semibold mb-4">Visi {{ pardavejas }} pasiūlymai</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {{ dealai }}
+        </div>
+        <a href="/index.html" class="mt-8 text-gray-600 hover:underline block text-center">Grįžti į pradžią</a>
     </main>
     <div id="footer-placeholder"></div>
     <script>
