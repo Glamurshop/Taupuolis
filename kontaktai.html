@@ -12,19 +12,21 @@
     <main class="max-w-3xl mx-auto px-4 py-8">
         <section>
             <h2>Susisiekite su mumis</h2>
-            <p>El. paštas: <a href="mailto:info@taupuolis.lt">info@taupuolis.lt</a></p>
+            <p>El. paštas: <a href="mailto:taupuolis1@gmail.com">taupuolis1@gmail.com</a></p>
         </section>
         <section>
             <h2>Kontaktinė forma</h2>
-            <form action="mailto:info@taupuolis.lt" method="POST" enctype="text/plain">
+            <!-- Formspree forma -->
+            <form action="https://formspree.io/f/mwkgyyqg" method="POST" class="space-y-4">
                 <label for="vardas">Jūsų vardas:</label><br>
-                <input type="text" id="vardas" name="vardas" required><br><br>
+                <input type="text" id="vardas" name="vardas" required class="w-full"><br>
                 <label for="email">El. paštas:</label><br>
-                <input type="email" id="email" name="email" required><br><br>
+                <input type="email" id="email" name="email" required class="w-full"><br>
                 <label for="zinute">Žinutė:</label><br>
-                <textarea id="zinute" name="zinute" rows="5" required></textarea><br><br>
-                <button type="submit">Siųsti</button>
+                <textarea id="zinute" name="zinute" rows="5" required class="w-full"></textarea><br>
+                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-6 py-2 rounded transition shadow">Siųsti</button>
             </form>
+            <p class="text-xs text-gray-500 mt-2">Jūsų žinutė bus išsiųsta tiesiai į administratoriaus el. paštą.</p>
         </section>
     </main>
     <div id="footer-placeholder"></div>
