@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privatumo politika | Taupuolis.lt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <script>
+      fetch('/header.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('header-placeholder').innerHTML = data;
+        });
+    </script>
+    <main class="max-w-3xl mx-auto px-4 py-8">
+        <h1>Privatumo politika</h1>
+        <p>Ši privatumo politika paaiškina, kaip Taupuolis.lt renka, naudoja ir saugo Jūsų asmens duomenis, kai lankotės mūsų svetainėje.</p>
+        <h2>1. Kokius duomenis renkame?</h2>
+        <ul>
+            <li>El. pašto adresą (jei užpildote kontaktinę formą ar prenumeruojate naujienlaiškį)</li>
+            <li>IP adresą, naršyklės informaciją, naudojimo statistiką (per Google Analytics ar kitus analitikos įrankius)</li>
+            <li>Slapukų informaciją (žr. Slapukų politiką)</li>
+        </ul>
+        <h2>2. Kaip naudojame Jūsų duomenis?</h2>
+        <ul>
+            <li>Norėdami atsakyti į Jūsų užklausas</li>
+            <li>Siųsti naujienlaiškius (tik su Jūsų sutikimu)</li>
+            <li>Analizuoti svetainės lankomumą ir tobulinti paslaugas</li>
+        </ul>
+        <h2>3. Duomenų saugojimas ir apsauga</h2>
+        <p>Jūsų duomenys saugomi saugiai, naudojant technines ir organizacines priemones. Duomenys trečiosioms šalims perduodami tik teisės aktų numatytais atvejais arba su Jūsų sutikimu.</p>
+        <h2>4. Jūsų teisės</h2>
+        <ul>
+            <li>Gauti informaciją apie tvarkomus duomenis</li>
+            <li>Prašyti ištaisyti ar ištrinti duomenis</li>
+            <li>Atsisakyti naujienlaiškių ar kito tiesioginio marketingo</li>
+        </ul>
+        <h2>5. Kontaktai</h2>
+        <p>Jei turite klausimų dėl privatumo, rašykite el. paštu <a href="mailto:info@taupuolis.lt">info@taupuolis.lt</a>.</p>
+    </main>
+    <footer class="bg-gray-100 text-gray-700 py-8 mt-12">
+      <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+          <a href="apie-mus.html">Apie mus</a>
+          <a href="kontaktai.html">Kontaktai</a>
+          <a href="blogas.html">Blogas</a>
+          <a href="faq.html">DUK</a>
+          <a href="privatumo-politika.html">Privatumo politika</a>
+          <a href="slapuku-politika.html">Slapukų politika</a>
+          <a href="taisykles-ir-salygos.html">Taisyklės ir sąlygos</a>
+          <a href="affiliate-atskleidimas.html">Affiliate atskleidimas</a>
+          <a href="svetaines-zemelapis.html">Svetainės žemėlapis</a>
+        </div>
+        <div class="text-center md:text-right mt-4 md:mt-0">
+          &copy; Taupuolis.lt, 2024
+        </div>
+      </div>
+    </footer>
+</body>
+</html> 
