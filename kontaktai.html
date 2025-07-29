@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Kontaktai</h1>
-    </header>
+    <div id="header-placeholder"></div>
     <main>
         <section>
             <h2>Susisiekite su mumis</h2>
@@ -28,8 +26,10 @@
             </form>
         </section>
     </main>
-    <footer>
-        <p>&copy; Taupuolis.lt, 2024</p>
-    </footer>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUK | Taupuolis.lt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-3xl mx-auto px-4 py-8">
+        <h1>Dažniausiai užduodami klausimai (DUK)</h1>
+        <h2>Kaip veikia Taupuolis.lt?</h2>
+        <p>Taupuolis.lt surenka ir pateikia geriausius pasiūlymus iš įvairių pardavėjų vienoje vietoje. Galite naršyti, lyginti ir rinktis geriausią variantą.</p>
+        <h2>Ar naudojimasis svetaine nemokamas?</h2>
+        <p>Taip, visiškai nemokamas. Jūs nieko nemokate už pasiūlymų peržiūrą ar naudojimąsi svetaine.</p>
+        <h2>Kaip užsakyti prekę ar paslaugą?</h2>
+        <p>Paspaudę ant pasiūlymo būsite nukreipti į pardavėjo puslapį, kur galėsite užbaigti pirkimą.</p>
+        <h2>Ar gaunate komisinius už nuorodas?</h2>
+        <p>Taip, kai kurie pasiūlymai yra su partnerių (affiliate) nuorodomis. Plačiau skaitykite Affiliate atskleidimo puslapyje.</p>
+        <h2>Kaip susisiekti su administracija?</h2>
+        <p>Naudokite <a href="kontaktai.html">kontaktų formą</a> arba rašykite el. paštu info@taupuolis.lt.</p>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
+</body>
+</html> 

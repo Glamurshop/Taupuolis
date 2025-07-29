@@ -2,7 +2,7 @@
   {
     "pavadinimas": "Versace kvepalai",
     "aprasymas": "20% nuolaida visiems Versace kvepalams.",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/HAWAIIAN/HAWAIIAN-1.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/HAWAIIAN/HAWAIIAN-1.png",
     "nuolaidos_kodas": "GLAM20",
     "nukreipimo_url": "https://douglas.lt",
     "kategorija": "Kvepalai",
@@ -10,12 +10,12 @@
     "pardavejas": "Douglas",
     "pardavejas_url": "douglas",
     "pardavejo_logo": "https://www.savascentras.lt/wp-content/uploads/2018/06/Douglas-logo.jpg",
-    "terminas": "2025-07-27"
+    "terminas": "2025-07-29"
   },
   {
     "pavadinimas": "Paco Rabanne –15%",
     "aprasymas": "Paco Rabanne aromatams –15% nuolaida.",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-9.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/TRECIAS/KARL-9.png",
     "nuolaidos_kodas": "PACO15",
     "nukreipimo_url": "https://glamur.lt",
     "kategorija": "Kvepalai",
@@ -23,12 +23,12 @@
     "pardavejas": "Glamur",
     "pardavejas_url": "glamur",
     "pardavejo_logo": "https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210",
-    "terminas": "2025-07-27"
+    "terminas": "2025-07-29"
   },
   {
     "pavadinimas": "lancome Idole –10€",
     "aprasymas": "Naujas Lancome Idole – dabar 10€ pigiau.",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/KARL/KARL-4.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/KARL/KARL-4.png",
     "nuolaidos_kodas": "GUCCI25",
     "nukreipimo_url": "https://perfumer.lt",
     "kategorija": "Kvepalai",
@@ -36,12 +36,12 @@
     "pardavejas": "Perfumer",
     "pardavejas_url": "perfumer",
     "pardavejo_logo": "https://perfumer.lt/themes/origin/img/perfumer-logo.png",
-    "terminas": "2025-07-27"
+    "terminas": "2025-07-29"
   },
   {
     "pavadinimas": "gucci Bloom –25%",
     "aprasymas": "Gėlių kvapas vasarai –25% pigiau.",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/KARL/KARL-5.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/KARL/KARL-5.png",
     "nuolaidos_kodas": "GUCCI25",
     "nukreipimo_url": "https://perfumer.lt",
     "kategorija": "Kvepalai",
@@ -49,6 +49,6 @@
     "pardavejas": "Perfumer",
     "pardavejas_url": "perfumer",
     "pardavejo_logo": "https://perfumer.lt/themes/origin/img/perfumer-logo.png",
-    "terminas": "2025-07-27"
+    "terminas": "2025-07-29"
   }
 ]

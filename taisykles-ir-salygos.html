@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taisyklės ir sąlygos | Taupuolis.lt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-3xl mx-auto px-4 py-8">
+        <h1>Taisyklės ir sąlygos</h1>
+        <p>Naudodamiesi Taupuolis.lt svetaine, Jūs sutinkate su šiomis taisyklėmis ir sąlygomis:</p>
+        <ul>
+            <li>Svetainės turinys yra informacinio pobūdžio.</li>
+            <li>Už prekių ar paslaugų įsigijimą atsako pardavėjas, pas kurį nukreipiama.</li>
+            <li>Administracija neatsako už trečiųjų šalių pasiūlymus ar jų įgyvendinimą.</li>
+            <li>Draudžiama kopijuoti ar platinti svetainės turinį be raštiško sutikimo.</li>
+            <li>Administracija turi teisę keisti taisykles be atskiro įspėjimo.</li>
+        </ul>
+        <p>Jei turite klausimų, rašykite <a href="kontaktai.html">kontaktų formoje</a>.</p>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
+</body>
+</html> 

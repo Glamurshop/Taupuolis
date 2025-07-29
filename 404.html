@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puslapis nerastas | Taupuolis.lt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-2xl mx-auto px-4 py-16 text-center">
+        <h1 style="font-size:3rem;">404</h1>
+        <p class="mb-6">Atsiprašome, toks puslapis nerastas.</p>
+        <form action="/paieska.html" method="GET" class="mb-4">
+            <input type="text" name="q" placeholder="Ieškoti pasiūlymo ar pardavėjo..." class="px-4 py-2 border rounded w-64 max-w-full">
+            <button type="submit" class="ml-2 px-4 py-2 bg-yellow-400 rounded">Ieškoti</button>
+        </form>
+        <a href="index.html" class="text-yellow-700 underline">Grįžti į pradžią</a>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
+</body>
+</html> 
