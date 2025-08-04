@@ -152,13 +152,17 @@
         </div>
         <div class="music-info">
             🎵 Taupuolis.lt Radio
+            <div class="text-xs text-gray-500 mt-1">Paspaudžiau pradėti</div>
         </div>
     </div>
 
     <!-- Audio Element -->
-    <audio id="backgroundMusic" loop>
+    <audio id="backgroundMusic" loop preload="auto">
+        <!-- Free background music from Pixabay -->
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2dde668d05.mp3?filename=relaxing-mountains-rivers-streams-forest-sounds-18523.mp3" type="audio/mpeg">
+        <!-- Alternative free music -->
         <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-        <!-- Fallback to a different audio source -->
+        <!-- Another fallback -->
         <source src="https://www.soundjay.com/mechanical/sounds/clock-ticking-1.wav" type="audio/wav">
     </audio>
 
@@ -280,24 +284,38 @@
             // Set initial volume
             audio.volume = volumeSlider.value / 100;
             
-            // Try to autoplay (may be blocked by browser)
-            audio.play().then(() => {
-                isPlaying = true;
-                updatePlayButton();
-            }).catch(() => {
-                // Autoplay blocked, show play button
-                isPlaying = false;
-                updatePlayButton();
-            });
+            // Don't autoplay - wait for user interaction
+            isPlaying = false;
+            updatePlayButton();
+            
+            // Add click event to start music on first interaction
+            document.addEventListener('click', function startMusicOnFirstClick() {
+                if (!isPlaying) {
+                    audio.play().then(() => {
+                        isPlaying = true;
+                        updatePlayButton();
+                    }).catch(() => {
+                        console.log('Music playback blocked by browser');
+                    });
+                }
+                // Remove this listener after first click
+                document.removeEventListener('click', startMusicOnFirstClick);
+            }, { once: true });
         }
 
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
                 isPlaying = false;
+                console.log('Muzika sustabdyta');
             } else {
-                audio.play();
-                isPlaying = true;
+                audio.play().then(() => {
+                    isPlaying = true;
+                    console.log('Muzika pradėta groti');
+                }).catch((error) => {
+                    console.error('Klaida grojant muziką:', error);
+                    alert('Nepavyko pradėti groti muzikos. Patikrinkite naršyklės nustatymus.');
+                });
             }
             updatePlayButton();
         }
