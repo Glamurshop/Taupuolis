@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <title>Slapukų politika | Taupuolis.lt</title>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-3xl mx-auto px-4 py-8">
+        <h1>Slapukų politika</h1>
+        <p>Šioje svetainėje naudojami slapukai, kad pagerintume Jūsų naršymo patirtį ir analizuotume lankomumą.</p>
+        <h2>Kas yra slapukai?</h2>
+        <p>Slapukai – tai maži tekstiniai failai, kuriuos svetainė išsaugo Jūsų įrenginyje. Jie padeda atpažinti Jus kitą kartą apsilankius ir rinkti statistiką.</p>
+        <h2>Kokius slapukus naudojame?</h2>
+        <ul>
+            <li>Būtini slapukai (svetainės veikimui)</li>
+            <li>Analitiniai slapukai (pvz., Google Analytics)</li>
+            <li>Funkciniai slapukai (pvz., prisijungimo informacija)</li>
+            <li>Reklaminiai slapukai (jei naudojami affiliate ar remarketingo įrankiai)</li>
+        </ul>
+        <h2>Kaip valdyti slapukus?</h2>
+        <p>Galite ištrinti ar blokuoti slapukus savo naršyklės nustatymuose. Daugiau informacijos – <a href="https://www.allaboutcookies.org/">allaboutcookies.org</a>.</p>
+        <h2>Trečiųjų šalių slapukai</h2>
+        <p>Svetainėje gali būti naudojami trečiųjų šalių slapukai (pvz., Google, Facebook, partnerių nuorodos). Jų naudojimą reglamentuoja tų šalių privatumo politikos.</p>
+        <h2>Kontaktai</h2>
+        <p>Kilus klausimams dėl slapukų, rašykite <a href="mailto:info@taupuolis.lt">info@taupuolis.lt</a>.</p>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
+</body>
+</html> 

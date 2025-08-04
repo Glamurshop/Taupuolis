@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <title>Affiliate atskleidimas | Taupuolis.lt</title>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-3xl mx-auto px-4 py-8">
+        <h1>Bendradarbiavimo (affiliate) atskleidimas</h1>
+        <p>Taupuolis.lt dalis nuorodų yra partnerių (affiliate) nuorodos. Tai reiškia, kad jei Jūs paspaudžiate nuorodą ir įsigyjate prekę ar paslaugą, mes galime gauti komisinį atlygį. Jums tai nieko nekainuoja papildomai.</p>
+        <p>Visi pasiūlymai ir nuorodos yra atrenkami nepriklausomai, o komisiniai neturi įtakos jų pateikimui ar reitingavimui.</p>
+        <p>Toks atskleidimas yra būtinas pagal ES ir JAV teisės aktus.</p>
+        <p>Jei turite klausimų, rašykite <a href="kontaktai.html">kontaktų formoje</a>.</p>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
+</body>
+</html> 

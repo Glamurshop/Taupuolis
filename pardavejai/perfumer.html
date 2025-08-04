@@ -1,104 +1,64 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8" />
-  <title>Perfumer – Taupuolis.lt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <title>Perfumer | Taupuolis.lt</title>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
-  <div id="header-placeholder"></div>
-  <script>
-    fetch('/header.html?v=20250127')
-      .then(response => response.text())
-      .then(data => {
-        const placeholder = document.getElementById('header-placeholder');
-        placeholder.innerHTML = data;
-        // Paleidžiam visus <script> tagus iš header (jei yra)
-        placeholder.querySelectorAll('script').forEach(oldScript => {
-          const newScript = document.createElement('script');
-          if (oldScript.src) {
-            newScript.src = oldScript.src;
-          } else {
-            newScript.textContent = oldScript.textContent;
-          }
-          oldScript.replaceWith(newScript);
-        });
-        // Hamburger meniu JS
-        setTimeout(function() {
-          const menuToggle = document.getElementById('menu-toggle');
-          const mobileMenu = document.getElementById('mobile-menu');
-          const mobileOverlay = document.getElementById('mobile-overlay');
-          const menuClose = document.getElementById('menu-close');
-          function openMenu() {
-            mobileMenu.classList.remove('translate-x-full');
-            mobileOverlay.classList.remove('hidden');
-          }
-          function closeMenu() {
-            mobileMenu.classList.add('translate-x-full');
-            mobileOverlay.classList.add('hidden');
-          }
-          if(menuToggle) menuToggle.onclick = openMenu;
-          if(menuClose) menuClose.onclick = closeMenu;
-          if(mobileOverlay) mobileOverlay.onclick = closeMenu;
-          if(mobileMenu) {
-            mobileMenu.querySelectorAll('a').forEach(link => {
-              link.addEventListener('click', closeMenu);
-            });
-          }
-        }, 0);
-      });
-  </script>
-  <main class="flex-1 flex flex-col items-center py-8">
-    <div class="bg-white rounded shadow p-8 max-w-2xl w-full mb-8">
-      <h1 class="text-3xl font-bold mb-2">Perfumer</h1>
-      <div class="text-gray-700 mb-4">Perfumer – unikalūs kvapai	</div>
-      <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Perfumer logo" class="h-20 w-20 rounded-full border mx-auto mb-4" />
-    </div>
-    <div class="max-w-4xl w-full">
-      <h2 class="text-xl font-semibold mb-4">Visi Perfumer pasiūlymai</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <div class="bg-white rounded shadow p-8 max-w-2xl w-full mb-8 mx-auto flex flex-col items-center">
+            <img src="https://perfumer.lt/themes/origin/img/perfumer-logo.png" alt="Perfumer logo" class="h-20 w-20 rounded-full border mb-4" />
+            <h1 class="text-3xl font-bold mb-2">Perfumer</h1>
+            <div class="text-gray-700 mb-4 text-center">Perfumer – unikalūs kvapai	</div>
+        </div>
+        <h2 class="text-xl font-semibold mb-4">Visi Perfumer pasiūlymai</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
                 <a href="/pasiulymai/lancome-idole-10eur.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
-                  <img src="https://taupuolis.lt/paveiksleliai/KARL/KARL-4.png" alt="lancome Idole –10€" class="h-32 w-full object-contain mb-2 rounded" />
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-4.png" alt="lancome Idole –10€" class="h-32 w-full object-contain mb-2 rounded" />
                   <div class="font-bold">lancome Idole –10€</div>
                   <div class="text-sm text-gray-600">Kvepalai</div>
                 </a>
             
 
                 <a href="/pasiulymai/gucci-bloom-25.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
-                  <img src="https://taupuolis.lt/paveiksleliai/KARL/KARL-5.png" alt="gucci Bloom –25%" class="h-32 w-full object-contain mb-2 rounded" />
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-5.png" alt="gucci Bloom –25%" class="h-32 w-full object-contain mb-2 rounded" />
                   <div class="font-bold">gucci Bloom –25%</div>
                   <div class="text-sm text-gray-600">Kvepalai</div>
                 </a>
             
 
                 <a href="/pasiulymai/testeriai-tik-3eur.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
-                  <img src="https://taupuolis.lt/paveiksleliai/KARL/KARL-6.png" alt="Testeriai – tik 3€" class="h-32 w-full object-contain mb-2 rounded" />
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-6.png" alt="Testeriai – tik 3€" class="h-32 w-full object-contain mb-2 rounded" />
                   <div class="font-bold">Testeriai – tik 3€</div>
                   <div class="text-sm text-gray-600">Drabužiai</div>
                 </a>
             
 
                 <a href="/pasiulymai/nemokamas-privezimas.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
-                  <img src="https://taupuolis.lt/paveiksleliai/KARL/KARL-7.png" alt="Nemokamas privežimas" class="h-32 w-full object-contain mb-2 rounded" />
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-7.png" alt="Nemokamas privežimas" class="h-32 w-full object-contain mb-2 rounded" />
                   <div class="font-bold">Nemokamas privežimas</div>
                   <div class="text-sm text-gray-600">Paslaugos</div>
                 </a>
             
 
                 <a href="/pasiulymai/mini-kvepalai-5eur.html" class="block bg-white rounded shadow p-4 hover:bg-yellow-50 transition">
-                  <img src="https://taupuolis.lt/paveiksleliai/KARL/KARL-8.png" alt="Mini kvepalai 5€" class="h-32 w-full object-contain mb-2 rounded" />
+                  <img src="http://taupuolis.lt/paveiksleliai/KARL/KARL-8.png" alt="Mini kvepalai 5€" class="h-32 w-full object-contain mb-2 rounded" />
                   <div class="font-bold">Mini kvepalai 5€</div>
                   <div class="text-sm text-gray-600">Automobiliai</div>
                 </a>
             
-      </div>
-    </div>
-    <a href="/index.html" class="mt-8 text-gray-600 hover:underline">Grįžti į pradžią</a>
-  </main>
-  <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
-    © 2025 Taupuolis.lt – Visos teisės saugomos.
-  </footer>
+        </div>
+        <a href="/index.html" class="mt-8 text-gray-600 hover:underline block text-center">Grįžti į pradžią</a>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
 </body>
 </html> 

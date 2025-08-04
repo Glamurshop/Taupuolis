@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autorizacija sėkminga</title>
+  <style>
+    body {
+      background: #f7fafc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      text-align: center;
+      max-width: 350px;
+    }
+    .success-icon {
+      font-size: 3rem;
+      color: #38b000;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin: 0 0 0.5rem 0;
+      color: #222;
+    }
+    p {
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+    .close-btn {
+      background: #38b000;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .close-btn:hover {
+      background: #2d8600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="success-icon">✔️</div>
+    <h1>Autorizacija sėkminga!</h1>
+    <p>Jūs sėkmingai prisijungėte prie sistemos.<br>Šį langą galite uždaryti.</p>
+    <button class="close-btn" onclick="window.close()">Uždaryti langą</button>
+  </div>
+</body>
+</html>
