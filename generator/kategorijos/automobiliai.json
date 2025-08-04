@@ -2,7 +2,7 @@
   {
     "pavadinimas": "Veido kremas 1+1",
     "aprasymas": "Pirk vieną veido kremą, antrą gauk dovanų.",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/HAWAIIAN/HAWAIIAN-5.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/HAWAIIAN/HAWAIIAN-5.png",
     "nuolaidos_kodas": "GLAM24",
     "nukreipimo_url": "https://douglas.lt",
     "kategorija": "Automobiliai",
@@ -10,12 +10,12 @@
     "pardavejas": "Douglas",
     "pardavejas_url": "douglas",
     "pardavejo_logo": "https://www.savascentras.lt/wp-content/uploads/2018/06/Douglas-logo.jpg",
-    "terminas": "2025-07-27"
+    "terminas": "2025-07-29"
   },
   {
     "pavadinimas": "Veido kaukė 3 už 2",
     "aprasymas": "Pirk 2 veido kaukes, 3-gausi nemokamai.",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-13.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/TRECIAS/KARL-13.png",
     "nuolaidos_kodas": "PACO19",
     "nukreipimo_url": "https://glamur.lt",
     "kategorija": "Automobiliai",
@@ -23,12 +23,12 @@
     "pardavejas": "Glamur",
     "pardavejas_url": "glamur",
     "pardavejo_logo": "https://glamur.lt/cdn/shop/files/glamur-logotipas.png?v=1731929376&width=210",
-    "terminas": "2025-07-27"
+    "terminas": "2025-07-29"
   },
   {
     "pavadinimas": "Mini kvepalai 5€",
     "aprasymas": "Miniatiūriniai kvapai – tik 5€!",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/KARL/KARL-8.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/KARL/KARL-8.png",
     "nuolaidos_kodas": "GUCCI28",
     "nukreipimo_url": "https://perfumer.lt",
     "kategorija": "Automobiliai",
@@ -36,6 +36,6 @@
     "pardavejas": "Perfumer",
     "pardavejas_url": "perfumer",
     "pardavejo_logo": "https://perfumer.lt/themes/origin/img/perfumer-logo.png",
-    "terminas": "2025-07-27"
+    "terminas": "2025-07-29"
   }
 ]

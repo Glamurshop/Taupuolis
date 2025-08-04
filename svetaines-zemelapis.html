@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <title>Svetainės žemėlapis | Taupuolis.lt</title>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-3xl mx-auto px-4 py-8">
+        <h1>Svetainės žemėlapis</h1>
+        <ul>
+            <li><a href="index.html">Pradinis</a></li>
+            <li><a href="apie-mus.html">Apie mus</a></li>
+            <li><a href="kontaktai.html">Kontaktai</a></li>
+            <li><a href="blogas.html">Blogas</a></li>
+            <li><a href="faq.html">DUK</a></li>
+            <li><a href="privatumo-politika.html">Privatumo politika</a></li>
+            <li><a href="slapuku-politika.html">Slapukų politika</a></li>
+            <li><a href="taisykles-ir-salygos.html">Taisyklės ir sąlygos</a></li>
+            <li><a href="affiliate-atskleidimas.html">Affiliate atskleidimas</a></li>
+            <li><a href="svetaines-zemelapis.html">Svetainės žemėlapis</a></li>
+        </ul>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
+</body>
+</html> 

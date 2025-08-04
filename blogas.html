@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <title>Blogas | Taupuolis.lt</title>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-3xl mx-auto px-4 py-8">
+        <article>
+            <h2>Kaip sutaupyti perkant internetu?</h2>
+            <p><em>2024-05-01</em></p>
+            <p>Internetinės parduotuvės siūlo daugybę akcijų, tačiau svarbu lyginti kainas, naudoti nuolaidų kodus ir sekti patikimus pasiūlymų portalus, tokius kaip Taupuolis.lt.</p>
+        </article>
+        <hr>
+        <article>
+            <h2>Vasaros prekių gidai: ką verta įsigyti?</h2>
+            <p><em>2024-05-03</em></p>
+            <p>Vasara – puikus metas atsinaujinti. Rinkitės kokybiškas prekes su nuolaidomis, pasinaudokite sezoninėmis akcijomis ir nepraleiskite geriausių pasiūlymų.</p>
+        </article>
+        <hr>
+        <article>
+            <h2>Prekių apžvalga: populiariausi kvepalai 2024</h2>
+            <p><em>2024-05-05</em></p>
+            <p>Atrinkome populiariausius kvepalus šį sezoną – skaitykite mūsų apžvalgą ir raskite geriausią kainos ir kokybės santykį.</p>
+        </article>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
+</body>
+</html> 

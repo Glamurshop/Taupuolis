@@ -1,85 +1,45 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8" />
-  <title>Veido serumas 2+1 – Taupuolis.lt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <title> | Taupuolis.lt</title>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col">
-  <div id="header-placeholder"></div>
-  <script>
-    fetch('/header.html?v=20250127')
-      .then(response => response.text())
-      .then(data => {
-        const placeholder = document.getElementById('header-placeholder');
-        placeholder.innerHTML = data;
-        // Paleidžiam visus <script> tagus iš header (jei yra)
-        placeholder.querySelectorAll('script').forEach(oldScript => {
-          const newScript = document.createElement('script');
-          if (oldScript.src) {
-            newScript.src = oldScript.src;
-          } else {
-            newScript.textContent = oldScript.textContent;
-          }
-          oldScript.replaceWith(newScript);
-        });
-        // Hamburger meniu JS
-        setTimeout(function() {
-          const menuToggle = document.getElementById('menu-toggle');
-          const mobileMenu = document.getElementById('mobile-menu');
-          const mobileOverlay = document.getElementById('mobile-overlay');
-          const menuClose = document.getElementById('menu-close');
-          function openMenu() {
-            mobileMenu.classList.remove('translate-x-full');
-            mobileOverlay.classList.remove('hidden');
-          }
-          function closeMenu() {
-            mobileMenu.classList.add('translate-x-full');
-            mobileOverlay.classList.add('hidden');
-          }
-          if(menuToggle) menuToggle.onclick = openMenu;
-          if(menuClose) menuClose.onclick = closeMenu;
-          if(mobileOverlay) mobileOverlay.onclick = closeMenu;
-          if(mobileMenu) {
-            mobileMenu.querySelectorAll('a').forEach(link => {
-              link.addEventListener('click', closeMenu);
-            });
-          }
-        }, 0);
-      });
-  </script>
-  <main class="flex-1 flex items-center justify-center py-8">
-    <div class="bg-white rounded shadow p-8 max-w-2xl w-full">
-      <div class="flex flex-col md:flex-row gap-8">
-        <img src="https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-11.png" alt="Veido serumas 2+1" class="w-64 h-64 object-contain rounded bg-gray-100" />
-        <div class="flex-1 flex flex-col justify-between">
-          <div>
-            <h1 class="text-2xl font-bold mb-2">Veido serumas 2+1</h1>
-            <div class="text-gray-700 mb-4">Pirk 2 serumus, trečias – nemokamai.</div>
-            <div class="mb-2">
-              <span class="font-semibold">Kategorija:</span>
-              <a href="/kategorijos/kosmetika.html" class="text-yellow-700 hover:underline">Kosmetika</a>
+<body>
+    <div id="header-placeholder"></div>
+    <main class="max-w-2xl mx-auto px-4 py-8">
+        <div class="bg-white rounded shadow p-8 flex flex-col md:flex-row gap-8">
+            <img src="http://taupuolis.lt/paveiksleliai/TRECIAS/KARL-11.png" alt="" class="w-64 h-64 object-contain rounded bg-gray-100" />
+            <div class="flex-1 flex flex-col justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold mb-2"></h1>
+                    <div class="text-gray-700 mb-4">Pirk 2 serumus, trečias – nemokamai.</div>
+                    <div class="mb-2">
+                        <span class="font-semibold">Kategorija:</span>
+                        <a href="/kategorijos/kosmetika.html" class="text-yellow-700 hover:underline">Kosmetika</a>
+                    </div>
+                    <div class="mb-2">
+                        <span class="font-semibold">Galioja iki:</span> 2025-07-29
+                    </div>
+                    <div class="mb-2">
+                        <span class="font-semibold">Nuolaidos kodas:</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">PACO17</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex gap-4">
+                    <a href="https://glamur.lt" target="_blank" rel="noopener" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded font-semibold">Eiti į parduotuvę</a>
+                    <a href="/pardavejai/glamur.html" class="text-gray-600 hover:underline">Visi Glamur pasiūlymai</a>
+                    <a href="/kategorijos/kosmetika.html" class="text-gray-600 hover:underline">Daugiau Kosmetika</a>
+                </div>
             </div>
-            <div class="mb-2">
-              <span class="font-semibold">Galioja iki:</span> 2025-07-27
-            </div>
-            <div class="mb-2">
-              <span class="font-semibold">Nuolaidos kodas:</span>
-              <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-mono">PACO17</span>
-            </div>
-          </div>
-          <div class="mt-6 flex gap-4">
-            <a href="https://glamur.lt" target="_blank" rel="noopener" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded font-semibold">Eiti į parduotuvę</a>
-            <a href="/pardavejai/glamur.html" class="text-gray-600 hover:underline">Visi Glamur pasiūlymai</a>
-            <a href="/kategorijos/kosmetika.html" class="text-gray-600 hover:underline">Daugiau Kosmetika</a>
-          </div>
         </div>
-      </div>
-    </div>
-  </main>
-  <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
-    © 2025 Taupuolis.lt – Visos teisės saugomos.
-  </footer>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch('/header.html').then(r=>r.text()).then(d=>{document.getElementById('header-placeholder').innerHTML=d;});
+      fetch('/footer.html').then(r=>r.text()).then(d=>{document.getElementById('footer-placeholder').innerHTML=d;});
+    </script>
 </body>
 </html> 
