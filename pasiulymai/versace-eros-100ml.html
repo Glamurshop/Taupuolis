@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Versace Eros 100ml - Taupuolis.lt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <div id="header-placeholder"></div>
+  <script>
+    fetch('/header.html?v=20250127')
+      .then(response => response.text())
+      .then(data => {
+        const placeholder = document.getElementById('header-placeholder');
+        placeholder.innerHTML = data;
+        placeholder.querySelectorAll('script').forEach(oldScript => {
+          const newScript = document.createElement('script');
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+          } else {
+            newScript.textContent = oldScript.textContent;
+          }
+          oldScript.replaceWith(newScript);
+        });
+        setTimeout(function() {
+          const menuToggle = document.getElementById('menu-toggle');
+          const mobileMenu = document.getElementById('mobile-menu');
+          const mobileOverlay = document.getElementById('mobile-overlay');
+          const menuClose = document.getElementById('menu-close');
+          function openMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileOverlay.classList.remove('hidden');
+          }
+          function closeMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            mobileOverlay.classList.add('hidden');
+          }
+          if(menuToggle) menuToggle.onclick = openMenu;
+          if(menuClose) menuClose.onclick = closeMenu;
+          if(mobileOverlay) mobileOverlay.onclick = closeMenu;
+          if(mobileMenu) {
+            mobileMenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', closeMenu);
+            });
+          }
+        }, 0);
+      });
+  </script>
+  <main class="flex-1 flex items-center justify-center py-8">
+    <div class="bg-white rounded shadow p-8 max-w-4xl w-full mx-4">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Paveikslėlis -->
+        <div class="md:w-1/2">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop" alt="Versace Eros 100ml" class="w-full h-96 object-contain rounded bg-gray-100" />
+          <div class="flex items-center gap-4 mt-4">
+            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop" alt="Douglas" class="h-12 w-12 rounded-full bg-white shadow border" />
+            <div>
+              <div class="font-semibold">Douglas</div>
+              <div class="text-sm text-gray-600">Pardavėjas</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Informacija -->
+        <div class="md:w-1/2 flex flex-col justify-between">
+          <div>
+            <h1 class="text-3xl font-bold mb-4">Versace Eros 100ml</h1>
+            <p class="text-gray-700 text-lg mb-6">Versace Eros vyrams - 20% nuolaida. Kaina nuo 89.99€ iki 71.99€</p>
+            
+            <!-- Kainos -->
+            <div class="bg-gray-50 rounded-lg p-4 mb-6">
+              <div class="flex items-center gap-4">
+                <div class="text-2xl font-bold text-green-600">71.99€</div>
+                <div class="text-lg text-gray-500 line-through">89.99€</div>
+                <div class="bg-red-500 text-white px-3 py-1 rounded font-bold">-20%</div>
+              </div>
+            </div>
+            
+            <!-- Detalės -->
+            <div class="space-y-3 mb-6">
+              <div class="flex justify-between">
+                <span class="font-semibold">Kategorija:</span>
+                <a href="/kategorijos/kvepalai.html" class="text-yellow-700 hover:underline">Kvepalai</a>
+              </div>
+              <div class="flex justify-between">
+                <span class="font-semibold">Galioja iki:</span>
+                <span class="text-red-600 font-bold">2025-02-15</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="font-semibold">Nuolaidos kodas:</span>
+                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded font-mono">TAUPUOLIS20</span>
+              </div>
+            </div>
+            
+            <!-- Aprašymas -->
+            <div class="mb-6">
+              <h3 class="font-semibold mb-2">Apie produktą:</h3>
+              <p class="text-gray-700">Versace Eros yra vyrams skirtas kvepalai su galingu ir patraukliu aromatu. Puikiai tinka kasdieniam naudojimui ir specialiems atvejams.</p>
+            </div>
+          </div>
+          
+          <!-- Mygtukai -->
+          <div class="space-y-3">
+            <a href="https://douglas.lt/versace-eros?ref=taupuolis20" target="_blank" rel="noopener" 
+               class="block w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg text-center transition">
+              Eiti į parduotuvę
+            </a>
+            <div class="flex gap-3">
+              <a href="/pardavejai/douglas.html" class="flex-1 text-center text-gray-600 hover:underline py-2">
+                Visi Douglas pasiūlymai
+              </a>
+              <a href="/kategorijos/kvepalai.html" class="flex-1 text-center text-gray-600 hover:underline py-2">
+                Daugiau kvepalų
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
+    © 2025 Taupuolis.lt – Visos teisės saugomos.
+  </footer>
+</body>
+</html> 

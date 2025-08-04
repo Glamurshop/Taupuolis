@@ -9,7 +9,15 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT">
-    <title>Taupuolis.lt</title>
+    <title>Taupuolis.lt - Geriausi nuolaidų kodai ir akcijos Lietuvoje</title>
+    <meta name="description" content="Raskite geriausius nuolaidų kodus, akcijas ir pasiūlymus iš populiariausių Lietuvos pardavėjų. Taupykite laiką ir pinigus su Taupuolis.lt">
+    <meta name="keywords" content="nuolaidų kodai, akcijos, taupymas, lietuva, douglas, glamur, perfumer">
+    <meta property="og:title" content="Taupuolis.lt - Geriausi nuolaidų kodai">
+    <meta property="og:description" content="Raskite geriausius nuolaidų kodus ir akcijas Lietuvoje">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taupuolis.lt">
+    <meta property="og:image" content="https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-10.png">
+    <link rel="canonical" href="https://taupuolis.lt">
     <link rel="stylesheet" href="styles.css?v=20250127">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Flowbite UI komponentams (slideriui) -->
@@ -264,24 +272,45 @@
           // Ar paskutinė diena?
           const end = new Date(deal.terminas);
           const isLastDay = end.toDateString() === now.toDateString() || end.toDateString() === tomorrow.toDateString();
+          
+          // Kainos informacija
+          const kainaInfo = deal.kaina_nuo && deal.kaina_iki ? 
+            `<div class="text-sm text-gray-600 mb-2">
+              <span class="line-through">${deal.kaina_nuo}</span> 
+              <span class="text-green-600 font-bold">${deal.kaina_iki}</span>
+            </div>` : '';
+          
+          // Nuolaidos procentas
+          const nuolaidaBadge = deal.nuolaida_procentais ? 
+            `<span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded mb-2 inline-block">-${deal.nuolaida_procentais}</span>` : '';
+          
           return `
-            <div class="bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col hover:shadow-lg transition-shadow">
               <div class="relative">
                 <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover" loading="lazy">
                 <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-10 w-10 bg-white rounded shadow p-1">
-                ${(deal.vip || deal.vip_retailer) ? `
+                ${deal.vip ? `
                   <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 shadow">
                     <svg xmlns='http://www.w3.org/2000/svg' class='h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>
-                    VIP RETAILER
+                    VIP
                   </span>
                 ` : ''}
+                ${isLastDay ? `<span class="absolute bottom-2 left-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">PASKUTINĖ DIENA</span>` : ''}
               </div>
               <div class="p-4 flex-1 flex flex-col">
-                <div class="flex items-center gap-2 mb-1">
-                  ${isLastDay ? `<span class="bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded">LAST DAY</span>` : ''}
+                <div class="flex items-center gap-2 mb-2">
+                  ${nuolaidaBadge}
                 </div>
-                <div class="font-bold text-lg mb-1">${deal.pavadinimas}</div>
-                <div class="text-gray-700 text-sm flex-1">${deal.aprasymas}</div>
+                <div class="font-bold text-lg mb-2">${deal.pavadinimas}</div>
+                <div class="text-gray-700 text-sm flex-1 mb-3">${deal.aprasymas}</div>
+                ${kainaInfo}
+                <div class="text-xs text-gray-500 mb-3">
+                  <span class="font-semibold">Kodas:</span> ${deal.nuolaidos_kodas}
+                </div>
+                <a href="/pasiulymai/${deal.pavadinimas.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.html" 
+                   class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded transition text-center">
+                  Žiūrėti pasiūlymą
+                </a>
               </div>
             </div>
           `;
@@ -367,7 +396,7 @@
                   <div class="font-bold text-xl mb-2">${deal.pavadinimas}</div>
                   <div class="text-gray-700 mb-4">${deal.aprasymas}</div>
                 </div>
-                <a href="${deal.nukreipimo_url}" target="_blank" rel="noopener"
+                <a href="/pasiulymai/${deal.pavadinimas.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.html"
                    class="inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-6 py-2 rounded transition shadow text-center">
                   Žiūrėti pasiūlymą
                 </a>

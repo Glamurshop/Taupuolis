@@ -1,0 +1,29 @@
+name: DNS Verification Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+
+jobs:
+  dns-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check DNS records
+        run: |
+          echo "Checking DNS records for taupuolis.lt..."
+          echo "A records:"
+          dig taupuolis.lt A +short
+          echo "CNAME records:"
+          dig www.taupuolis.lt CNAME +short
+          echo "Checking GitHub Pages IPs:"
+          dig taupuolis.lt A +short | grep -E "185\.199\.(108|109|110|111)\.153"
+          
+      - name: Test HTTPS
+        run: |
+          echo "Testing HTTPS connection..."
+          curl -I https://taupuolis.lt --max-time 10 || echo "HTTPS not working yet"
+          
+      - name: Notify status
+        run: |
+          echo "DNS check completed. If all records are correct, wait for GitHub to verify." 

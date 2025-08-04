@@ -2,7 +2,7 @@
   {
     "pavadinimas": "Dovanų rinkinys vyrams",
     "aprasymas": "Douglas dovanų rinkinys vyrams – tik 15.99€.",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/HAWAIIAN/HAWAIIAN-3.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/HAWAIIAN/HAWAIIAN-3.png",
     "nuolaidos_kodas": "GLAM22",
     "nukreipimo_url": "https://douglas.lt",
     "kategorija": "Drabužiai",
@@ -10,12 +10,12 @@
     "pardavejas": "Douglas",
     "pardavejas_url": "douglas",
     "pardavejo_logo": "https://www.savascentras.lt/wp-content/uploads/2018/06/Douglas-logo.jpg",
-    "terminas": "2025-07-27"
+    "terminas": "2025-08-04"
   },
   {
     "pavadinimas": "Testeriai – tik 3€",
     "aprasymas": "Įvairūs testeriai tik po 2.99€.",
-    "nuotraukos_url": "https://taupuolis.lt/paveiksleliai/KARL/KARL-6.png",
+    "nuotraukos_url": "http://taupuolis.lt/paveiksleliai/KARL/KARL-6.png",
     "nuolaidos_kodas": "GUCCI26",
     "nukreipimo_url": "https://perfumer.lt",
     "kategorija": "Drabužiai",
@@ -23,6 +23,6 @@
     "pardavejas": "Perfumer",
     "pardavejas_url": "perfumer",
     "pardavejo_logo": "https://perfumer.lt/themes/origin/img/perfumer-logo.png",
-    "terminas": "2025-07-27"
+    "terminas": "2025-08-04"
   }
 ]

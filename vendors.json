@@ -1,14 +1,62 @@
 [
   {
     "name": "Douglas",
-    "url": "/pardavejai/douglas.html"
+    "url": "/pardavejai/douglas.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Kvepalai", "Kosmetika", "Grožis"]
   },
   {
     "name": "Glamur",
-    "url": "/pardavejai/glamur.html"
+    "url": "/pardavejai/glamur.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Kvepalai", "Kosmetika", "Grožis"]
   },
   {
     "name": "Perfumer",
-    "url": "/pardavejai/perfumer.html"
+    "url": "/pardavejai/perfumer.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Kvepalai", "Kosmetika", "Grožis"]
+  },
+  {
+    "name": "Sportland",
+    "url": "/pardavejai/sportland.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Sportas", "Avalynė", "Drabužiai"]
+  },
+  {
+    "name": "Pigu.lt",
+    "url": "/pardavejai/pigu.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Elektronika", "Technika", "Žaislai"]
+  },
+  {
+    "name": "Zara",
+    "url": "/pardavejai/zara.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Drabužiai", "Aksesuarai", "Avalynė"]
+  },
+  {
+    "name": "IKEA",
+    "url": "/pardavejai/ikea.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Buitis", "Dekoras", "Vaikams"]
+  },
+  {
+    "name": "H&M",
+    "url": "/pardavejai/hm.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Drabužiai", "Aksesuarai", "Vaikams"]
+  },
+  {
+    "name": "Lidl",
+    "url": "/pardavejai/lidl.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Maistas", "Buitis", "Gėrimai"]
+  },
+  {
+    "name": "Outlet.lt",
+    "url": "/pardavejai/outlet.html",
+    "logo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop",
+    "kategorijos": ["Drabužiai", "Aksesuarai", "Avalynė"]
   }
 ]

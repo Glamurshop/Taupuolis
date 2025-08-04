@@ -2,12 +2,11 @@
 <html lang="lt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pardavėjams – Taupuolis.lt</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-900">
-
+<body class="bg-gray-50 min-h-screen">
   <div id="header-placeholder"></div>
   <script>
     fetch('/header.html?v=20250127')
@@ -15,7 +14,6 @@
       .then(data => {
         const placeholder = document.getElementById('header-placeholder');
         placeholder.innerHTML = data;
-        // Paleidžiam visus <script> tagus iš header (jei yra)
         placeholder.querySelectorAll('script').forEach(oldScript => {
           const newScript = document.createElement('script');
           if (oldScript.src) {
@@ -25,7 +23,6 @@
           }
           oldScript.replaceWith(newScript);
         });
-        // Hamburger meniu JS
         setTimeout(function() {
           const menuToggle = document.getElementById('menu-toggle');
           const mobileMenu = document.getElementById('mobile-menu');
@@ -50,105 +47,150 @@
         }, 0);
       });
   </script>
-
-  <!-- HERO -->
-  <section class="bg-yellow-200 py-16">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-4xl font-bold mb-4">Prisijunk prie Taupuolis.lt partnerių</h1>
-      <p class="text-lg text-gray-800 mb-6">
-        Pritrauk tūkstančius naujų klientų per mūsų nuolaidų ir kuponų platformą.
-      </p>
-      <a href="#how-it-works" class="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600">
-        Sužinok kaip tai veikia
+  
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Hero sekcija -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold mb-4">Tapkite mūsų partneriu</h1>
+      <p class="text-xl text-gray-600 mb-8">Pridėkite savo parduotuvę prie Taupuolis.lt ir pasiekiate tūkstančius potencialių klientų</p>
+      <a href="#kontaktai" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-lg transition">
+        Pradėti partnerystę
       </a>
     </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section id="how-it-works" class="py-16">
-    <div class="max-w-5xl mx-auto px-4 space-y-12">
+    
+    <!-- Privalumai -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div class="bg-white rounded-lg shadow p-6 text-center">
+        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Nemokama partnerystė</h3>
+        <p class="text-gray-600">Nėra jokių mėnesinių mokesčių ar pradinių įmokų. Mūsų komisinis tik nuo sėkmingų pardavimų.</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6 text-center">
+        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Tūkstančiai lankytojų</h3>
+        <p class="text-gray-600">Mūsų svetainę kas mėnesį lanko tūkstančiai aktyvių pirkėjų, ieškančių geriausių pasiūlymų.</p>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow p-6 text-center">
+        <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Detali analitika</h3>
+        <p class="text-gray-600">Gaukite išsamius ataskaitus apie klikų skaičių, konversijas ir pajamas realiu laiku.</p>
+      </div>
+    </div>
+    
+    <!-- Kaip tai veikia -->
+    <div class="bg-white rounded-lg shadow p-8 mb-16">
       <h2 class="text-3xl font-bold text-center mb-8">Kaip tai veikia?</h2>
-
-      <div class="flex flex-col md:flex-row items-start gap-8">
-        <img src="https://via.placeholder.com/400x250" alt="CSV importas" class="rounded-lg shadow-md md:w-1/2 object-cover">
-        <div class="md:w-1/2 space-y-4">
-          <h3 class="text-2xl font-semibold">1. Pridėkite savo pasiūlymus</h3>
-          <p class="text-gray-700">
-            Įkelkite savo kuponų ir akcijų sąrašą kaip CSV arba suriškite Google Sheets. Mūsų sistema automatiškai paruoš jūsų pasiūlymus publikuoti.
-          </p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">1</div>
+          <h3 class="font-semibold mb-2">Registruokitės</h3>
+          <p class="text-gray-600 text-sm">Užpildykite partnerystės formą ir pateikite savo parduotuvės informaciją</p>
         </div>
-      </div>
-
-      <div class="flex flex-col md:flex-row-reverse items-start gap-8">
-        <img src="https://via.placeholder.com/400x250" alt="Automatinis atnaujinimas" class="rounded-lg shadow-md md:w-1/2 object-cover">
-        <div class="md:w-1/2 space-y-4">
-          <h3 class="text-2xl font-semibold">2. Automatinis atnaujinimas</h3>
-          <p class="text-gray-700">
-            Kas valandą patikriname ir atnaujiname jūsų pasiūlymus. Jei pasikeičia likučiai ar galiojimo laikas – svetainėje visada rodomi tik galiojantys kodai.
-          </p>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">2</div>
+          <h3 class="font-semibold mb-2">Pridėkite pasiūlymus</h3>
+          <p class="text-gray-600 text-sm">Pateikite savo nuolaidų kodus, akcijas ir specialius pasiūlymus</p>
         </div>
-      </div>
-
-      <div class="flex flex-col md:flex-row items-start gap-8">
-        <img src="https://via.placeholder.com/400x250" alt="Ataskaitos" class="rounded-lg shadow-md md:w-1/2 object-cover">
-        <div class="md:w-1/2 space-y-4">
-          <h3 class="text-2xl font-semibold">3. Išsamios ataskaitos</h3>
-          <p class="text-gray-700">
-            Gaukite realiu laiku statistiką apie savo kuponų paspaudimus, konvertacijas ir pajamas. Viskas vienoje patogioje ataskaitų skiltyje.
-          </p>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">3</div>
+          <h3 class="font-semibold mb-2">Mes reklamuojame</h3>
+          <p class="text-gray-600 text-sm">Mūsų komanda patikrina ir paskelbia jūsų pasiūlymus tūkstančiams lankytojų</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">4</div>
+          <h3 class="font-semibold mb-2">Uždirbkite</h3>
+          <p class="text-gray-600 text-sm">Gaukite komisinius už kiekvieną sėkmingą pardavimą per mūsų svetainę</p>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- BENEFITS -->
-  <section class="bg-white py-16">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Pardavėjui tai suteikia</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="flex flex-col items-center text-center space-y-4 p-6 bg-gray-50 rounded-lg shadow">
-          <img src="https://cdn-icons-png.flaticon.com/128/1006/1006555.png" alt="Nauji klientai" class="w-16 h-16">
-          <h3 class="text-xl font-semibold">Daugiau klientų</h3>
-          <p class="text-gray-600">Pasiekite mūsuose lankomą tūkstančių vartotojų auditoriją.</p>
+    
+    <!-- Partnerystės forma -->
+    <div id="kontaktai" class="bg-white rounded-lg shadow p-8">
+      <h2 class="text-3xl font-bold text-center mb-8">Pradėkite partnerystę</h2>
+      <form class="max-w-2xl mx-auto space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Parduotuvės pavadinimas *</label>
+            <input type="text" id="company" name="company" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          </div>
+          <div>
+            <label for="website" class="block text-sm font-medium text-gray-700 mb-1">Svetainės URL *</label>
+            <input type="url" id="website" name="website" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          </div>
         </div>
-        <div class="flex flex-col items-center text-center space-y-4 p-6 bg-gray-50 rounded-lg shadow">
-          <img src="https://cdn-icons-png.flaticon.com/128/992/992651.png" alt="Padidintos pajamos" class="w-16 h-16">
-          <h3 class="text-xl font-semibold">Padidintos pajamos</h3>
-          <p class="text-gray-600">Kuponai ir nuolaidos skatina didesnį pirkimų kiekį.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="contact_name" class="block text-sm font-medium text-gray-700 mb-1">Kontaktinis asmuo *</label>
+            <input type="text" id="contact_name" name="contact_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">El. paštas *</label>
+            <input type="email" id="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+          </div>
         </div>
-        <div class="flex flex-col items-center text-center space-y-4 p-6 bg-gray-50 rounded-lg shadow">
-          <img src="https://cdn-icons-png.flaticon.com/128/2504/2504920.png" alt="Lengvas valdymas" class="w-16 h-16">
-          <h3 class="text-xl font-semibold">Lengvas valdymas</h3>
-          <p class="text-gray-600">Vienas admin panelės CSV arba Google Sheets atnaujinimas – ir viskas atsinaujina automatiškai.</p>
+        
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Telefono numeris</label>
+          <input type="tel" id="phone" name="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
         </div>
-      </div>
+        
+        <div>
+          <label for="categories" class="block text-sm font-medium text-gray-700 mb-1">Kategorijos *</label>
+          <select id="categories" name="categories" multiple required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <option value="kvepalai">Kvepalai</option>
+            <option value="kosmetika">Kosmetika</option>
+            <option value="drabuziai">Drabužiai</option>
+            <option value="elektronika">Elektronika</option>
+            <option value="sportas">Sportas</option>
+            <option value="buitis">Buitis</option>
+            <option value="maistas">Maistas</option>
+            <option value="aksesuarai">Aksesuarai</option>
+            <option value="vaikams">Vaikams</option>
+            <option value="paslaugos">Paslaugos</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Apie parduotuvę</label>
+          <textarea id="description" name="description" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Trumpai aprašykite savo parduotuvę ir pasiūlymus..."></textarea>
+        </div>
+        
+        <div>
+          <label for="offers" class="block text-sm font-medium text-gray-700 mb-1">Kokius pasiūlymus planuojate pateikti?</label>
+          <textarea id="offers" name="offers" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Pvz.: nuolaidų kodai, akcijos, nemokamas pristatymas..."></textarea>
+        </div>
+        
+        <div class="flex items-center">
+          <input type="checkbox" id="agreement" name="agreement" required class="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded">
+          <label for="agreement" class="ml-2 block text-sm text-gray-700">
+            Sutinku su <a href="#" class="text-yellow-600 hover:underline">partnerystės sąlygomis</a> ir <a href="#" class="text-yellow-600 hover:underline">privatumo politika</a>
+          </label>
+        </div>
+        
+        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition">
+          Siųsti užklausą
+        </button>
+      </form>
     </div>
-  </section>
-
-  <!-- FREE TRIAL -->
-  <section class="bg-yellow-200 py-16">
-    <div class="max-w-3xl mx-auto px-4 text-center space-y-6">
-      <h2 class="text-3xl font-bold">Pirmas mėnesis visiškai nemokamas</h2>
-      <p class="text-gray-800">
-        Išbandykite visą sistemą be įsipareigojimų – jokių mokesčių pirmą mėnesį. Jei patiks, tęskime bendradarbiavimą už palankią kainą.
-      </p>
-      <a href="mailto:info@taupuolis.lt?subject=Partnerystės%20pasiūlymas" class="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600">
-        Susisiek dėl partnerystės
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-gray-800 text-white py-6">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between text-sm">
-      <p>&copy; 2025 Taupuolis.lt</p>
-      <div class="space-x-4">
-        <a href="index.html" class="hover:underline">Pagrindinis</a>
-        <a href="kontaktai.html" class="hover:underline">Kontaktai</a>
-        <a href="terms.html" class="hover:underline">Taisyklės</a>
-      </div>
-    </div>
+  </main>
+  
+  <footer class="text-center text-sm text-gray-500 py-6 border-t mt-10">
+    © 2025 Taupuolis.lt – Visos teisės saugomos.
   </footer>
-
 </body>
 </html>

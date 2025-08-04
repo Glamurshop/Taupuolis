@@ -1,0 +1,21 @@
+# Google Sheets API
+gspread==5.12.0
+oauth2client==4.1.3
+google-api-python-client==2.108.0
+
+# Duomenų apdorojimas
+pandas==2.1.4
+numpy==1.24.3
+
+# Šablonų sistema
+Jinja2==3.1.2
+
+# Teksto apdorojimas
+unidecode==1.3.7
+
+# Automatinis stebėjimas
+watchdog==3.0.0
+
+# Papildomos bibliotekos
+requests==2.31.0
+python-dotenv==1.0.0 
