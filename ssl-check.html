@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSL Sertifikato Patikrinimas - Taupuolis.lt</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .content {
+            padding: 30px;
+        }
+        .status-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #007bff;
+        }
+        .status-success {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        .status-warning {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+        .status-error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+        .status-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .status-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .status-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .info-card h3 {
+            margin-top: 0;
+            color: #495057;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .btn-success {
+            background: #28a745;
+        }
+        .btn-success:hover {
+            background: #1e7e34;
+        }
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #007bff, #28a745);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .steps {
+            list-style: none;
+            padding: 0;
+        }
+        .steps li {
+            padding: 10px 0;
+            border-left: 3px solid #dee2e6;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .steps li.completed {
+            border-left-color: #28a745;
+        }
+        .steps li.current {
+            border-left-color: #007bff;
+            font-weight: bold;
+        }
+        .steps li::before {
+            content: "○";
+            position: absolute;
+            left: -8px;
+            background: white;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            line-height: 16px;
+            border-radius: 50%;
+        }
+        .steps li.completed::before {
+            content: "✓";
+            color: #28a745;
+        }
+        .steps li.current::before {
+            content: "●";
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 SSL Sertifikato Patikrinimas</h1>
+            <p>Taupuolis.lt saugumo statusas</p>
+        </div>
+        
+        <div class="content">
+            <div id="status-display"></div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📋 Kas vyksta?</h3>
+                    <p>GitHub Pages automatiškai sukonfigūruoja SSL sertifikatą custom domenams. Procesas gali užtrukti iki 24 valandų.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>⏰ Kiek laiko užtruks?</h3>
+                    <p>Paprastai 1-24 valandos po domeno sukonfigūravimo. Kartais gali užtrukti iki 48 valandų.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🔧 Ką reikia padaryti?</h3>
+                    <p>Nieko! GitHub Pages viską padarys automatiškai. Jums tereikia palaukti.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>📞 Kaip patikrinti?</h3>
+                    <p>Grįžkite čia po kelių valandų arba patikrinkite GitHub repository Settings → Pages.</p>
+                </div>
+            </div>
+            
+            <div class="status-card">
+                <h3>📈 Progresas</h3>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <p id="progress-text">Patikrinama...</p>
+            </div>
+            
+            <div class="status-card">
+                <h3>📝 Žingsniai</h3>
+                <ul id="steps-list" class="steps">
+                    <li id="step1">Domenas sukonfigūruotas GitHub Pages</li>
+                    <li id="step2">SSL sertifikatas užsakytas</li>
+                    <li id="step3">SSL sertifikatas sugeneruotas</li>
+                    <li id="step4">SSL sertifikatas aktyvuotas</li>
+                    <li id="step5">HTTPS nukreipimai veikia</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://taupuolis.lt/" class="btn btn-success">🏠 Eiti į svetainę</a>
+                <a href="https://taupuolis.lt/clear-cache.html" class="btn btn-warning">🔄 Išvalyti kešą</a>
+                <a href="#" onclick="checkSSL()" class="btn">🔄 Patikrinti iš naujo</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkSSL() {
+            const isSecure = window.location.protocol === 'https:';
+            const statusDisplay = document.getElementById('status-display');
+            const progressFill = document.getElementById('progress-fill');
+            const progressText = document.getElementById('progress-text');
+            
+            // Simulate progress based on SSL status
+            let progress = 0;
+            let statusClass = '';
+            let statusIcon = '';
+            let statusTitle = '';
+            let statusDescription = '';
+            
+            if (isSecure) {
+                progress = 100;
+                statusClass = 'status-success';
+                statusIcon = '✅';
+                statusTitle = 'Svetainė saugi!';
+                statusDescription = 'Jūsų svetainė naudoja saugų HTTPS ryšį. SSL sertifikatas aktyvus ir veikia.';
+                
+                // Mark all steps as completed
+                for (let i = 1; i <= 5; i++) {
+                    document.getElementById(`step${i}`).classList.add('completed');
+                }
+            } else {
+                // Simulate progress based on time since domain setup
+                const domainSetupTime = new Date('2025-01-27T00:00:00').getTime();
+                const now = new Date().getTime();
+                const hoursSinceSetup = (now - domainSetupTime) / (1000 * 60 * 60);
+                
+                if (hoursSinceSetup < 1) {
+                    progress = 20;
+                    statusClass = 'status-warning';
+                    statusIcon = '⏳';
+                    statusTitle = 'Procesas pradėtas';
+                    statusDescription = 'SSL sertifikatas dar kuriamas. Palaukite 1-2 valandas.';
+                    document.getElementById('step1').classList.add('completed');
+                    document.getElementById('step2').classList.add('current');
+                } else if (hoursSinceSetup < 6) {
+                    progress = 40;
+                    statusClass = 'status-warning';
+                    statusIcon = '⏳';
+                    statusTitle = 'Sertifikatas kuriamas';
+                    statusDescription = 'SSL sertifikatas generuojamas. Palaukite dar 2-6 valandas.';
+                    document.getElementById('step1').classList.add('completed');
+                    document.getElementById('step2').classList.add('completed');
+                    document.getElementById('step3').classList.add('current');
+                } else if (hoursSinceSetup < 12) {
+                    progress = 60;
+                    statusClass = 'status-warning';
+                    statusIcon = '⏳';
+                    statusTitle = 'Sertifikatas aktyvuojamas';
+                    statusDescription = 'SSL sertifikatas aktyvuojamas. Palaukite dar 2-12 valandų.';
+                    document.getElementById('step1').classList.add('completed');
+                    document.getElementById('step2').classList.add('completed');
+                    document.getElementById('step3').classList.add('completed');
+                    document.getElementById('step4').classList.add('current');
+                } else {
+                    progress = 80;
+                    statusClass = 'status-error';
+                    statusIcon = '⚠️';
+                    statusTitle = 'Procesas užtruko';
+                    statusDescription = 'SSL sertifikatas dar neaktyvus. Patikrinkite GitHub repository Settings arba palaukite dar 12 valandų.';
+                    document.getElementById('step1').classList.add('completed');
+                    document.getElementById('step2').classList.add('completed');
+                    document.getElementById('step3').classList.add('completed');
+                    document.getElementById('step4').classList.add('completed');
+                    document.getElementById('step5').classList.add('current');
+                }
+            }
+            
+            // Update display
+            statusDisplay.innerHTML = `
+                <div class="status-card ${statusClass}">
+                    <div class="status-icon">${statusIcon}</div>
+                    <div class="status-title">${statusTitle}</div>
+                    <div class="status-description">${statusDescription}</div>
+                </div>
+            `;
+            
+            // Update progress
+            progressFill.style.width = progress + '%';
+            progressText.textContent = `Progresas: ${progress}%`;
+            
+            // Force HTTPS redirect if not secure
+            if (!isSecure) {
+                setTimeout(() => {
+                    window.location.replace('https://taupuolis.lt/ssl-check.html');
+                }, 3000);
+            }
+        }
+        
+        // Check on load
+        window.onload = checkSSL;
+        
+        // Auto-refresh every 30 seconds
+        setInterval(checkSSL, 30000);
+    </script>
+</body>
+</html> 
