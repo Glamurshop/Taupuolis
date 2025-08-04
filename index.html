@@ -1,485 +1,426 @@
 <!DOCTYPE html>
-<html lang="lt" class="overflow-x-hidden">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self' https:; img-src 'self' https: data:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline';">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="Thu, 01 Jan 1970 00:00:00 GMT">
-    <title>Taupuolis.lt - Geriausi nuolaidų kodai ir akcijos Lietuvoje</title>
-    <meta name="description" content="Raskite geriausius nuolaidų kodus, akcijas ir pasiūlymus iš populiariausių Lietuvos pardavėjų. Taupykite laiką ir pinigus su Taupuolis.lt">
-    <meta name="keywords" content="nuolaidų kodai, akcijos, taupymas, lietuva, douglas, glamur, perfumer">
-    <meta property="og:title" content="Taupuolis.lt - Geriausi nuolaidų kodai">
-    <meta property="og:description" content="Raskite geriausius nuolaidų kodus ir akcijas Lietuvoje">
+    <meta name="description" content="Taupuolis.lt - geriausi pasiūlymai ir nuolaidos Lietuvoje. Raskite didžiausias santaupas kvepalams, kosmetikai, drabužiams ir daugeliui kitų produktų.">
+    <meta name="keywords" content="nuolaidos, pasiūlymai, santaupos, kvepalai, kosmetika, drabužiai, akcijos, taupuolis">
+    <meta property="og:title" content="Taupuolis.lt - Geriausi pasiūlymai ir nuolaidos">
+    <meta property="og:description" content="Raskite didžiausias santaupas kvepalams, kosmetikai, drabužiams ir daugeliui kitų produktų.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://taupuolis.lt">
-    <meta property="og:image" content="https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-10.png">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1200&h=630&fit=crop">
     <link rel="canonical" href="https://taupuolis.lt">
-    <link rel="stylesheet" href="styles.css?v=20250127">
+    <title>Taupuolis.lt - Geriausi pasiūlymai ir nuolaidos</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Flowbite UI komponentams (slideriui) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script>
-      // Force cache refresh
-      if (window.location.protocol === 'http:') {
-        window.location.href = window.location.href.replace('http:', 'https:');
-      }
-      // Clear cache for this page
-      if ('caches' in window) {
-        caches.keys().then(function(names) {
-          for (let name of names) caches.delete(name);
-        });
-      }
-    </script>
-  </head>
-  <body class="bg-white text-gray-900">
+    <link rel="stylesheet" href="styles.css?v=20250127">
+    
+    <style>
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .music-player:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            border-radius: 2px;
+            background: #e5e7eb;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+        
+        .music-info {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 8px;
+            text-align: center;
+        }
+        
+        .music-visualizer {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-top: 8px;
+        }
+        
+        .bar {
+            width: 3px;
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 2px;
+            animation: musicBars 1.5s ease-in-out infinite;
+        }
+        
+        .bar:nth-child(1) { animation-delay: 0s; }
+        .bar:nth-child(2) { animation-delay: 0.1s; }
+        .bar:nth-child(3) { animation-delay: 0.2s; }
+        .bar:nth-child(4) { animation-delay: 0.3s; }
+        .bar:nth-child(5) { animation-delay: 0.4s; }
+        
+        @keyframes musicBars {
+            0%, 100% { height: 8px; }
+            50% { height: 20px; }
+        }
+        
+        .music-player.minimized {
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+        }
+        
+        .music-player.minimized .music-controls {
+            flex-direction: column;
+        }
+        
+        .music-player.minimized .volume-slider,
+        .music-player.minimized .music-info,
+        .music-player.minimized .music-visualizer {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <div class="music-controls">
+            <button class="play-btn" id="playBtn" onclick="toggleMusic()">
+                <svg id="playIcon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                </svg>
+                <svg id="pauseIcon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="display: none;">
+                    <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5H4a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5h2zm5 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5H9a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5h2z"/>
+                </svg>
+            </button>
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" onchange="changeVolume()">
+        </div>
+        <div class="music-visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="music-info">
+            🎵 Taupuolis.lt Radio
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+        <!-- Fallback to a different audio source -->
+        <source src="https://www.soundjay.com/mechanical/sounds/clock-ticking-1.wav" type="audio/wav">
+    </audio>
+
+    <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
-    <script>
-      fetch('/header.html?v=20250127')
-        .then(response => response.text())
-        .then(data => {
-          const placeholder = document.getElementById('header-placeholder');
-          placeholder.innerHTML = data;
-          // Paleidžiam visus <script> tagus iš header (jei yra)
-          placeholder.querySelectorAll('script').forEach(oldScript => {
-            const newScript = document.createElement('script');
-            if (oldScript.src) {
-              newScript.src = oldScript.src;
-            } else {
-              newScript.textContent = oldScript.textContent;
-            }
-            oldScript.replaceWith(newScript);
-          });
-          // Hamburger meniu JS
-          setTimeout(function() {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileOverlay = document.getElementById('mobile-overlay');
-            const menuClose = document.getElementById('menu-close');
-            function openMenu() {
-              mobileMenu.classList.remove('translate-x-full');
-              mobileOverlay.classList.remove('hidden');
-            }
-            function closeMenu() {
-              mobileMenu.classList.add('translate-x-full');
-              mobileOverlay.classList.add('hidden');
-            }
-            if(menuToggle) menuToggle.onclick = openMenu;
-            if(menuClose) menuClose.onclick = closeMenu;
-            if(mobileOverlay) mobileOverlay.onclick = closeMenu;
-            if(mobileMenu) {
-              mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', closeMenu);
-              });
-            }
-          }, 0);
-        });
-    </script>
-    <!-- Main turinys -->
-    <main class="py-8">
-      <div class="max-w-7xl mx-auto px-4 py-8">
-        <!-- Horizontalus deals-carousel iš deals.json -->
-        <div id="deals-carousel" class="w-full max-w-7xl mx-auto px-0 py-8 mb-8">
-          <div id="deals-slider-track"
-               class="flex gap-4 overflow-x-auto snap-x scroll-smooth pb-4"
-               style="scrollbar-width: thin;">
-            <!-- JS sugeneruos banerius čia -->
-          </div>
-        </div>
-        <!-- Informacinė juosta po slideriu -->
-        <div class="bg-yellow-200 rounded-xl flex flex-col md:flex-row items-center justify-between gap-8 px-8 py-6 mb-10">
-          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">🔎</span>
-            <div class="text-left">
-              <div class="font-bold text-lg">Visi pasiūlymai peržiūrėti</div>
-              <div class="text-sm text-gray-700">Mūsų komanda tikrina kiekvieną nuolaidą</div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
+                🎉 <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Taupuolis.lt</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">Geriausi pasiūlymai ir nuolaidos Lietuvoje</p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="Ieškoti pasiūlymų..." 
+                           class="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-full focus:border-purple-500 focus:outline-none shadow-lg">
+                    <button onclick="performSearch()" class="absolute right-2 top-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
+                        Ieškoti
+                    </button>
+                </div>
             </div>
-          </div>
-          <div class="hidden md:flex items-center justify-center">
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-          </div>
-          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">💡</span>
-            <div class="text-left">
-              <div class="font-bold text-lg">Nėra paslėptų kainų</div>
-              <div class="text-sm text-gray-700">Matysite tik tikras galutines kainas</div>
+        </section>
+
+        <!-- Featured Deals Slider -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">🔥 Šiandienos top pasiūlymai</h2>
+            <div id="dealsSlider" class="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
+                <!-- Deals will be loaded here -->
             </div>
-          </div>
-          <div class="hidden md:flex items-center justify-center">
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-            <span class="w-2 h-2 bg-gray-400 rounded-full mx-1"></span>
-          </div>
-          <div class="flex items-center gap-4 flex-1 min-w-[220px]">
-            <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white shadow text-3xl">⏰</span>
-            <div class="text-left">
-              <div class="font-bold text-lg">Kasdien atnaujinama</div>
-              <div class="text-sm text-gray-700">Naujausi kodai ir akcijos kiekvieną dieną</div>
+        </section>
+
+        <!-- Categories Grid -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">📂 Kategorijos</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <a href="kategorijos/kvepalai.html" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group">
+                    <div class="text-4xl mb-3">🌸</div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600">Kvepalai</h3>
+                </a>
+                <a href="kategorijos/kosmetika.html" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group">
+                    <div class="text-4xl mb-3">💄</div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600">Kosmetika</h3>
+                </a>
+                <a href="kategorijos/drabuziai.html" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group">
+                    <div class="text-4xl mb-3">👗</div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600">Drabužiai</h3>
+                </a>
+                <a href="kategorijos/aksesuarai.html" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group">
+                    <div class="text-4xl mb-3">💍</div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600">Aksesuarai</h3>
+                </a>
+                <a href="kategorijos/buitis.html" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group">
+                    <div class="text-4xl mb-3">🏠</div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600">Buitis</h3>
+                </a>
+                <a href="kategorijos/vaikams.html" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group">
+                    <div class="text-4xl mb-3">🧸</div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600">Vaikams</h3>
+                </a>
+                <a href="kategorijos/automobiliai.html" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group">
+                    <div class="text-4xl mb-3">🚗</div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600">Automobiliai</h3>
+                </a>
+                <a href="kategorijos/paslaugos.html" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group">
+                    <div class="text-4xl mb-3">🛠️</div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600">Paslaugos</h3>
+                </a>
             </div>
-          </div>
-        </div>
-        <h2 class="text-3xl font-semibold mb-4">Šiandienos TOP pasiūlymai</h2>
-        <div id="real-deals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-        <!-- Slideris su realiais dealais po grido -->
-        <div class="mt-8 mb-8">
-          <div id="real-deals-slider" class="relative w-full h-[220px] rounded-2xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center">
-            <div id="slider-track" class="w-full h-full flex transition-transform duration-500"></div>
-            <button id="slider-prev" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
-            <button id="slider-next" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow z-10"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
-          </div>
-        </div>
-      </div>
-     
+        </section>
+
+        <!-- All Deals Grid -->
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">💎 Visi pasiūlymai</h2>
+                <a href="Visi-pasiulymai.html" class="text-purple-600 hover:text-purple-700 font-semibold">Žiūrėti visus →</a>
+            </div>
+            <div id="dealsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Deals will be loaded here -->
+            </div>
+        </section>
     </main>
-    <!-- Aprašymas apie Taupuolis.lt ir projekto idėją -->
-    <section class="max-w-3xl mx-auto mt-12 mb-8 p-6 bg-white rounded-xl shadow text-center">
-      <h4 class="text-2xl font-bold mb-2 text-yellow-600">Kas yra Taupuolis.lt?</h4>
-      <p class="text-gray-700 mb-2">Taupuolis.lt – tai platforma, kurioje vienoje vietoje surenkami geriausi nuolaidų kodai, akcijos ir pasiūlymai iš populiariausių Lietuvos ir užsienio pardavėjų.</p>
-      <p class="text-gray-700 mb-2">Mūsų tikslas – padėti taupyti laiką ir pinigus, kad rastum tik patikrintus, galiojančius ir tikrai naudingus pasiūlymus.</p>
-      <p class="text-gray-700">Projektas nuolat tobulinamas ir atnaujinamas, todėl kviečiame sekti naujienas ir dalintis savo pastebėjimais!</p>
-    </section>
+
     <!-- Footer -->
     <footer class="bg-gray-100 text-gray-700 py-8 mt-12">
-      <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-          <a href="apie-mus.html">Apie mus</a>
-          <a href="kontaktai.html">Kontaktai</a>
-          <a href="blogas.html">Blogas</a>
-          <a href="faq.html">DUK</a>
-          <a href="privatumo-politika.html">Privatumo politika</a>
-          <a href="slapuku-politika.html">Slapukų politika</a>
-          <a href="taisykles-ir-salygos.html">Taisyklės ir sąlygos</a>
-          <a href="affiliate-atskleidimas.html">Affiliate atskleidimas</a>
-          <a href="svetaines-zemelapis.html">Svetainės žemėlapis</a>
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                <a href="apie-mus.html">Apie mus</a>
+                <a href="kontaktai.html">Kontaktai</a>
+                <a href="blogas.html">Blogas</a>
+                <a href="faq.html">DUK</a>
+                <a href="privatumo-politika.html">Privatumo politika</a>
+                <a href="slapuku-politika.html">Slapukų politika</a>
+                <a href="taisykles-ir-salygos.html">Taisyklės ir sąlygos</a>
+                <a href="affiliate-atskleidimas.html">Affiliate atskleidimas</a>
+                <a href="svetaines-zemelapis.html">Svetainės žemėlapis</a>
+            </div>
+            <div class="text-center md:text-right mt-4 md:mt-0">
+                &copy; Taupuolis.lt, 2024
+            </div>
         </div>
-        <div class="text-center md:text-right mt-4 md:mt-0">
-          &copy; Taupuolis.lt, 2024
-        </div>
-      </div>
     </footer>
+
     <script>
-      // Paveikslėlių optimizacijos nustatymai
-      const imageOptimization = {
-        // Lazy loading
-        lazyLoad: true,
-        // Placeholder dydžiai
-        placeholderWidth: 300,
-        placeholderHeight: 300,
-        // Kraunamų paveikslėlių prioritetas
-        priorityImages: [
-          'https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-10.png',
-          'https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-11.png',
-          'https://taupuolis.lt/paveiksleliai/TRECIAS/KARL-12.png'
-        ]
-      };
+        // Music Player Functionality
+        let isPlaying = false;
+        const audio = document.getElementById('backgroundMusic');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const musicPlayer = document.getElementById('musicPlayer');
 
-      // Pardavėjų failų sąrašas
-      const vendors = [
-        { name: 'Douglas', url: '/pardavejai/douglas.html' },
-        { name: 'Glamur', url: '/pardavejai/glamur.html' },
-        { name: 'Perfumer', url: '/pardavejai/perfumer.html' },
-      ];
-      // Kategorijų sąrašas
-      const categories = [
-        { name: 'Kvepalai', url: '/kategorijos/kvepalai.html' },
-        { name: 'Kosmetika', url: '/kategorijos/kosmetika.html' },
-        { name: 'Maistas', url: '/kategorijos/maistas.html' },
-        { name: 'Elektronika', url: '/kategorijos/elektronika.html' },
-        { name: 'Drabužiai', url: '/kategorijos/drabužiai.html' },
-        { name: 'Sportas', url: '/kategorijos/sportas.html' },
-      ];
-      // Dealų sąrašas (dinamiškai iš visi_pasiulymai.json)
-      let allDeals = [];
-      fetch('visi_pasiulymai.json').then(r => r.json()).then(data => { allDeals = data; });
+        // Initialize music player
+        function initMusicPlayer() {
+            // Set initial volume
+            audio.volume = volumeSlider.value / 100;
+            
+            // Try to autoplay (may be blocked by browser)
+            audio.play().then(() => {
+                isPlaying = true;
+                updatePlayButton();
+            }).catch(() => {
+                // Autoplay blocked, show play button
+                isPlaying = false;
+                updatePlayButton();
+            });
+        }
 
-      function renderSearchResults(value, resultsEl) {
-        const valueLower = value.trim().toLowerCase();
-        if (!valueLower) {
-          resultsEl.innerHTML = '';
-          resultsEl.classList.add('hidden');
-          return;
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+            } else {
+                audio.play();
+                isPlaying = true;
+            }
+            updatePlayButton();
         }
-        // Pardavėjai
-        const vendorMatches = vendors.filter(v => v.name.toLowerCase().includes(valueLower));
-        // Dealai
-        const dealMatches = allDeals.filter(d =>
-          d.pavadinimas.toLowerCase().includes(valueLower) ||
-          (d.aprasymas && d.aprasymas.toLowerCase().includes(valueLower))
-        ).slice(0, 5); // max 5
-        // Kategorijos
-        const categoryMatches = categories.filter(c => c.name.toLowerCase().includes(valueLower));
-        let html = '';
-        if (vendorMatches.length) {
-          html += '<div class="px-4 py-2 text-xs text-gray-500">Pardavėjai</div>';
-          html += vendorMatches.map(v => `<a href="${v.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${v.name}</a>`).join('');
+
+        function updatePlayButton() {
+            if (isPlaying) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                musicPlayer.classList.add('playing');
+            } else {
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                musicPlayer.classList.remove('playing');
+            }
         }
-        if (dealMatches.length) {
-          html += '<div class="px-4 py-2 text-xs text-gray-500">Pasiūlymai</div>';
-          html += dealMatches.map(d => `<a href="/pasiulymai/${d.pavadinimas.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.html" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${d.pavadinimas} <span class='text-xs text-gray-400'>(${d.pardavejas})</span></a>`).join('');
+
+        function changeVolume() {
+            audio.volume = volumeSlider.value / 100;
         }
-        if (categoryMatches.length) {
-          html += '<div class="px-4 py-2 text-xs text-gray-500">Kategorijos</div>';
-          html += categoryMatches.map(c => `<a href="${c.url}" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">${c.name}</a>`).join('');
-        }
-        // Papildomi linkai
-        html += '<div class="px-4 py-2 text-xs text-gray-500">Kita</div>';
-        html += `<a href="/naujienlaiskis.html" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Prenumeruok naujienlaiškį</a>`;
-        html += `<a href="/kategorijos/" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Visos kategorijos</a>`;
-        html += `<a href="/visi_pasiulymai.json" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">Visi pasiūlymai (JSON)</a>`;
-        if (!vendorMatches.length && !dealMatches.length && !categoryMatches.length) {
-          html = '<div class="px-4 py-2 text-gray-500">Nieko nerasta</div>' + html;
-        }
-        resultsEl.innerHTML = html;
-        resultsEl.classList.remove('hidden');
-      }
-      // Paieška mobilui
-      const searchInputMobile = document.getElementById('search-input-mobile');
-      const searchResultsMobile = document.getElementById('search-results-mobile');
-      if (searchInputMobile && searchResultsMobile) {
-        searchInputMobile.addEventListener('input', function() {
-          renderSearchResults(this.value, searchResultsMobile);
+
+        // Minimize/Maximize music player
+        let isMinimized = false;
+        musicPlayer.addEventListener('dblclick', () => {
+            isMinimized = !isMinimized;
+            musicPlayer.classList.toggle('minimized', isMinimized);
         });
-        searchInputMobile.addEventListener('blur', function() {
-          setTimeout(() => searchResultsMobile.classList.add('hidden'), 150);
-        });
-        searchInputMobile.addEventListener('focus', function() {
-          if (this.value.trim()) searchResultsMobile.classList.remove('hidden');
-        });
-      }
-      // Drawer tipo hamburger meniu mobilui
-      const menuToggle = document.getElementById('menu-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileOverlay = document.getElementById('mobile-overlay');
-      const menuClose = document.getElementById('menu-close');
-      function openMenu() {
-        mobileMenu.classList.remove('translate-x-full');
-        mobileOverlay.classList.remove('hidden');
-      }
-      function closeMenu() {
-        mobileMenu.classList.add('translate-x-full');
-        mobileOverlay.classList.add('hidden');
-      }
-      if(menuToggle) menuToggle.addEventListener('click', openMenu);
-      if(menuClose) menuClose.addEventListener('click', closeMenu);
-      if(mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
-      if(mobileMenu) {
-        mobileMenu.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', closeMenu);
-        });
-      }
-      async function renderRealDealsGrid() {
-        const res = await fetch('visi_pasiulymai.json');
-        const deals = await res.json();
-        const grid = document.getElementById('real-deals-grid');
-        const now = new Date();
-        const tomorrow = new Date(now);
-        tomorrow.setDate(now.getDate() + 1);
-        
-        // Rūšiuojam pagal galiojimo datą (artimiausi viršuje)
-        deals.sort((a, b) => new Date(a.terminas) - new Date(b.terminas));
-        
-        grid.innerHTML = deals.map(deal => {
-          // Ar paskutinė diena?
-          const end = new Date(deal.terminas);
-          const isLastDay = end.toDateString() === now.toDateString() || end.toDateString() === tomorrow.toDateString();
-          
-          // Kainos informacija
-          const kainaInfo = deal.kaina_nuo && deal.kaina_iki ? 
-            `<div class="text-sm text-gray-600 mb-2">
-              <span class="line-through">${deal.kaina_nuo}</span> 
-              <span class="text-green-600 font-bold">${deal.kaina_iki}</span>
-            </div>` : '';
-          
-          // Nuolaidos procentas
-          const nuolaidaBadge = deal.nuolaida_procentais ? 
-            `<span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded mb-2 inline-block">-${deal.nuolaida_procentais}</span>` : '';
-          
-          return `
-            <div class="bg-white rounded-lg shadow-md overflow-hidden relative flex flex-col hover:shadow-lg transition-shadow">
-              <div class="relative">
-                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-40 object-cover" loading="lazy">
-                <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-2 left-2 h-10 w-10 bg-white rounded shadow p-1">
-                ${deal.vip ? `
-                  <span class="absolute top-2 right-2 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 shadow">
-                    <svg xmlns='http://www.w3.org/2000/svg' class='h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>
-                    VIP
-                  </span>
-                ` : ''}
-                ${isLastDay ? `<span class="absolute bottom-2 left-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">PASKUTINĖ DIENA</span>` : ''}
-              </div>
-              <div class="p-4 flex-1 flex flex-col">
-                <div class="flex items-center gap-2 mb-2">
-                  ${nuolaidaBadge}
-                </div>
-                <div class="font-bold text-lg mb-2">${deal.pavadinimas}</div>
-                <div class="text-gray-700 text-sm flex-1 mb-3">${deal.aprasymas}</div>
-                ${kainaInfo}
-                <div class="text-xs text-gray-500 mb-3">
-                  <span class="font-semibold">Kodas:</span> ${deal.nuolaidos_kodas}
-                </div>
-                <a href="/pasiulymai/${deal.pavadinimas.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.html" 
-                   class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded transition text-center">
-                  Žiūrėti pasiūlymą
-                </a>
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-      
 
-      // Optimizuotas paveikslėlių kraunamą
-      function preloadPriorityImages() {
-        imageOptimization.priorityImages.forEach(src => {
-          const img = new Image();
-          img.src = src;
-        });
-      }
-      
-      // Krauname prioritetinius paveikslėlius
-      preloadPriorityImages();
-      
-      renderRealDealsGrid();
+        // Initialize music player when page loads
+        document.addEventListener('DOMContentLoaded', initMusicPlayer);
 
-      // Slideris su realiais dealais
-      async function renderRealDealsSlider() {
-        const res = await fetch('visi_pasiulymai.json');
-        const deals = await res.json();
-        const sliderDeals = deals.slice(0, 5);
-        const track = document.getElementById('slider-track');
-        let current = 0;
-        function renderSlides() {
-          track.innerHTML = sliderDeals.map((deal, i) => `
-            <a href="/pasiulymai/${deal.pavadinimas
-              .toLowerCase()
-              .replace(/[^a-z0-9]+/g, '-')
-              .replace(/(^-|-$)/g, '')
-            }.html" class="min-w-full h-[220px] flex items-stretch group transition-opacity duration-500 ${i === current ? '' : 'opacity-0 pointer-events-none'}">
-              <div class="relative w-full h-full flex flex-col md:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-lg">
-                <div class="flex-1 h-full flex items-center justify-center p-4 min-w-[200px]">
-                  <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="rounded-xl shadow-lg object-cover h-40 w-full max-w-xs" />
-                  <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="absolute top-4 left-4 h-10 w-10 rounded-full bg-white shadow border" />
-                  ${(deal.vip || deal.vip_retailer) ? `<span class='absolute top-4 right-4 bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 shadow'><svg xmlns='http://www.w3.org/2000/svg' class='h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>VIP RETAILER</span>` : ''}
+        // Load header
+        fetch('/header.html?v=20250127')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('header-placeholder').innerHTML = html;
+            })
+            .catch(error => console.error('Error loading header:', error));
+
+        // Load deals data
+        fetch('/visi_pasiulymai.json')
+            .then(response => response.json())
+            .then(data => {
+                renderDealsSlider(data.slice(0, 6));
+                renderRealDealsGrid(data.slice(0, 8));
+            })
+            .catch(error => console.error('Error loading deals:', error));
+
+        function renderDealsSlider(deals) {
+            const slider = document.getElementById('dealsSlider');
+            slider.innerHTML = deals.map(deal => `
+                <div class="flex-shrink-0 w-80 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">${deal.pavadinimas}</h3>
+                        <p class="text-gray-600 text-sm mb-3">${deal.aprasymas}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">${deal.nuolaidos_kodas}</span>
+                            <a href="/pasiulymai/${deal.pavadinimas.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.html" 
+                               class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full text-sm hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
+                                Žiūrėti pasiūlymą
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-1 p-8 flex flex-col justify-center">
-                  <h2 class="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">${deal.pavadinimas}</h2>
-                  <p class="text-gray-700 mb-4 text-lg">${deal.aprasymas}</p>
-                  <span class="bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded mb-2 inline-block">Galioja iki: ${deal.terminas}</span>
-                </div>
-              </div>
-            </a>
-          `).join('');
-          track.style.transform = `translateX(-${current * 100}%)`;
+            `).join('');
         }
-        renderSlides();
-        document.getElementById('slider-prev').onclick = () => {
-          current = (current - 1 + sliderDeals.length) % sliderDeals.length;
-          renderSlides();
-        };
-        document.getElementById('slider-next').onclick = () => {
-          current = (current + 1) % sliderDeals.length;
-          renderSlides();
-        };
-        setInterval(() => {
-          current = (current + 1) % sliderDeals.length;
-          renderSlides();
-        }, 5000);
-      }
-      renderRealDealsSlider();
 
-      // Horizontalus deals-carousel iš visi_pasiulymai.json
-      async function renderDealsSlider() {
-        const res = await fetch('visi_pasiulymai.json');
-        const deals = await res.json();
-        const track = document.getElementById('deals-slider-track');
-        track.innerHTML = deals.map(deal => `
-          <div class="flex-shrink-0 w-full md:w-1/3 snap-center">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
-              <div class="relative">
-                <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-48 object-cover" loading="lazy" />
-                ${deal.pardavejo_logo ? `
-                  <img src="${deal.pardavejo_logo}" alt="Vendor Logo" class="absolute top-3 left-3 h-10 w-10 rounded-full bg-white shadow border object-contain" style="image-rendering: auto;"/>
-                ` : ''}
-              </div>
-              <div class="flex-1 flex flex-col justify-between p-6">
-                <div>
-                  <div class="font-bold text-xl mb-2">${deal.pavadinimas}</div>
-                  <div class="text-gray-700 mb-4">${deal.aprasymas}</div>
-                </div>
-                <a href="/pasiulymai/${deal.pavadinimas.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.html"
-                   class="inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-6 py-2 rounded transition shadow text-center">
-                  Žiūrėti pasiūlymą
-                </a>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
-      renderDealsSlider();
+        function renderRealDealsGrid(deals) {
+            const grid = document.getElementById('dealsGrid');
+            grid.innerHTML = deals.map(deal => {
+                const priceDisplay = deal.kaina_nuo && deal.kaina_iki 
+                    ? `<div class="text-lg font-bold text-green-600">€${deal.kaina_nuo} - €${deal.kaina_iki}</div>`
+                    : '';
+                const discountBadge = deal.nuolaida_procentais 
+                    ? `<span class="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">-${deal.nuolaida_procentais}%</span>`
+                    : '';
+                const vipBadge = deal.vip 
+                    ? `<span class="bg-yellow-500 text-white px-2 py-1 rounded text-xs font-bold">VIP</span>`
+                    : '';
+                const lastDayBadge = deal.terminas && new Date(deal.terminas) - new Date() < 24 * 60 * 60 * 1000
+                    ? `<span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">PASKUTINĖ DIENA</span>`
+                    : '';
 
-      // Naujas hero slideris kaip screenshote
-      async function renderHeroSlider() {
-        const res = await fetch('visi_pasiulymai.json');
-        const deals = await res.json();
-        const heroDeals = deals.slice(0, 5);
-        const track = document.getElementById('hero-slider-track');
-        let current = 0;
-        function renderSlides() {
-          track.innerHTML = heroDeals.map((deal, i) => `
-            <a href="/pasiulymai/${deal.pavadinimas
-              .toLowerCase()
-              .replace(/[^a-z0-9]+/g, '-')
-              .replace(/(^-|-$)/g, '')
-            }.html" class="min-w-full h-[220px] flex items-stretch group transition-opacity duration-500 ${i === current ? '' : 'opacity-0 pointer-events-none'}">
-              <div class="flex w-full h-full bg-white rounded-2xl overflow-hidden shadow-lg">
-                <div class="flex-shrink-0 w-1/2 h-full flex items-center justify-center bg-gray-100">
-                  <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="object-cover h-40 w-full max-w-xs rounded-xl shadow-lg" />
-                </div>
-                <div class="flex-1 flex flex-col justify-center p-8 relative">
-                  <div class="absolute top-4 left-4 flex items-center gap-2">
-                    <img src="${deal.pardavejo_logo}" alt="${deal.pardavejas}" class="h-10 w-10 rounded-full bg-white shadow border" />
-                    ${(deal.vip || deal.vip_retailer) ? `<span class='bg-yellow-400 text-xs font-bold px-2 py-1 rounded flex items-center gap-1 shadow'><svg xmlns='http://www.w3.org/2000/svg' class='h-4 w-4 text-yellow-700' fill='currentColor' viewBox='0 0 20 20'><path d='M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z'/></svg>VIP RETAILER</span>` : ''}
-                  </div>
-                  <h2 class="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">${deal.pavadinimas}</h2>
-                  <p class="text-gray-700 mb-4 text-lg">${deal.aprasymas}</p>
-                  <span class="bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded mb-2 inline-block">Galioja iki: ${deal.terminas}</span>
-                </div>
-              </div>
-            </a>
-          `).join('');
-          track.style.transform = `translateX(-${current * 100}%)`;
+                return `
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                        <div class="relative">
+                            <img src="${deal.nuotraukos_url}" alt="${deal.pavadinimas}" class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2 flex gap-1">
+                                ${discountBadge}
+                                ${vipBadge}
+                                ${lastDayBadge}
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">${deal.pavadinimas}</h3>
+                            <p class="text-gray-600 text-sm mb-3">${deal.aprasymas}</p>
+                            ${priceDisplay}
+                            <div class="flex justify-between items-center mt-3">
+                                <span class="text-purple-600 font-bold">${deal.nuolaidos_kodas}</span>
+                                <a href="/pasiulymai/${deal.pavadinimas.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}.html" 
+                                   class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full text-sm hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
+                                    Naudoti kodą
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
-        renderSlides();
-        document.getElementById('hero-slider-prev').onclick = () => {
-          current = (current - 1 + heroDeals.length) % heroDeals.length;
-          renderSlides();
-        };
-        document.getElementById('hero-slider-next').onclick = () => {
-          current = (current + 1) % heroDeals.length;
-          renderSlides();
-        };
-        setInterval(() => {
-          current = (current + 1) % heroDeals.length;
-          renderSlides();
-        }, 5000);
-      }
-      renderHeroSlider();
 
-      // Paieškos dropdown uždarymas paspaudus už jo
-      function setupSearchDropdownClose(input, results) {
-        if (!input || !results) return;
-        document.addEventListener('mousedown', function(e) {
-          if (!results.contains(e.target) && e.target !== input) {
-            results.classList.add('hidden');
-          }
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                window.location.href = `/paieska.html?q=${encodeURIComponent(query)}`;
+            }
+        }
+
+        // Search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
         });
-      }
-      setupSearchDropdownClose(searchInputMobile, searchResultsMobile);
     </script>
-  </body>
+</body>
 </html>
