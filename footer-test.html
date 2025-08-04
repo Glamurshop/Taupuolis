@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Test - Taupuolis.lt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8 text-center">Footer Test - Taupuolis.lt</h1>
+        
+        <div id="test-results" class="space-y-4">
+            <div class="test-result warning">
+                <strong>Testas vyksta...</strong> Patikriname footer funkcionalumą...
+            </div>
+        </div>
+
+        <div class="mt-8 p-6 bg-white rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Testo rezultatai:</h2>
+            <div id="detailed-results"></div>
+        </div>
+
+        <div class="mt-8 p-6 bg-white rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Footer turėtų atrodyti taip:</h2>
+            <div class="bg-gray-100 p-4 rounded">
+                <p class="text-sm text-gray-600 mb-2">Pilkas fonas, nuorodos su stiliais, copyright apačioje</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer-placeholder"></div>
+    
+    <script>
+        const results = [];
+        
+        function addResult(type, message) {
+            const result = { type, message, timestamp: new Date() };
+            results.push(result);
+            
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = `<strong>${type.toUpperCase()}:</strong> ${message}`;
+            
+            document.getElementById('test-results').appendChild(resultDiv);
+        }
+
+        function updateDetailedResults() {
+            const detailedDiv = document.getElementById('detailed-results');
+            let html = '';
+            
+            results.forEach((result, index) => {
+                html += `
+                    <div class="mb-2 p-2 bg-gray-50 rounded">
+                        <span class="text-sm text-gray-500">${index + 1}.</span>
+                        <span class="font-medium">${result.message}</span>
+                        <span class="text-xs text-gray-400 ml-2">${result.timestamp.toLocaleTimeString()}</span>
+                    </div>
+                `;
+            });
+            
+            detailedDiv.innerHTML = html;
+        }
+
+        // Test 1: Patikrinti ar footer.html failas pasiekiamas
+        addResult('info', 'Pradedamas footer testas...');
+        
+        fetch('/footer.html')
+            .then(response => {
+                if (response.ok) {
+                    addResult('success', `Footer.html failas pasiekiamas (status: ${response.status})`);
+                    return response.text();
+                } else {
+                    addResult('error', `Footer.html failas nepasiekiamas (status: ${response.status})`);
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            })
+            .then(data => {
+                // Test 2: Patikrinti ar footer turi reikiamą turinį
+                if (data.includes('footer') && data.includes('Taupuolis.lt')) {
+                    addResult('success', 'Footer turi reikiamą turinį');
+                } else {
+                    addResult('warning', 'Footer turinys neatitinka lūkesčių');
+                }
+                
+                // Test 3: Patikrinti ar footer turi stilius
+                if (data.includes('class=') && data.includes('bg-gray-100')) {
+                    addResult('success', 'Footer turi CSS klases');
+                } else {
+                    addResult('warning', 'Footer neturi CSS klasių');
+                }
+                
+                // Test 4: Įkelti footer į puslapį
+                document.getElementById('footer-placeholder').innerHTML = data;
+                addResult('success', 'Footer sėkmingai įkeltas į puslapį');
+                
+                // Test 5: Patikrinti ar footer matomas
+                setTimeout(() => {
+                    const footer = document.getElementById('footer-placeholder');
+                    if (footer && footer.innerHTML.trim()) {
+                        addResult('success', 'Footer matomas puslapyje');
+                        
+                        // Test 6: Patikrinti ar footer turi stilius
+                        const footerElement = footer.querySelector('footer');
+                        if (footerElement) {
+                            const computedStyle = window.getComputedStyle(footerElement);
+                            if (computedStyle.backgroundColor !== 'rgba(0, 0, 0, 0)' || 
+                                computedStyle.padding !== '0px') {
+                                addResult('success', 'Footer stiliai veikia');
+                            } else {
+                                addResult('warning', 'Footer stiliai gali neveikti');
+                            }
+                        }
+                    } else {
+                        addResult('error', 'Footer nematomas puslapyje');
+                    }
+                    
+                    updateDetailedResults();
+                    addResult('success', 'Testas baigtas!');
+                }, 100);
+                
+            })
+            .catch(error => {
+                addResult('error', `Klaida: ${error.message}`);
+                updateDetailedResults();
+            });
+
+        // Automatinis testas po 3 sekundžių
+        setTimeout(() => {
+            const footer = document.getElementById('footer-placeholder');
+            if (footer && footer.innerHTML.includes('Taupuolis.lt')) {
+                addResult('success', '✅ Footer veikia puikiai!');
+            } else {
+                addResult('error', '❌ Footer neveikia - patikrinkite konsolę');
+            }
+            updateDetailedResults();
+        }, 3000);
+    </script>
+</body>
+</html> 
